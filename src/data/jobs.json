@@ -1,0 +1,322 @@
+[
+  {
+    "id": "senior-fullstack-developer",
+    "title": "Senior Full Stack Developer",
+    "department": "Engineering",
+    "location": "New York, NY",
+    "type": "Full-time",
+    "experience": "5+ years",
+    "salary": "$120,000 - $160,000",
+    "description": "We're looking for a Senior Full Stack Developer to join our growing engineering team and help build next-generation enterprise applications.",
+    "requirements": [
+      "5+ years of experience in full-stack development",
+      "Proficiency in React, Node.js, and modern JavaScript",
+      "Experience with cloud platforms (AWS, Azure, or GCP)",
+      "Strong understanding of database design and optimization",
+      "Experience with microservices architecture"
+    ],
+    "responsibilities": [
+      "Design and develop scalable web applications",
+      "Collaborate with cross-functional teams to deliver features",
+      "Mentor junior developers and conduct code reviews",
+      "Participate in architectural decisions and technical planning"
+    ],
+    "benefits": [
+      "Competitive salary and equity package",
+      "Comprehensive health, dental, and vision insurance",
+      "Flexible work arrangements and remote options",
+      "Professional development budget",
+      "401(k) with company matching"
+    ],
+    "postedAt": "2024-01-10",
+    "featured": true
+  },
+  {
+    "id": "cloud-solutions-architect",
+    "title": "Cloud Solutions Architect",
+    "department": "Architecture",
+    "location": "San Francisco, CA",
+    "type": "Full-time",
+    "experience": "7+ years",
+    "salary": "$150,000 - $200,000",
+    "description": "Join our architecture team to design and implement cloud-native solutions for enterprise clients.",
+    "requirements": [
+      "7+ years of experience in cloud architecture",
+      "AWS/Azure/GCP certifications preferred",
+      "Experience with containerization and orchestration",
+      "Strong knowledge of security best practices",
+      "Excellent communication and presentation skills"
+    ],
+    "responsibilities": [
+      "Design cloud architecture for enterprise clients",
+      "Lead technical discussions with stakeholders",
+      "Create technical documentation and best practices",
+      "Evaluate and recommend new technologies"
+    ],
+    "benefits": [
+      "Competitive salary and performance bonuses",
+      "Premium healthcare coverage",
+      "Flexible PTO and sabbatical options",
+      "Conference and training budget",
+      "Stock options"
+    ],
+    "postedAt": "2024-01-08",
+    "featured": true
+  },
+  {
+    "id": "data-scientist",
+    "title": "Senior Data Scientist",
+    "department": "Data & Analytics",
+    "location": "Boston, MA",
+    "type": "Full-time",
+    "experience": "4+ years",
+    "salary": "$130,000 - $170,000",
+    "description": "Drive data-driven insights and build machine learning models to solve complex business problems.",
+    "requirements": [
+      "4+ years of experience in data science",
+      "Proficiency in Python, R, and SQL",
+      "Experience with machine learning frameworks",
+      "Strong statistical analysis skills",
+      "PhD or Master's in relevant field preferred"
+    ],
+    "responsibilities": [
+      "Develop and deploy machine learning models",
+      "Analyze large datasets to extract insights",
+      "Collaborate with product teams on data strategy",
+      "Present findings to executive leadership"
+    ],
+    "benefits": [
+      "Competitive compensation package",
+      "Health and wellness benefits",
+      "Flexible work schedule",
+      "Research and development time",
+      "Conference attendance support"
+    ],
+    "postedAt": "2024-01-05",
+    "featured": false
+  },
+  {
+    "id": "devops-engineer",
+    "title": "DevOps Engineer",
+    "department": "Infrastructure",
+    "location": "Austin, TX",
+    "type": "Full-time",
+    "experience": "3+ years",
+    "salary": "$100,000 - $140,000",
+    "description": "Build and maintain CI/CD pipelines and infrastructure automation for our development teams.",
+    "requirements": [
+      "3+ years of DevOps experience",
+      "Experience with Kubernetes and Docker",
+      "Proficiency in Infrastructure as Code tools",
+      "Knowledge of monitoring and logging systems",
+      "Strong scripting skills (Python, Bash)"
+    ],
+    "responsibilities": [
+      "Maintain and improve CI/CD pipelines",
+      "Manage cloud infrastructure and deployments",
+      "Implement monitoring and alerting systems",
+      "Support development teams with tooling"
+    ],
+    "benefits": [
+      "Competitive salary and bonuses",
+      "Comprehensive benefits package",
+      "Remote work flexibility",
+      "Professional certification support",
+      "Team building events"
+    ],
+    "postedAt": "2024-01-03",
+    "featured": false
+  },
+  {
+    "id": "product-manager",
+    "title": "Senior Product Manager",
+    "department": "Product",
+    "location": "Seattle, WA",
+    "type": "Full-time",
+    "experience": "5+ years",
+    "salary": "$140,000 - $180,000",
+    "description": "Lead product strategy and roadmap for our enterprise software solutions.",
+    "requirements": [
+      "5+ years of product management experience",
+      "Experience with B2B enterprise software",
+      "Strong analytical and problem-solving skills",
+      "Excellent communication and leadership abilities",
+      "Technical background preferred"
+    ],
+    "responsibilities": [
+      "Define product vision and strategy",
+      "Manage product roadmap and priorities",
+      "Work closely with engineering and design teams",
+      "Conduct market research and competitive analysis"
+    ],
+    "benefits": [
+      "Competitive salary and equity",
+      "Premium health benefits",
+      "Unlimited PTO policy",
+      "Product development budget",
+      "Leadership development programs"
+    ],
+    "postedAt": "2024-01-01",
+    "featured": true
+  },
+  {
+    "id": "ux-designer",
+    "title": "Senior UX Designer",
+    "department": "Design",
+    "location": "Los Angeles, CA",
+    "type": "Full-time",
+    "experience": "4+ years",
+    "salary": "$110,000 - $150,000",
+    "description": "Create exceptional user experiences for our enterprise applications and client solutions.",
+    "requirements": [
+      "4+ years of UX design experience",
+      "Proficiency in design tools (Figma, Sketch, Adobe)",
+      "Experience with design systems",
+      "Strong portfolio demonstrating UX process",
+      "Knowledge of accessibility standards"
+    ],
+    "responsibilities": [
+      "Design user interfaces and experiences",
+      "Conduct user research and usability testing",
+      "Collaborate with product and engineering teams",
+      "Maintain and evolve design systems"
+    ],
+    "benefits": [
+      "Competitive compensation",
+      "Health and wellness programs",
+      "Creative workspace and tools",
+      "Design conference attendance",
+      "Flexible work arrangements"
+    ],
+    "postedAt": "2023-12-28",
+    "featured": false
+  },
+  {
+    "id": "security-engineer",
+    "title": "Cybersecurity Engineer",
+    "department": "Security",
+    "location": "Chicago, IL",
+    "type": "Full-time",
+    "experience": "3+ years",
+    "salary": "$115,000 - $155,000",
+    "description": "Protect our infrastructure and client data through comprehensive security measures and monitoring.",
+    "requirements": [
+      "3+ years of cybersecurity experience",
+      "Knowledge of security frameworks and standards",
+      "Experience with security tools and technologies",
+      "Understanding of cloud security best practices",
+      "Security certifications preferred (CISSP, CEH)"
+    ],
+    "responsibilities": [
+      "Monitor and respond to security incidents",
+      "Implement security controls and policies",
+      "Conduct security assessments and audits",
+      "Provide security training and awareness"
+    ],
+    "benefits": [
+      "Competitive salary and bonuses",
+      "Comprehensive insurance coverage",
+      "Security training and certifications",
+      "Flexible work options",
+      "Professional development support"
+    ],
+    "postedAt": "2023-12-25",
+    "featured": false
+  },
+  {
+    "id": "business-analyst",
+    "title": "Senior Business Analyst",
+    "department": "Strategy",
+    "location": "Denver, CO",
+    "type": "Full-time",
+    "experience": "4+ years",
+    "salary": "$95,000 - $125,000",
+    "description": "Bridge the gap between business requirements and technical solutions for our enterprise clients.",
+    "requirements": [
+      "4+ years of business analysis experience",
+      "Strong analytical and problem-solving skills",
+      "Experience with requirements gathering",
+      "Knowledge of business process modeling",
+      "Excellent communication skills"
+    ],
+    "responsibilities": [
+      "Gather and document business requirements",
+      "Analyze business processes and workflows",
+      "Facilitate stakeholder meetings and workshops",
+      "Support project implementation and testing"
+    ],
+    "benefits": [
+      "Competitive salary package",
+      "Health and dental coverage",
+      "Professional development opportunities",
+      "Flexible work schedule",
+      "Team collaboration tools"
+    ],
+    "postedAt": "2023-12-22",
+    "featured": false
+  },
+  {
+    "id": "sales-engineer",
+    "title": "Technical Sales Engineer",
+    "department": "Sales",
+    "location": "Atlanta, GA",
+    "type": "Full-time",
+    "experience": "3+ years",
+    "salary": "$120,000 - $160,000 + Commission",
+    "description": "Support sales efforts with technical expertise and solution demonstrations for enterprise clients.",
+    "requirements": [
+      "3+ years of technical sales experience",
+      "Strong technical background in enterprise software",
+      "Excellent presentation and communication skills",
+      "Experience with solution selling methodologies",
+      "Willingness to travel (25-30%)"
+    ],
+    "responsibilities": [
+      "Conduct technical product demonstrations",
+      "Support sales team with technical expertise",
+      "Develop technical proposals and solutions",
+      "Build relationships with technical stakeholders"
+    ],
+    "benefits": [
+      "Base salary plus commission structure",
+      "Comprehensive benefits package",
+      "Travel expense coverage",
+      "Sales training and development",
+      "Performance incentives"
+    ],
+    "postedAt": "2023-12-20",
+    "featured": false
+  },
+  {
+    "id": "marketing-manager",
+    "title": "Digital Marketing Manager",
+    "department": "Marketing",
+    "location": "Remote",
+    "type": "Full-time",
+    "experience": "4+ years",
+    "salary": "$90,000 - $120,000",
+    "description": "Drive digital marketing initiatives and campaigns to generate leads and build brand awareness.",
+    "requirements": [
+      "4+ years of digital marketing experience",
+      "Experience with B2B marketing campaigns",
+      "Proficiency in marketing automation tools",
+      "Strong analytical and data-driven mindset",
+      "Content creation and campaign management skills"
+    ],
+    "responsibilities": [
+      "Develop and execute digital marketing campaigns",
+      "Manage marketing automation and lead nurturing",
+      "Analyze campaign performance and ROI",
+      "Collaborate with sales and product teams"
+    ],
+    "benefits": [
+      "Competitive salary and bonuses",
+      "Remote work flexibility",
+      "Marketing tools and software access",
+      "Professional development budget",
+      "Health and wellness benefits"
+    ],
+    "postedAt": "2023-12-18",
+    "featured": false
+  }
+]

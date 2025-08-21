@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Microsoft",
+    "logo": "/placeholder.svg?height=60&width=120"
+  },
+  {
+    "name": "Amazon",
+    "logo": "/placeholder.svg?height=60&width=120"
+  },
+  {
+    "name": "Google",
+    "logo": "/placeholder.svg?height=60&width=120"
+  },
+  {
+    "name": "IBM",
+    "logo": "/placeholder.svg?height=60&width=120"
+  },
+  {
+    "name": "Oracle",
+    "logo": "/placeholder.svg?height=60&width=120"
+  },
+  {
+    "name": "Salesforce",
+    "logo": "/placeholder.svg?height=60&width=120"
+  },
+  {
+    "name": "Adobe",
+    "logo": "/placeholder.svg?height=60&width=120"
+  },
+  {
+    "name": "SAP",
+    "logo": "/placeholder.svg?height=60&width=120"
+  },
+  {
+    "name": "Cisco",
+    "logo": "/placeholder.svg?height=60&width=120"
+  },
+  {
+    "name": "Intel",
+    "logo": "/placeholder.svg?height=60&width=120"
+  },
+  {
+    "name": "VMware",
+    "logo": "/placeholder.svg?height=60&width=120"
+  },
+  {
+    "name": "ServiceNow",
+    "logo": "/placeholder.svg?height=60&width=120"
+  }
+]

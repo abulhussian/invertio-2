@@ -1,0 +1,138 @@
+[
+  {
+    "id": "global-bank-transformation",
+    "title": "Global Bank Digital Transformation",
+    "client": "MegaBank International",
+    "industry": "BFSI",
+    "description": "Complete digital transformation of core banking systems serving 50M+ customers across 25 countries.",
+    "challenge": "Legacy systems causing operational inefficiencies and poor customer experience",
+    "solution": "Cloud-native microservices architecture with real-time processing capabilities",
+    "results": [
+      "75% faster transaction processing",
+      "90% reduction in system downtime",
+      "40% increase in customer satisfaction"
+    ],
+    "technologies": ["AWS", "Kubernetes", "React", "Node.js", "MongoDB"],
+    "image": "/placeholder.svg?height=400&width=600",
+    "video": "/placeholder.svg?height=400&width=600",
+    "duration": "18 months",
+    "featured": true
+  },
+  {
+    "id": "healthcare-platform",
+    "title": "Telemedicine Platform Development",
+    "client": "HealthCare Plus",
+    "industry": "Healthcare",
+    "description": "Comprehensive telemedicine platform connecting patients with healthcare providers globally.",
+    "challenge": "Need for secure, scalable platform for remote healthcare delivery",
+    "solution": "HIPAA-compliant platform with video consultations and AI-powered diagnostics",
+    "results": ["500K+ consultations completed", "99.9% platform uptime", "60% reduction in patient wait times"],
+    "technologies": ["Azure", "React Native", "Python", "TensorFlow", "PostgreSQL"],
+    "image": "/placeholder.svg?height=400&width=600",
+    "video": "/placeholder.svg?height=400&width=600",
+    "duration": "12 months",
+    "featured": true
+  },
+  {
+    "id": "retail-omnichannel",
+    "title": "Omnichannel Retail Experience",
+    "client": "Fashion Forward",
+    "industry": "Retail",
+    "description": "Unified shopping experience across online, mobile, and physical stores with personalized recommendations.",
+    "challenge": "Fragmented customer experience across multiple touchpoints",
+    "solution": "AI-powered personalization engine with unified inventory management",
+    "results": [
+      "35% increase in conversion rate",
+      "50% improvement in inventory turnover",
+      "25% boost in customer lifetime value"
+    ],
+    "technologies": ["GCP", "Vue.js", "Python", "BigQuery", "Elasticsearch"],
+    "image": "/placeholder.svg?height=400&width=600",
+    "video": "/placeholder.svg?height=400&width=600",
+    "duration": "14 months",
+    "featured": false
+  },
+  {
+    "id": "telecom-5g-network",
+    "title": "5G Network Infrastructure",
+    "client": "TeleConnect",
+    "industry": "Telecom",
+    "description": "Next-generation 5G network deployment with edge computing capabilities for enhanced connectivity.",
+    "challenge": "Upgrading legacy infrastructure to support 5G and edge computing",
+    "solution": "Cloud-native network functions with automated orchestration and monitoring",
+    "results": ["10x faster data speeds", "50% reduction in latency", "99.99% network reliability"],
+    "technologies": ["Kubernetes", "OpenStack", "Ansible", "Prometheus", "Grafana"],
+    "image": "/placeholder.svg?height=400&width=600",
+    "video": "/placeholder.svg?height=400&width=600",
+    "duration": "24 months",
+    "featured": true
+  },
+  {
+    "id": "automotive-connected-car",
+    "title": "Connected Car Platform",
+    "client": "AutoTech Motors",
+    "industry": "Automotive",
+    "description": "IoT-enabled connected car platform with predictive maintenance and autonomous driving features.",
+    "challenge": "Integrating multiple vehicle systems with cloud-based analytics",
+    "solution": "Real-time data processing platform with machine learning for predictive insights",
+    "results": [
+      "30% reduction in maintenance costs",
+      "95% accuracy in predictive maintenance",
+      "Enhanced driver safety features"
+    ],
+    "technologies": ["AWS IoT", "Apache Kafka", "TensorFlow", "React", "Time Series DB"],
+    "image": "/placeholder.svg?height=400&width=600",
+    "video": "/placeholder.svg?height=400&width=600",
+    "duration": "20 months",
+    "featured": false
+  },
+  {
+    "id": "manufacturing-iot",
+    "title": "Smart Manufacturing Solution",
+    "client": "Industrial Dynamics",
+    "industry": "Automotive",
+    "description": "Industry 4.0 transformation with IoT sensors, predictive analytics, and automated quality control.",
+    "challenge": "Manual processes causing inefficiencies and quality issues",
+    "solution": "Comprehensive IoT platform with real-time monitoring and AI-driven optimization",
+    "results": [
+      "40% increase in production efficiency",
+      "60% reduction in defect rates",
+      "25% decrease in energy consumption"
+    ],
+    "technologies": ["Azure IoT", "Power BI", "Python", "Docker", "InfluxDB"],
+    "image": "/placeholder.svg?height=400&width=600",
+    "video": "/placeholder.svg?height=400&width=600",
+    "duration": "16 months",
+    "featured": false
+  },
+  {
+    "id": "fintech-payment-platform",
+    "title": "Digital Payment Platform",
+    "client": "PayTech Solutions",
+    "industry": "BFSI",
+    "description": "Secure, scalable payment processing platform supporting multiple currencies and payment methods.",
+    "challenge": "Building PCI-compliant platform with global payment support",
+    "solution": "Microservices architecture with advanced fraud detection and real-time processing",
+    "results": ["1M+ transactions per day", "99.99% uptime", "50% reduction in fraud incidents"],
+    "technologies": ["AWS", "Spring Boot", "Redis", "PostgreSQL", "Elasticsearch"],
+    "image": "/placeholder.svg?height=400&width=600",
+    "video": "/placeholder.svg?height=400&width=600",
+    "duration": "15 months",
+    "featured": false
+  },
+  {
+    "id": "healthcare-ai-diagnostics",
+    "title": "AI-Powered Medical Diagnostics",
+    "client": "MedTech Innovations",
+    "industry": "Healthcare",
+    "description": "Machine learning platform for medical image analysis and automated diagnostic assistance.",
+    "challenge": "Improving diagnostic accuracy and reducing analysis time",
+    "solution": "Deep learning models trained on medical imaging data with clinical workflow integration",
+    "results": ["95% diagnostic accuracy", "70% faster analysis time", "FDA approval obtained"],
+    "technologies": ["TensorFlow", "Python", "DICOM", "React", "PostgreSQL"],
+    "image": "/placeholder.svg?height=400&width=600",
+    "video": "/placeholder.svg?height=400&width=600",
+    "duration": "22 months",
+    "featured": true
+  }
+]
