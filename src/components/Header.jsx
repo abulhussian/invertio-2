@@ -2,14 +2,14 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, ChevronDown } from "lucide-react"
-import ThemeToggle from "./ThemeToggle"
-import { cn } from "../utils/cn"
+import { Menu, X, ChevronDown, Sun, Moon } from "lucide-react"
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
+  const [hoverTimeout, setHoverTimeout] = useState(null)
+  const [darkMode, setDarkMode] = useState(false)
   const location = useLocation()
 
   // Handle scroll effect
@@ -26,6 +26,12 @@ const Header = () => {
     setIsMobileMenuOpen(false)
     setActiveDropdown(null)
   }, [location])
+
+  // Toggle dark mode
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode)
+    document.documentElement.classList.toggle('dark')
+  }
 
   const navigationItems = [
     {
@@ -57,28 +63,37 @@ const Header = () => {
       hasDropdown: true,
       columns: [
         {
-          title: "Financial Services",
+          title: "Industries",
           items: [
-            { name: "Banking & Financial", href: "/industries#banking-financial" },
-            { name: "Fintech Solutions", href: "/industries#fintech" },
+            { name: "Aerospace", href: "/industries#aerospace" },
+            { name: "Energy", href: "/industries#energy" },
+            { name: "Rail", href: "/industries#rail" },
           ],
         },
         {
-          title: "Technology & Innovation",
+          title: "Platforms",
           items: [
-            { name: "Healthcare", href: "/industries#healthcare" },
-            { name: "Retail & E-commerce", href: "/industries#retail-ecommerce" },
-            { name: "Telecommunications", href: "/industries#telecommunications" },
+            { name: "Appliances & Consumer Goods", href: "/industries#appliances" },
+            { name: "Healthcare And Life Sciences", href: "/industries#healthcare" },
+            { name: "Semiconductor", href: "/industries#semiconductor" },
+          ],
+        },
+        {
+          title: "Capabilities",
+          items: [
             { name: "Automotive", href: "/industries#automotive" },
+            { name: "Media And Entertainment", href: "/industries#media" },
+            { name: "Off-Highway Vehicles", href: "/industries#off-highway" },
+            { name: "Communications", href: "/industries#communications" },
           ],
         },
       ],
     },
-    { name: "Work", href: "/work" },
-    { name: "Insights", href: "/insights" },
-    { name: "About", href: "/about" },
-    { name: "Careers", href: "/careers" },
-    { name: "Contact", href: "/contact" },
+    { name: "Work", href: "/work", hasDropdown: false },
+    { name: "Insights", href: "/insights", hasDropdown: false },
+    { name: "About", href: "/about", hasDropdown: false },
+    { name: "Careers", href: "/careers", hasDropdown: false },
+    { name: "Contact", href: "/contact", hasDropdown: false },
   ]
 
   const isActiveRoute = (href) => {
@@ -87,18 +102,37 @@ const Header = () => {
     return false
   }
 
-  const handleDropdownToggle = (itemName) => {
-    setActiveDropdown(activeDropdown === itemName ? null : itemName)
+  const handleDropdownEnter = (itemName) => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout)
+      setHoverTimeout(null)
+    }
+    setActiveDropdown(itemName)
   }
 
-  const handleKeyDown = (event, itemName) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault()
-      handleDropdownToggle(itemName)
-    }
-    if (event.key === "Escape") {
+  const handleDropdownLeave = () => {
+    // Increase the timeout to keep dropdown visible longer
+    const timeout = setTimeout(() => {
       setActiveDropdown(null)
+    }, 500) // Increased from 200ms to 500ms
+    setHoverTimeout(timeout)
+  }
+
+  const handleDropdownEnterWithDelay = (itemName) => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout)
+      setHoverTimeout(null)
     }
+    const timeout = setTimeout(() => {
+      setActiveDropdown(itemName)
+    }, 100)
+    setHoverTimeout(timeout)
+  }
+
+  // Function to handle immediate dropdown close when clicking an item
+  const handleItemClick = () => {
+    setActiveDropdown(null)
+    setIsMobileMenuOpen(false)
   }
 
   return (
@@ -106,46 +140,38 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-200/50 dark:border-gray-700/50"
-          : "bg-transparent",
-      )}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-200/50 dark:border-gray-700/50"
     >
-      <nav className="container-custom">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
+          <Link to="/" className="flex items-center space-x-2 group z-50">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-10 h-10 bg-gradient-to-br from-primary-600 to-accent-violet rounded-lg flex items-center justify-center"
+              className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center"
             >
               <span className="text-white font-bold text-xl">I</span>
             </motion.div>
-            <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+            <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               Invertio
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-5 py-10">
+          <div className="hidden lg:flex items-center space-x-1 relative">
             {navigationItems.map((item) => (
-              <div key={item.name} className="relative group">
+              <div 
+                key={item.name} 
+                className="relative h-full"
+                onMouseEnter={() => item.hasDropdown && handleDropdownEnterWithDelay(item.name)}
+                onMouseLeave={item.hasDropdown ? handleDropdownLeave : undefined}
+              >
                 {item.hasDropdown ? (
-                  <div>
-                    <button
-                      onClick={() => handleDropdownToggle(item.name)}
-                      onKeyDown={(e) => handleKeyDown(e, item.name)}
-                      className={cn(
-                        "flex items-center space-x-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative",
-                        isActiveRoute(item.href)
-                          ? "text-primary-600 dark:text-primary-400"
-                          : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400",
-                      )}
-                      aria-expanded={activeDropdown === item.name}
-                      aria-haspopup="true"
+                  <div className="h-full flex items-center">
+                    <Link
+                      to={item.href}
+                      className="flex items-center space-x-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative group/nav-item text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 h-full"
                     >
                       <span>{item.name}</span>
                       <motion.div
@@ -155,87 +181,100 @@ const Header = () => {
                         <ChevronDown className="w-4 h-4" />
                       </motion.div>
                       {/* Animated underline */}
-                      {isActiveRoute(item.href) && (
-                        <motion.div
-                          layoutId="activeTab"
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600 dark:bg-primary-400"
-                          initial={false}
-                          transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                        />
-                      )}
-                    </button>
-
-                    {/* Mega Dropdown */}
-                    <AnimatePresence>
-                      {activeDropdown === item.name && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                          transition={{ duration: 0.2, ease: "easeOut" }}
-                          className="absolute top-full left-0 mt-2 w-96 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 p-6"
-                          onMouseLeave={() => setActiveDropdown(null)}
-                        >
-                          <div className="grid grid-cols-1 gap-6">
-                            {item.columns.map((column, columnIndex) => (
-                              <div key={columnIndex}>
-                                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
-                                  {column.title}
-                                </h3>
-                                <ul className="space-y-2">
-                                  {column.items.map((subItem) => (
-                                    <li key={subItem.name}>
-                                      <Link
-                                        to={subItem.href}
-                                        className="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
-                                        onClick={() => setActiveDropdown(null)}
-                                      >
-                                        {subItem.name}
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-transparent group-hover/nav-item:bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300 transform origin-left scale-x-0 group-hover/nav-item:scale-x-100" />
+                    </Link>
                   </div>
                 ) : (
                   <Link
                     to={item.href}
-                    className={cn(
-                      "block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative",
-                      isActiveRoute(item.href)
-                        ? "text-primary-600 dark:text-primary-400"
-                        : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400",
-                    )}
+                    className="block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 group/nav-item h-full flex items-center"
                   >
                     {item.name}
                     {/* Animated underline */}
-                    {isActiveRoute(item.href) && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600 dark:bg-primary-400"
-                        initial={false}
-                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                      />
-                    )}
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-transparent group-hover/nav-item:bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300 transform origin-left scale-x-0 group-hover/nav-item:scale-x-100" />
                   </Link>
                 )}
               </div>
             ))}
+            
+            {/* Full-width dropdown container - Only for Services and Industries */}
+            <div className="absolute top-full left-0 right-0">
+              <AnimatePresence>
+                {activeDropdown && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="absolute left-0 right-0 bg-white dark:bg-gray-800 shadow-xl border-b border-gray-200 dark:border-gray-700"
+                    onMouseEnter={() => {
+                      if (hoverTimeout) {
+                        clearTimeout(hoverTimeout)
+                        setHoverTimeout(null)
+                      }
+                    }}
+                    onMouseLeave={handleDropdownLeave}
+                  >
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                      <div className="grid grid-cols-3 gap-8">
+                        {navigationItems
+                          .find(item => item.name === activeDropdown)
+                          ?.columns.map((column, columnIndex) => (
+                            <div key={columnIndex}>
+                              <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wide border-b border-gray-200 dark:border-gray-700 pb-2">
+                                {column.title}
+                              </h3>
+                              <ul className="space-y-3">
+                                {column.items.map((subItem, index) => (
+                                  <motion.li 
+                                    key={subItem.name}
+                                    initial={{ y: 10, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: index * 0.05 }}
+                                    whileHover={{ 
+                                      y: -3,
+                                      transition: { duration: 0.2 }
+                                    }}
+                                    className="relative"
+                                  >
+                                    <Link
+                                      to={subItem.href}
+                                      className="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg transition-colors group/subitem"
+                                      onClick={handleItemClick}
+                                    >
+                                      {subItem.name}
+                                      {/* Gradient underline on hover */}
+                                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300 group-hover/subitem:w-full" />
+                                    </Link>
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Right side actions */}
           <div className="flex items-center space-x-4">
-            <ThemeToggle />
+            {/* Dark/Light mode toggle */}
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
 
             {/* CTA Button - Desktop */}
             <Link
               to="/contact"
-              className="hidden lg:inline-flex items-center px-6 py-2.5 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-colors"
+              className="hidden lg:inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-sm font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              onClick={handleItemClick}
             >
               Get Started
             </Link>
@@ -268,13 +307,8 @@ const Header = () => {
                     {item.hasDropdown ? (
                       <div>
                         <button
-                          onClick={() => handleDropdownToggle(item.name)}
-                          className={cn(
-                            "flex items-center justify-between w-full px-4 py-3 text-left text-base font-medium transition-colors",
-                            isActiveRoute(item.href)
-                              ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20"
-                              : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800",
-                          )}
+                          onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                          className="flex items-center justify-between w-full px-4 py-3 text-left text-base font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
                         >
                           <span>{item.name}</span>
                           <motion.div
@@ -303,11 +337,8 @@ const Header = () => {
                                     <Link
                                       key={subItem.name}
                                       to={subItem.href}
-                                      className="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                                      onClick={() => {
-                                        setIsMobileMenuOpen(false)
-                                        setActiveDropdown(null)
-                                      }}
+                                      className="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                                      onClick={handleItemClick}
                                     >
                                       {subItem.name}
                                     </Link>
@@ -321,13 +352,8 @@ const Header = () => {
                     ) : (
                       <Link
                         to={item.href}
-                        className={cn(
-                          "block px-4 py-3 text-base font-medium transition-colors",
-                          isActiveRoute(item.href)
-                            ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20"
-                            : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800",
-                        )}
-                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block px-4 py-3 text-base font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                        onClick={handleItemClick}
                       >
                         {item.name}
                       </Link>
@@ -339,8 +365,8 @@ const Header = () => {
                 <div className="px-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                   <Link
                     to="/contact"
-                    className="block w-full text-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block w-full text-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg transition-colors"
+                    onClick={handleItemClick}
                   >
                     Get Started
                   </Link>
