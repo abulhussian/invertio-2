@@ -52,7 +52,7 @@ const Home = () => {
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
-            className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary-400/20 to-accent-violet/20 rounded-full blur-3xl"
+            className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-[#05164d]/20 to-[#ffad00]/20 rounded-full blur-3xl"
             animate={{
               scale: [1, 1.2, 1],
               rotate: [0, 180, 360],
@@ -64,7 +64,7 @@ const Home = () => {
             }}
           />
           <motion.div
-            className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-accent-rose/20 to-primary-400/20 rounded-full blur-3xl"
+            className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-[#ffad00]/20 to-[#05164d]/20 rounded-full blur-3xl"
             animate={{
               scale: [1.2, 1, 1.2],
               rotate: [360, 180, 0],
@@ -75,9 +75,6 @@ const Home = () => {
               ease: "linear",
             }}
           />
-          
-          {/* Noise texture overlay */}
-          {/* <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml,%3Csvg width="60\" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fillRule="evenodd"%3E%3Cg fill="%23000000" fillOpacity="1"%3E%3Ccircle cx="7" cy="7" r="1"/%3E%3Ccircle cx="27" cy="7" r="1"/%3E%3Ccircle cx="47" cy="7" r="1"/%3E%3Ccircle cx="7" cy="27" r="1"/%3E%3Ccircle cx="27" cy="27" r="1"/%3E%3Ccircle cx="47" cy="27" r="1"/%3E%3Ccircle cx="7" cy="47" r="1"/%3E%3Ccircle cx="27" cy="47" r="1"/%3E%3Ccircle cx="47" cy="47" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" /> */}
         </div>
 
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -87,9 +84,9 @@ const Home = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center px-4 py-2 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-full text-sm font-medium"
+                className="inline-flex items-center px-4 py-2 bg-[#05164d]/10 dark:bg-[#05164d]/20 text-[#05164d] dark:text-[#05164d]/80 rounded-full text-sm font-medium"
               >
-                <span className="w-2 h-2 bg-primary-500 rounded-full mr-2 animate-pulse" />
+                <span className="w-2 h-2 bg-[#05164d] rounded-full mr-2 animate-pulse" />
                 Transforming Enterprise Technology
               </motion.div>
 
@@ -108,7 +105,7 @@ const Home = () => {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl group"
+                  className="inline-flex items-center px-8 py-4 bg-[#05164d] hover:bg-[#0a2a8c] text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl group"
                 >
                   Get Started Today
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -116,7 +113,7 @@ const Home = () => {
               </motion.div>
 
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <button className="inline-flex items-center px-8 py-4 border-2 border-gray-300 dark:border-gray-600 hover:border-primary-500 dark:hover:border-primary-400 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-semibold rounded-xl transition-all duration-200 group">
+                <button className="inline-flex items-center px-8 py-4 border-2 border-gray-300 dark:border-gray-600 hover:border-[#05164d] dark:hover:border-[#05164d] text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#05164d] font-semibold rounded-xl transition-all duration-200 group">
                   <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
                   Watch Demo
                 </button>
@@ -158,7 +155,7 @@ const Home = () => {
               
               {/* Floating Elements */}
               <motion.div
-                className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-primary-500 to-accent-violet rounded-2xl shadow-lg flex items-center justify-center"
+                className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-[#05164d] to-[#ffad00] rounded-2xl shadow-lg flex items-center justify-center"
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
               >
@@ -166,7 +163,7 @@ const Home = () => {
               </motion.div>
               
               <motion.div
-                className="absolute -bottom-6 -left-6 w-20 h-20 bg-gradient-to-br from-accent-rose to-primary-500 rounded-xl shadow-lg flex items-center justify-center"
+                className="absolute -bottom-6 -left-6 w-20 h-20 bg-gradient-to-br from-[#ffad00] to-[#05164d] rounded-xl shadow-lg flex items-center justify-center"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 1 }}
               >
@@ -199,7 +196,7 @@ const Home = () => {
               className="text-center p-6 rounded-2xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               whileHover={{ scale: 1.05 }}
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-violet rounded-xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#05164d] to-[#ffad00] rounded-xl flex items-center justify-center mx-auto mb-4">
                 <stat.icon className="w-6 h-6 text-white" />
               </div>
               <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
@@ -215,7 +212,7 @@ const Home = () => {
       <Section className="bg-gray-50 dark:bg-gray-800/50">
         <MotionSlideUp className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Why Choose TechCorp
+            Why Choose Invertio
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             We combine deep technical expertise with business acumen to deliver solutions that drive real impact.
@@ -248,7 +245,7 @@ const Home = () => {
           </p>
           <Link
             to="/services"
-            className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold group"
+            className="inline-flex items-center text-[#05164d] dark:text-[#05164d]/80 hover:text-[#0a2a8c] dark:hover:text-[#05164d] font-semibold group"
           >
             View All Services
             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -287,7 +284,7 @@ const Home = () => {
           </p>
           <Link
             to="/work"
-            className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold group"
+            className="inline-flex items-center text-[#05164d] dark:text-[#05164d]/80 hover:text-[#0a2a8c] dark:hover:text-[#05164d] font-semibold group"
           >
             View All Case Studies
             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -302,7 +299,7 @@ const Home = () => {
       </Section>
 
       {/* CTA Section */}
-      <Section className="bg-gradient-to-r from-primary-600 via-accent-violet to-accent-rose text-white relative overflow-hidden">
+      <Section className="bg-gradient-to-r from-[#05164d] via-[#0a2a8c] to-[#ffad00] text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative z-10 text-center">
           <MotionSlideUp>
@@ -316,7 +313,7 @@ const Home = () => {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
+                  className="inline-flex items-center px-8 py-4 bg-white text-[#05164d] font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
                 >
                   Start Your Journey
                   <ArrowRight className="ml-2 w-5 h-5" />

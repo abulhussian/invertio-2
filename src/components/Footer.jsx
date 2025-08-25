@@ -48,15 +48,15 @@ const Footer = () => {
   }
 
   const socialLinks = [
-    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/techcorp" },
-    { name: "Twitter", icon: Twitter, href: "https://twitter.com/techcorp" },
-    { name: "GitHub", icon: Github, href: "https://github.com/techcorp" },
-    { name: "YouTube", icon: Youtube, href: "https://youtube.com/techcorp" },
+    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/Invertio" },
+    { name: "Twitter", icon: Twitter, href: "https://twitter.com/Invertio" },
+    { name: "GitHub", icon: Github, href: "https://github.com/Invertio" },
+    { name: "YouTube", icon: Youtube, href: "https://youtube.com/Invertio" },
   ]
 
   const contactInfo = [
     { icon: Phone, text: "+1 (555) 123-4567", href: "tel:+15551234567" },
-    { icon: Mail, text: "hello@techcorp.com", href: "mailto:hello@techcorp.com" },
+    { icon: Mail, text: "hello@Invertio.com", href: "mailto:hello@Invertio.com" },
     { icon: MapPin, text: "123 Tech Street, San Francisco, CA 94105", href: "#" },
   ]
 
@@ -68,10 +68,12 @@ const Footer = () => {
           {/* Company Info & Newsletter */}
           <div className="lg:col-span-4">
             <Link to="/" className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-accent-violet rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">T</span>
-              </div>
-              <span className="text-xl font-bold">TechCorp</span>
+              {/* <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-accent-violet rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl">I</span>
+              </div> */}
+              <span className="text-xl font-bold">
+                <img src="/light_invertio_logo_220_70.png" alt="logo" className="w-30 h-10"/>
+              </span>
             </Link>
 
             <p className="text-gray-400 mb-6 leading-relaxed">
@@ -208,7 +210,7 @@ const Footer = () => {
         <div className="container-custom py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
-              <p className="text-gray-400 text-sm">© 2024 TechCorp. All rights reserved.</p>
+              <p className="text-gray-400 text-sm">© 2024 Invertio. All rights reserved.</p>
               <div className="flex space-x-6">
                 <Link to="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
                   Privacy Policy

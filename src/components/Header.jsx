@@ -111,10 +111,9 @@ const Header = () => {
   }
 
   const handleDropdownLeave = () => {
-    // Increase the timeout to keep dropdown visible longer
     const timeout = setTimeout(() => {
       setActiveDropdown(null)
-    }, 500) // Increased from 200ms to 500ms
+    }, 5000) // 5 seconds delay before closing
     setHoverTimeout(timeout)
   }
 
@@ -123,13 +122,9 @@ const Header = () => {
       clearTimeout(hoverTimeout)
       setHoverTimeout(null)
     }
-    const timeout = setTimeout(() => {
-      setActiveDropdown(itemName)
-    }, 100)
-    setHoverTimeout(timeout)
+    setActiveDropdown(itemName)
   }
 
-  // Function to handle immediate dropdown close when clicking an item
   const handleItemClick = () => {
     setActiveDropdown(null)
     setIsMobileMenuOpen(false)
@@ -146,15 +141,8 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group z-50">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center"
-            >
-              <span className="text-white font-bold text-xl">I</span>
-            </motion.div>
             <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              Invertio
+              <img src="/light_invertio_logo_220_70.png" alt="logo" className="w-28 h-12"/>
             </span>
           </Link>
 
@@ -168,36 +156,36 @@ const Header = () => {
                 onMouseLeave={item.hasDropdown ? handleDropdownLeave : undefined}
               >
                 {item.hasDropdown ? (
-                  <div className="h-full flex items-center">
+                  <div className="h-full flex justify-between">
                     <Link
                       to={item.href}
-                      className="flex items-center space-x-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative group/nav-item text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 h-full"
+                      className="flex items-center space-x-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative group/nav-item text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#ffad00] h-full"
                     >
                       <span>{item.name}</span>
                       <motion.div
                         animate={{ rotate: activeDropdown === item.name ? 180 : 0 }}
-                        transition={{ duration: 0.2 }}
+                        transition={{ duration: 0.3 }}
                       >
                         <ChevronDown className="w-4 h-4" />
                       </motion.div>
-                      {/* Animated underline */}
-                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-transparent group-hover/nav-item:bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300 transform origin-left scale-x-0 group-hover/nav-item:scale-x-100" />
+                      {/* Underlined gradient effect */}
+                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-white via-[#05164d] to-[#ffad00] transition-all duration-300 transform origin-left scale-x-0 group-hover/nav-item:scale-x-100" />
                     </Link>
                   </div>
                 ) : (
                   <Link
                     to={item.href}
-                    className="block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 group/nav-item h-full flex items-center"
+                    className="block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#ffad00] group/nav-item h-full flex items-center"
                   >
                     {item.name}
-                    {/* Animated underline */}
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-transparent group-hover/nav-item:bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300 transform origin-left scale-x-0 group-hover/nav-item:scale-x-100" />
+                    {/* Underlined gradient effect */}
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-white via-[#05164d] to-[#ffad00] transition-all duration-300 transform origin-left scale-x-0 group-hover/nav-item:scale-x-100" />
                   </Link>
                 )}
               </div>
             ))}
             
-            {/* Full-width dropdown container - Only for Services and Industries */}
+            {/* Full-width dropdown container */}
             <div className="absolute top-full left-0 right-0">
               <AnimatePresence>
                 {activeDropdown && (
@@ -216,12 +204,12 @@ const Header = () => {
                     onMouseLeave={handleDropdownLeave}
                   >
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                      <div className="grid grid-cols-3 gap-8">
+                      <div className="flex justify-between items-center gap-8">
                         {navigationItems
                           .find(item => item.name === activeDropdown)
                           ?.columns.map((column, columnIndex) => (
-                            <div key={columnIndex}>
-                              <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wide border-b border-gray-200 dark:border-gray-700 pb-2">
+                            <div key={columnIndex} className="flex-1">
+                              <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wide border-b border-gray-200 dark:border-gray-700 pb-2 text-center">
                                 {column.title}
                               </h3>
                               <ul className="space-y-3">
@@ -230,21 +218,21 @@ const Header = () => {
                                     key={subItem.name}
                                     initial={{ y: 10, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
-                                    transition={{ delay: index * 0.05 }}
+                                    transition={{ delay: index * 0.07 }}
                                     whileHover={{ 
                                       y: -3,
                                       transition: { duration: 0.2 }
                                     }}
-                                    className="relative"
+                                    className="relative flex justify-center"
                                   >
                                     <Link
                                       to={subItem.href}
-                                      className="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg transition-colors group/subitem"
+                                      className="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-[#05164d] dark:hover:text-[#ffad00] rounded-lg transition-colors group/subitem text-center"
                                       onClick={handleItemClick}
                                     >
                                       {subItem.name}
-                                      {/* Gradient underline on hover */}
-                                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300 group-hover/subitem:w-full" />
+                                      {/* Underlined gradient effect for dropdown items */}
+                                      <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-white via-[#05164d] to-[#ffad00] transition-all duration-300 group-hover/subitem:w-4/5" />
                                     </Link>
                                   </motion.li>
                                 ))}
@@ -261,7 +249,6 @@ const Header = () => {
 
           {/* Right side actions */}
           <div className="flex items-center space-x-4">
-            {/* Dark/Light mode toggle */}
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -270,16 +257,14 @@ const Header = () => {
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
 
-            {/* CTA Button - Desktop */}
             <Link
               to="/contact"
-              className="hidden lg:inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-sm font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              className="hidden lg:inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-[#05164d] to-[#ffad00] hover:from-[#0a2a8c] hover:to-[#ffc34d] text-white text-sm font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               onClick={handleItemClick}
             >
               Get Started
             </Link>
 
-            {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -308,12 +293,12 @@ const Header = () => {
                       <div>
                         <button
                           onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                          className="flex items-center justify-between w-full px-4 py-3 text-left text-base font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                          className="flex items-center justify-between w-full px-4 py-3 text-left text-base font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#ffad00] hover:bg-gray-50 dark:hover:bg-gray-800"
                         >
                           <span>{item.name}</span>
                           <motion.div
                             animate={{ rotate: activeDropdown === item.name ? 180 : 0 }}
-                            transition={{ duration: 0.2 }}
+                            transition={{ duration: 0.3 }}
                           >
                             <ChevronDown className="w-5 h-5" />
                           </motion.div>
@@ -325,22 +310,24 @@ const Header = () => {
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: "auto" }}
                               exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.2 }}
+                              transition={{ duration: 0.3 }}
                               className="bg-gray-50 dark:bg-gray-800"
                             >
                               {item.columns.map((column, columnIndex) => (
                                 <div key={columnIndex} className="px-4 py-2">
-                                  <h4 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+                                  <h4 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 text-center">
                                     {column.title}
                                   </h4>
                                   {column.items.map((subItem) => (
                                     <Link
                                       key={subItem.name}
                                       to={subItem.href}
-                                      className="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                                      className="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-[#05164d] dark:hover:text-[#ffad00] transition-colors relative group/mobile-subitem text-center"
                                       onClick={handleItemClick}
                                     >
                                       {subItem.name}
+                                      {/* Underlined gradient effect for mobile dropdown items */}
+                                      <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-white via-[#05164d] to-[#ffad00] transition-all duration-300 group-hover/mobile-subitem:w-3/4" />
                                     </Link>
                                   ))}
                                 </div>
@@ -352,20 +339,21 @@ const Header = () => {
                     ) : (
                       <Link
                         to={item.href}
-                        className="block px-4 py-3 text-base font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                        className="block px-4 py-3 text-base font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#ffad00] hover:bg-gray-50 dark:hover:bg-gray-800 relative group/mobile-item"
                         onClick={handleItemClick}
                       >
                         {item.name}
+                        {/* Underlined gradient effect for mobile items */}
+                        <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-white via-[#05164d] to-[#ffad00] transition-all duration-300 transform origin-left scale-x-0 group-hover/mobile-item:scale-x-100" />
                       </Link>
                     )}
                   </div>
                 ))}
 
-                {/* Mobile CTA */}
                 <div className="px-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                   <Link
                     to="/contact"
-                    className="block w-full text-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg transition-colors"
+                    className="block w-full text-center px-6 py-3 bg-gradient-to-r from-[#05164d] to-[#ffad00] hover:from-[#0a2a8c] hover:to-[#ffc34d] text-white font-medium rounded-lg transition-colors"
                     onClick={handleItemClick}
                   >
                     Get Started

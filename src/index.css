@@ -75,9 +75,9 @@
     @apply py-20 lg:py-24;
   }
 
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 via-accent-violet to-accent-rose bg-clip-text text-transparent;
-  }
+ .gradient-text {
+  @apply bg-gradient-to-r from-[#ffad00] to-[#05164d] bg-clip-text text-transparent;
+}
 
   .card-shadow {
     @apply shadow-lg shadow-gray-200/50 dark:shadow-gray-800/50;

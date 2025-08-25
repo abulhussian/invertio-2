@@ -5,7 +5,7 @@
     "description": "Innovative fintech solutions for digital banking, payments, and financial services transformation.",
     "icon": "Building2",
     "stats": { "projects": "150+", "clients": "45" },
-    "image": "/placeholder.svg?height=300&width=400"
+    "image": "/banking.jpg"
   },
   {
     "id": "healthcare",
@@ -13,7 +13,7 @@
     "description": "Digital health solutions improving patient care, operational efficiency, and medical research capabilities.",
     "icon": "Heart",
     "stats": { "projects": "120+", "clients": "32" },
-    "image": "/placeholder.svg?height=300&width=400"
+    "image": "/Healthcare.jpg"
   },
   {
     "id": "retail-ecommerce",
@@ -21,7 +21,7 @@
     "description": "Omnichannel retail solutions enhancing customer experience and driving digital commerce growth.",
     "icon": "ShoppingCart",
     "stats": { "projects": "200+", "clients": "67" },
-    "image": "/placeholder.svg?height=300&width=400"
+    "image": "/e-commerence.jpg"
   },
   {
     "id": "telecommunications",
@@ -29,7 +29,7 @@
     "description": "Next-generation telecom solutions for 5G, IoT, and network infrastructure modernization.",
     "icon": "Radio",
     "stats": { "projects": "85+", "clients": "28" },
-    "image": "/placeholder.svg?height=300&width=400"
+    "image": "/telecommunication.JPG"
   },
   {
     "id": "automotive",
@@ -37,7 +37,7 @@
     "description": "Connected vehicle solutions, autonomous driving technology, and smart manufacturing systems.",
     "icon": "Car",
     "stats": { "projects": "95+", "clients": "22" },
-    "image": "/placeholder.svg?height=300&width=400"
+    "image": "/automotive.jpg"
   },
   {
     "id": "manufacturing",
@@ -45,6 +45,6 @@
     "description": "Industry 4.0 solutions with IoT, automation, and smart factory technologies for operational excellence.",
     "icon": "Factory",
     "stats": { "projects": "110+", "clients": "38" },
-    "image": "/placeholder.svg?height=300&width=400"
+    "image": "/manufactring.jpeg"
   }
 ]

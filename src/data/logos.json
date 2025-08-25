@@ -1,50 +1,38 @@
 [
   {
-    "name": "Microsoft",
-    "logo": "/placeholder.svg?height=60&width=120"
+    "name": "MSME",
+    "logo": "/msme-govt-1.svg"
   },
   {
-    "name": "Amazon",
-    "logo": "/placeholder.svg?height=60&width=120"
+    "name": "DPIIT",
+    "logo": "/whitelogoDPIIT.svg"
   },
   {
-    "name": "Google",
-    "logo": "/placeholder.svg?height=60&width=120"
+    "name": "KPMG",
+    "logo": "/Kpmg-scroll-1.svg"
   },
   {
-    "name": "IBM",
-    "logo": "/placeholder.svg?height=60&width=120"
+    "name": "SAMSA",
+    "logo": "/samsa-scroll-2.svg"
   },
   {
-    "name": "Oracle",
-    "logo": "/placeholder.svg?height=60&width=120"
+    "name": "StudyFox",
+    "logo": "/studyfox-scroll-3.svg"
   },
   {
-    "name": "Salesforce",
-    "logo": "/placeholder.svg?height=60&width=120"
+    "name": "=SingleView",
+    "logo": "/singleView-scroll-4.svg"
   },
   {
-    "name": "Adobe",
-    "logo": "/placeholder.svg?height=60&width=120"
+    "name": "365dayTaxi",
+    "logo": "/365dayTaxi-scroll-5.svg"
   },
   {
-    "name": "SAP",
-    "logo": "/placeholder.svg?height=60&width=120"
+    "name": "QATAR-MOEHE",
+    "logo": "/QATA-scroll-6.svg"
   },
   {
-    "name": "Cisco",
-    "logo": "/placeholder.svg?height=60&width=120"
-  },
-  {
-    "name": "Intel",
-    "logo": "/placeholder.svg?height=60&width=120"
-  },
-  {
-    "name": "VMware",
-    "logo": "/placeholder.svg?height=60&width=120"
-  },
-  {
-    "name": "ServiceNow",
-    "logo": "/placeholder.svg?height=60&width=120"
+    "name": "SPort",
+    "logo": "/sport-scroll-7.svg"
   }
 ]

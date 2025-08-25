@@ -3,8 +3,13 @@ import { motion } from "framer-motion"
 import { useState } from "react"
 import logos from "../data/logos.json"
 
+
+
+
 const LogoMarquee = () => {
   const [isPaused, setIsPaused] = useState(false)
+
+
 
   // Duplicate logos for seamless loop
   const duplicatedLogos = [...logos, ...logos]

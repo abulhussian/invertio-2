@@ -46,13 +46,13 @@ const CaseStudyCard = ({ study }) => {
           </motion.div>
 
           {/* Industry Badge */}
-          <div className="absolute top-4 left-4 px-3 py-1 bg-primary-600 text-white text-sm font-medium rounded-full">
+          <div className="absolute top-4 left-4 px-3 py-1 bg-[#05164d] text-white text-sm font-medium rounded-full">
             {study.industry}
           </div>
 
           {/* Featured Badge */}
           {study.featured && (
-            <div className="absolute top-4 right-4 w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+            <div className="absolute top-4 right-4 w-8 h-8 bg-[#ffad00] rounded-full flex items-center justify-center">
               <Award className="w-4 h-4 text-white" />
             </div>
           )}
@@ -64,14 +64,14 @@ const CaseStudyCard = ({ study }) => {
         {/* Content */}
         <div className="p-6">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm text-primary-600 dark:text-primary-400 font-medium">{study.client}</span>
+            <span className="text-sm text-[#05164d] dark:text-[#ffad00] font-medium">{study.client}</span>
             <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
               <Clock className="w-4 h-4 mr-1" />
               {study.duration}
             </div>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-[#05164d] dark:group-hover:text-[#ffad00] transition-colors line-clamp-2">
             {study.title}
           </h3>
 
@@ -112,7 +112,7 @@ const CaseStudyCard = ({ study }) => {
           {/* CTA */}
           <Link
             to={`/work/${study.id}`}
-            className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium group/link"
+            className="inline-flex items-center text-[#05164d] dark:text-[#ffad00] hover:text-[#05164d]/80 dark:hover:text-[#ffad00]/80 font-medium group/link"
           >
             Read Case Study
             <motion.div className="ml-2" animate={{ x: isHovered ? 5 : 0 }} transition={{ duration: 0.2 }}>

@@ -91,7 +91,7 @@ const IndustryCarousel = ({ industries }) => {
               onClick={() => goToSlide(index)}
               className={`w-2 h-2 rounded-full transition-all duration-200 ${
                 index === currentIndex
-                  ? "bg-primary-600 w-8"
+                  ? "bg-[#05164d] w-8"
                   : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
               }`}
             />
@@ -156,7 +156,7 @@ const IndustryCarousel = ({ industries }) => {
 
                     {/* Content */}
                     <div className="p-6">
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-[#05164d] dark:group-hover:text-[#ffad00] transition-colors">
                         {industry.title}
                       </h3>
 
@@ -165,13 +165,13 @@ const IndustryCarousel = ({ industries }) => {
                       {/* Stats */}
                       <div className="flex justify-between items-center mb-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
                         <div className="text-center">
-                          <div className="text-lg font-bold text-primary-600 dark:text-primary-400">
+                          <div className="text-lg font-bold text-[#05164d] dark:text-[#ffad00]">
                             {industry.stats.projects}
                           </div>
                           <div className="text-xs text-gray-500 dark:text-gray-400">Projects</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-lg font-bold text-primary-600 dark:text-primary-400">
+                          <div className="text-lg font-bold text-[#05164d] dark:text-[#ffad00]">
                             {industry.stats.clients}
                           </div>
                           <div className="text-xs text-gray-500 dark:text-gray-400">Clients</div>
@@ -181,7 +181,7 @@ const IndustryCarousel = ({ industries }) => {
                       {/* CTA */}
                       <Link
                         to={`/industries#${industry.id}`}
-                        className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium group/link"
+                        className="inline-flex items-center text-[#05164d] dark:text-[#ffad00] hover:text-[#05164d]/80 dark:hover:text-[#ffad00]/80 font-medium group/link"
                         onClick={(e) => isDragging && e.preventDefault()}
                       >
                         Explore Solutions
@@ -193,7 +193,7 @@ const IndustryCarousel = ({ industries }) => {
 
                     {/* Hover Effect */}
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-accent-violet/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute inset-0 bg-gradient-to-br from-[#05164d]/5 to-[#ffad00]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                       initial={false}
                     />
                   </div>
@@ -211,7 +211,7 @@ const IndustryCarousel = ({ industries }) => {
             key={index}
             className={`h-1 rounded-full transition-all duration-200 ${
               Math.floor(index / itemsToShow) === currentIndex
-                ? "bg-primary-600 w-8"
+                ? "bg-[#05164d] w-8"
                 : "bg-gray-300 dark:bg-gray-600 w-2"
             }`}
           />
