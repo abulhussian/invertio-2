@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
-import { CheckCircle, ArrowRight, Zap, Cloud, Code, BarChart3, Shield, Users } from "lucide-react"
+import { CheckCircle, Zap, Cloud, Code, BarChart3, Shield, Users } from "lucide-react"
 import { Link } from "react-router-dom"
 import Section from "../components/Section"
 import ServiceCard from "../components/ServiceCard"
@@ -26,70 +26,77 @@ const Services = () => {
     "Scalable and future-ready solutions",
     "Compliance with industry standards",
   ]
-const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    // Trigger animation after component mounts
     const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
+      setIsVisible(true)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
 
   // ArrowRight icon component
   const ArrowRight = ({ className }) => (
-    <svg 
-      className={className} 
-      fill="none" 
-      stroke="currentColor" 
-      viewBox="0 0 24 24" 
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
     </svg>
-  );
+  )
+
   return (
-    
     <div className="pt-16 lg:pt-20">
-       <section className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('/singapore-office.png')`
-        }}
-      />
-      <div className="absolute inset-0 z-1 bg-gradient-to-br from-black/70 via-black/50 to-black/70" />
-      
-      {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
-          <div className={`transition-all duration-700 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="inline-flex items-center px-4 py-2 bg-primary-50 bg-opacity-20 text-primary-100 rounded-full text-sm font-medium mb-6">
-              <span className="w-2 h-2 bg-primary-400 rounded-full mr-2 animate-pulse" />
-              Comprehensive Technology Solutions
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Services That Drive
-              <span className="gradient-text block bg-gradient-to-r from-primary-400 to-pink-500 bg-clip-text text-transparent">
-                Digital Excellence
-              </span>
-            </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              From strategy to implementation, we provide end-to-end technology solutions that transform your business
-              operations and accelerate growth.
-            </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl group"
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 z-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('/singapore-office.png')`,
+          }}
+        />
+        <div className="absolute inset-0 z-1 bg-gradient-to-br from-black/70 via-black/50 to-black/70" />
+
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <div
+              className={`transition-all duration-700 ease-out transform ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              }`}
             >
-              Get Started Today
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+              <div className="inline-flex items-center px-4 py-2 bg-[#05164d]/20 text-white rounded-full text-sm font-medium mb-6">
+                <span className="w-2 h-2 bg-[#ffad00] rounded-full mr-2 animate-pulse" />
+                Comprehensive Technology Solutions
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                Services That Drive
+                <span className="block bg-gradient-to-r from-[#05164d] to-[#ffad00] bg-clip-text text-transparent">
+                  Digital Excellence
+                </span>
+              </h1>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                From strategy to implementation, we provide end-to-end technology solutions that transform your business
+                operations and accelerate growth.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center px-8 py-4 
+                           bg-gradient-to-r from-[#05164d] to-[#ffad00] 
+                           hover:opacity-90 text-white font-semibold rounded-xl 
+                           transition-all duration-300 shadow-lg hover:shadow-xl group"
+              >
+                Get Started Today
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* Services Grid */}
       <Section className="bg-white dark:bg-gray-900">
@@ -119,10 +126,12 @@ const [isVisible, setIsVisible] = useState(false);
             className={isEven ? "bg-gray-50 dark:bg-gray-800/50" : "bg-white dark:bg-gray-900"}
           >
             <div
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${isEven ? "" : "lg:grid-flow-col-dense"}`}
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                isEven ? "" : "lg:grid-flow-col-dense"
+              }`}
             >
               <MotionSlideUp className={isEven ? "" : "lg:col-start-2"}>
-                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-violet rounded-xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#05164d] to-[#ffad00] rounded-xl flex items-center justify-center mb-6">
                   <IconComponent className="w-8 h-8 text-white" />
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">{service.title}</h2>
@@ -146,7 +155,7 @@ const [isVisible, setIsVisible] = useState(false);
 
                 <Link
                   to="/contact"
-                  className="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors group"
+                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#05164d] to-[#ffad00] text-white font-medium rounded-lg transition-all group hover:opacity-90"
                 >
                   Learn More
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -170,7 +179,7 @@ const [isVisible, setIsVisible] = useState(false);
       })}
 
       {/* Why Choose Us */}
-      <Section className="bg-gradient-to-r from-primary-600 via-accent-violet to-accent-rose text-white">
+      <Section className="bg-gradient-to-r from-[#05164d] to-[#ffad00] text-white">
         <div className="text-center mb-16">
           <MotionSlideUp>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Our Services</h2>
@@ -181,7 +190,7 @@ const [isVisible, setIsVisible] = useState(false);
         </div>
 
         <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.1}>
-          {benefits.map((benefit, index) => (
+          {benefits.map((benefit) => (
             <motion.div
               key={benefit}
               className="flex items-center space-x-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg"
@@ -196,7 +205,7 @@ const [isVisible, setIsVisible] = useState(false);
         <MotionFadeIn delay={0.6} className="text-center mt-12">
           <Link
             to="/contact"
-            className="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
+            className="inline-flex items-center px-8 py-4 bg-white text-[#05164d] font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
           >
             Start Your Project
             <ArrowRight className="ml-2 w-5 h-5" />

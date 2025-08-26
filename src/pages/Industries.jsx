@@ -18,19 +18,33 @@ const iconMap = {
 const Industries = () => {
   return (
     <div className="pt-16 lg:pt-20">
-      {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-        <div className="text-center max-w-4xl mx-auto">
+      {/* Hero Section with Background Image and Overlay */}
+      <Section className="relative ">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/Industries-hero.png" // Replace with your image path
+            alt="Background"
+            className="w-full h-full object-cover"
+          />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/60 dark:bg-gray-900/80"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 text-center max-w-4xl mx-auto">
           <MotionSlideUp>
             <div className="inline-flex items-center px-4 py-2 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-full text-sm font-medium mb-6">
               <span className="w-2 h-2 bg-primary-500 rounded-full mr-2 animate-pulse" />
               Industry Expertise
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Transforming Industries
-              <span className="gradient-text block">Across the Globe</span>
+              <span className="block bg-gradient-to-r from-[#05164d] to-[#ffad00] bg-clip-text text-transparent">
+                Across the Globe
+              </span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            <p className="text-xl text-gray-200 dark:text-gray-300 mb-8 leading-relaxed">
               Deep domain expertise and tailored solutions for the world's most dynamic industries, driving innovation
               and growth at scale.
             </p>
@@ -70,7 +84,7 @@ const Industries = () => {
 
                   {/* Content */}
                   <div className="p-8">
-                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4 group-hover:text-[#ffad00] transition-colors">
                       {industry.title}
                     </h3>
 
@@ -79,13 +93,13 @@ const Industries = () => {
                     {/* Stats */}
                     <div className="flex justify-between items-center mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
+                        <div className="text-2xl font-bold text-[#05164d] dark:text-[#ffad00]">
                           {industry.stats.projects}
                         </div>
                         <div className="text-sm text-gray-500 dark:text-gray-400">Projects Delivered</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">
+                        <div className="text-2xl font-bold text-[#05164d] dark:text-[#ffad00]">
                           {industry.stats.clients}
                         </div>
                         <div className="text-sm text-gray-500 dark:text-gray-400">Happy Clients</div>
@@ -95,7 +109,7 @@ const Industries = () => {
                     {/* CTA */}
                     <Link
                       to={`/work?industry=${industry.id}`}
-                      className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold group/link"
+                      className="inline-flex items-center text-[#05164d] dark:text-[#ffad00] hover:text-[#ffad00] font-semibold group/link"
                     >
                       View Case Studies
                       <ArrowRight className="ml-2 w-5 h-5 group-hover/link:translate-x-1 transition-transform" />
@@ -123,7 +137,7 @@ const Industries = () => {
               className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${isEven ? "" : "lg:grid-flow-col-dense"}`}
             >
               <MotionSlideUp className={isEven ? "" : "lg:col-start-2"}>
-                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-violet rounded-xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#05164d] to-[#ffad00] rounded-xl flex items-center justify-center mb-6">
                   <IconComponent className="w-8 h-8 text-white" />
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">{industry.title}</h2>
@@ -131,13 +145,13 @@ const Industries = () => {
 
                 <div className="grid grid-cols-2 gap-6 mb-8">
                   <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-                    <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
+                    <div className="text-3xl font-bold text-[#05164d] dark:text-[#ffad00] mb-2">
                       {industry.stats.projects}
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">Projects Completed</div>
                   </div>
                   <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-                    <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
+                    <div className="text-3xl font-bold text-[#05164d] dark:text-[#ffad00] mb-2">
                       {industry.stats.clients}
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">Satisfied Clients</div>
@@ -147,7 +161,7 @@ const Industries = () => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     to={`/work?industry=${industry.id}`}
-                    className="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors group"
+                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#05164d] to-[#ffad00] hover:opacity-90 text-white font-medium rounded-lg transition-colors group"
                   >
                     View Case Studies
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -178,7 +192,7 @@ const Industries = () => {
       })}
 
       {/* CTA Section */}
-      <Section className="bg-gradient-to-r from-primary-600 via-accent-violet to-accent-rose text-white">
+      <Section className="bg-gradient-to-r from-[#05164d] to-[#ffad00] text-white">
         <div className="text-center">
           <MotionSlideUp>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Industry?</h2>
@@ -188,7 +202,7 @@ const Industries = () => {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
+              className="inline-flex items-center px-8 py-4 bg-white text-[#05164d] font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
             >
               Start Your Transformation
               <ArrowRight className="ml-2 w-5 h-5" />

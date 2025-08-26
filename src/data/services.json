@@ -5,7 +5,7 @@
     "description": "Accelerate your digital journey with our comprehensive transformation strategies and cutting-edge technology solutions.",
     "icon": "Zap",
     "features": ["Cloud Migration", "Process Automation", "Data Analytics", "AI Integration"],
-    "image": "/placeholder.svg?height=400&width=600"
+    "image": "/digital-transformation.jpg"
   },
   {
     "id": "cloud-services",
@@ -13,7 +13,7 @@
     "description": "Scalable, secure, and cost-effective cloud solutions tailored to your business needs and growth objectives.",
     "icon": "Cloud",
     "features": ["AWS/Azure/GCP", "DevOps", "Microservices", "Container Orchestration"],
-    "image": "/placeholder.svg?height=400&width=600"
+    "image": "/cloud-img.jpg"
   },
   {
     "id": "software-development",
@@ -21,7 +21,7 @@
     "description": "Custom software solutions built with modern technologies and agile methodologies for optimal performance.",
     "icon": "Code",
     "features": ["Web Applications", "Mobile Apps", "API Development", "Legacy Modernization"],
-    "image": "/placeholder.svg?height=400&width=600"
+    "image": "/software-development.jpg"
   },
   {
     "id": "data-analytics",
@@ -29,7 +29,7 @@
     "description": "Transform your data into actionable insights with advanced analytics, machine learning, and business intelligence.",
     "icon": "BarChart3",
     "features": ["Big Data", "Machine Learning", "Business Intelligence", "Predictive Analytics"],
-    "image": "/placeholder.svg?height=400&width=600"
+    "image": "/data-analytics.jpg"
   },
   {
     "id": "cybersecurity",
@@ -37,7 +37,7 @@
     "description": "Comprehensive security solutions to protect your digital assets and ensure compliance with industry standards.",
     "icon": "Shield",
     "features": ["Security Assessment", "Threat Detection", "Compliance", "Incident Response"],
-    "image": "/placeholder.svg?height=400&width=600"
+    "image": "/cyber-security.jpg"
   },
   {
     "id": "consulting",
@@ -45,6 +45,6 @@
     "description": "Strategic technology consulting to align your IT infrastructure with business objectives and drive growth.",
     "icon": "Users",
     "features": ["Strategy Planning", "Architecture Design", "Technology Roadmap", "Digital Strategy"],
-    "image": "/placeholder.svg?height=400&width=600"
+    "image": "/consulting.jpg"
   }
 ]
