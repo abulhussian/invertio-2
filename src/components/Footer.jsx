@@ -72,7 +72,7 @@ const Footer = () => {
                 <span className="text-white font-bold text-xl">I</span>
               </div> */}
               <span className="text-xl font-bold">
-                <img src="/light_invertio_logo_220_70.png" alt="logo" className="w-30 h-10"/>
+                <img src="/dark_invertio_logo.png" alt="logo" className="w-30 h-10"/>
               </span>
             </Link>
 

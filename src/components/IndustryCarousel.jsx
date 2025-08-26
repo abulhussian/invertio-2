@@ -138,13 +138,17 @@ const IndustryCarousel = ({ industries }) => {
               >
                 <div className="relative group cursor-pointer h-full">
                   <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-300 h-full">
-                    {/* Image */}
+                    {/* Image - Fixed for mobile */}
                     <div className="relative h-48 overflow-hidden">
                       <img
                         src={industry.image || "/placeholder.svg"}
                         alt={industry.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         loading="lazy"
+                        onError={(e) => {
+                          // Fallback if image fails to load
+                          e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18' fill='%23999'%3EImage not available%3C/text%3E%3C/svg%3E"
+                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 

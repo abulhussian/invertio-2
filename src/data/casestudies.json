@@ -1,138 +1,208 @@
 [
+ {
+  "id": "qatar-moehe",
+  "title": "QATAR MOEHE",
+  "client": "Qatar Ministry of Education and Higher Education",
+  "industry": "Education",
+  "description": "A digital learning and examination management platform enabling students, teachers, and administrators to collaborate effectively and securely.",
+  "challenge": "The ministry faced difficulties in managing nationwide online examinations, tracking student progress, and ensuring platform scalability during peak usage. Legacy portals lacked accessibility, multilingual support, and modern security compliance.",
+  "solution": "Developed a scalable cloud-based e-learning and assessment platform with role-based dashboards, real-time analytics, AI-driven proctoring for exams, and multi-language support. Integrated secure authentication with national ID systems and ensured mobile-first design for accessibility.",
+  "results": [
+    "Successfully supported over 500,000+ students and teachers during nationwide online examinations",
+    "Ensured 99.9% uptime during peak usage",
+    "Enhanced accessibility with Arabic-English bilingual support",
+    "Improved data security and compliance with international education standards"
+  ],
+  "features": [
+    "AI-powered online exam proctoring",
+    "Role-based dashboards for students, teachers, and administrators",
+    "Real-time analytics and progress tracking",
+    "Multi-language support (Arabic & English)",
+    "Mobile-first responsive design"
+  ],
+  "technologies": ["AWS", "Kubernetes", "React", "Next.js", "Node.js", "MongoDB", "GraphQL"],
+  "image": "/sc-qatar-moehe.png",
+  "video": "/sc-qatar-moehe.png",
+  "duration": "18 months",
+  "featured": true
+},
+
+ {
+  "id": "ai-pilot",
+  "title": "AI-PILOT",
+  "client": "UP Government (Anganwadis)",
+  "industry": "Healthcare",
+  "description": "AI to Revolutionize Child Height Measurement with 98–99% accurate height estimation, BLE-enabled measurement devices, and instant BMI calculation.",
+  "challenge": "Accurate child height measurement is critical for nutrition planning, but traditional methods are error-prone, time-consuming, and not scalable in Anganwadi centers.",
+  "solution": "An AI-powered anthropometric model integrated with BLE-enabled devices to provide accurate height estimation, real-time BMI calculation, and data-driven personalized nutrition recommendations. The solution is deployed as part of a real-time child health monitoring system.",
+  "results": [
+    "98–99% accuracy in child height estimation",
+    "Enabled real-time BMI calculation for better nutrition tracking",
+    "Pilot successfully implemented with UP Government Anganwadis",
+    "Supports personalized nutrition plans for children"
+  ],
+  "technologies": [
+    "Artificial Intelligence (AI)",
+    "TensorFlow",
+    "Python",
+    "React Native",
+    "BLE (Bluetooth Low Energy)",
+    "Azure Cloud",
+    "PostgreSQL"
+  ],
+  "image": "/sc-ai-pilot.png",
+  "video": "/videos/case-studies/ai-pilot-demo.mp4",
+  "duration": "12 months",
+  "featured": true
+},
   {
-    "id": "global-bank-transformation",
-    "title": "Global Bank Digital Transformation",
-    "client": "MegaBank International",
-    "industry": "BFSI",
-    "description": "Complete digital transformation of core banking systems serving 50M+ customers across 25 countries.",
-    "challenge": "Legacy systems causing operational inefficiencies and poor customer experience",
-    "solution": "Cloud-native microservices architecture with real-time processing capabilities",
-    "results": [
-      "75% faster transaction processing",
-      "90% reduction in system downtime",
-      "40% increase in customer satisfaction"
-    ],
-    "technologies": ["AWS", "Kubernetes", "React", "Node.js", "MongoDB"],
-    "image": "/placeholder.svg?height=400&width=600",
-    "video": "/placeholder.svg?height=400&width=600",
-    "duration": "18 months",
-    "featured": true
-  },
+  "id": "baladi-express-mart",
+  "title": "Baladi Express Mart",
+  "client": "Baladi Express",
+  "industry": "Retail & E-commerce",
+  "description": "A smart retail solution integrating online, mobile, and offline shopping with real-time inventory visibility and AI-driven personalization for a seamless customer journey.",
+  "challenge": "Baladi Express faced challenges in providing a unified shopping experience. Customers experienced inconsistent pricing, stock mismatches across channels, and limited personalized recommendations, which led to lower engagement and lost sales opportunities.",
+  "solution": "We implemented an AI-powered personalization engine with unified inventory management across all channels (web, mobile app, and physical stores). The system provides real-time stock visibility, personalized product recommendations, and seamless checkout experiences, ensuring consistency and convenience across platforms.",
+  "results": [
+    "35% increase in online conversion rate within the first 6 months",
+    "50% improvement in inventory turnover due to real-time stock synchronization",
+    "25% boost in customer lifetime value through AI-driven recommendations and loyalty features"
+  ],
+  "technologies": ["Google Cloud Platform (GCP)", "Vue.js", "Python", "BigQuery", "Elasticsearch", "Firebase"],
+  "image": "/sc-baladiexpress.jpg",
+  "video": "/videos/baladi-express-mart-demo.mp4",
+  "duration": "14 months",
+  "featured": true
+},
   {
-    "id": "healthcare-platform",
-    "title": "Telemedicine Platform Development",
-    "client": "HealthCare Plus",
-    "industry": "Healthcare",
-    "description": "Comprehensive telemedicine platform connecting patients with healthcare providers globally.",
-    "challenge": "Need for secure, scalable platform for remote healthcare delivery",
-    "solution": "HIPAA-compliant platform with video consultations and AI-powered diagnostics",
-    "results": ["500K+ consultations completed", "99.9% platform uptime", "60% reduction in patient wait times"],
-    "technologies": ["Azure", "React Native", "Python", "TensorFlow", "PostgreSQL"],
-    "image": "/placeholder.svg?height=400&width=600",
-    "video": "/placeholder.svg?height=400&width=600",
-    "duration": "12 months",
-    "featured": true
-  },
+  "id": "single-view",
+  "title": "Single View",
+  "client": "Single View",
+  "industry": "Information Technology & Digital Solutions",
+  "description": "Comprehensive IT and digital transformation services provider delivering innovative solutions in cloud, cybersecurity, enterprise systems, and smart technologies.",
+  "challenge": "Organizations face challenges in achieving seamless digital transformation, managing complex IT environments, and ensuring robust cybersecurity while maintaining agility.",
+  "solution": "Delivered tailored digital solutions including cloud computing, data analytics, enterprise applications, and cybersecurity frameworks to optimize operations and enhance business resilience.",
+  "results": [
+    "Enabled end-to-end digital transformation for multiple enterprises",
+    "Improved operational efficiency and decision-making with data-driven solutions",
+    "Enhanced cybersecurity posture and compliance with global standards"
+  ],
+  "technologies": [
+    "Cloud Computing",
+    "Cybersecurity",
+    "Data Analytics",
+    "Enterprise Systems",
+    "AI & Smart Technologies"
+  ],
+  "image": "/sc-single-view.png",
+  "video": "/placeholder.svg?height=400&width=600",
+  "duration": "Ongoing engagements across multiple industries",
+  "featured": true
+},
   {
-    "id": "retail-omnichannel",
-    "title": "Omnichannel Retail Experience",
-    "client": "Fashion Forward",
-    "industry": "Retail",
-    "description": "Unified shopping experience across online, mobile, and physical stores with personalized recommendations.",
-    "challenge": "Fragmented customer experience across multiple touchpoints",
-    "solution": "AI-powered personalization engine with unified inventory management",
-    "results": [
-      "35% increase in conversion rate",
-      "50% improvement in inventory turnover",
-      "25% boost in customer lifetime value"
-    ],
-    "technologies": ["GCP", "Vue.js", "Python", "BigQuery", "Elasticsearch"],
-    "image": "/placeholder.svg?height=400&width=600",
-    "video": "/placeholder.svg?height=400&width=600",
-    "duration": "14 months",
-    "featured": false
-  },
+  "id": "smsa-express",
+  "title": "SMSA Express",
+  "client": "SMSA Express",
+  "industry": "Logistics & Courier Services",
+  "description": "A trusted logistics partner offering comprehensive express, freight, e-commerce, and specialized mailroom and healthcare delivery solutions across both domestic and international markets.",
+  "challenge": "Businesses across industries—from healthcare to e-commerce—required a logistics provider that could handle speed-sensitive deliveries, customs clearance, and integrated shipping solutions, all while ensuring reliability across a vast geographic footprint.",
+  "solution": "SMSA developed a robust, multi-modal logistics network that includes express courier services, air/sea/road freight, customs clearance, e-commerce fulfillment, mailroom management, and healthcare sample delivery—with digital tracking and optimized operations across 230 countries.",
+  "results": [
+    "Seamless delivery network covering 230 countries",
+    "Enhanced e-commerce fulfillment accelerating delivery timelines",
+    "Specialized mailroom and healthcare sample services improving operational efficiency for key institutions"
+  ],
+  "technologies": [
+    "Real-time digital tracking systems",
+    "Integrated logistics management platforms",
+    "Customs clearance automation",
+    "E-commerce fulfillment workflows"
+  ],
+  "image": "/sc-samsa.png",
+  "video": "/projects/smsa-express-overview.mp4",
+  "duration": "Over 20+ years of industry leadership",
+  "featured": true
+}
+,
+ {
+  "id": "kpmg-digital-transform",
+  "title": "KPMG Digital Transformation",
+  "client": "KPMG India",
+  "industry": "Professional Services & Consulting",
+  "description": "End-to-end advisory and execution support for organizations navigating digital transformation—encompassing AI, cloud, ERP modernization, cybersecurity, and strategic change management.",
+  "challenge": "Organizations faced fragmented legacy systems, lack of a unified digital strategy, heightened cyber threats, and rapidly evolving market demands that strained scalability and operational agility.",
+  "solution": "KPMG designed bespoke digital transformation roadmaps, leveraging AI-powered platforms like KPMG Workbench, cloud infrastructure, automation tools, and robust cybersecurity frameworks. The firm also deployed strategic alliances—such as with Google Cloud and SAP—to deliver accelerated, resilient modernization.",
+  "results": [
+    "Accelerated transformation governance and execution through KPMG’s multi-agent AI platform, Workbench",
+    "Enabled quick innovation with unified tax (Digital Gateway), advisory (Velocity), and audit (Clara) platforms",
+    "Enhanced organizational resilience with scalable, cloud-native infrastructures"
+  ],
+  "technologies": [
+    "Multi-agent AI (KPMG Workbench)",
+    "Cloud Platforms (Google Cloud, Azure)",
+    "Cybersecurity & Privacy Solutions",
+    "Automation & DevOps Tools",
+    "Strategic Alliance Technologies (SAP, Hedera, Zscaler)"
+  ],
+  "image": "/sc-KPMG.png",
+  "video": "/projects/kpmg-digital-transform-overview.mp4",
+  "duration": "Enterprise-wide engagements",
+  "featured": true
+}
+,
   {
-    "id": "telecom-5g-network",
-    "title": "5G Network Infrastructure",
-    "client": "TeleConnect",
-    "industry": "Telecom",
-    "description": "Next-generation 5G network deployment with edge computing capabilities for enhanced connectivity.",
-    "challenge": "Upgrading legacy infrastructure to support 5G and edge computing",
-    "solution": "Cloud-native network functions with automated orchestration and monitoring",
-    "results": ["10x faster data speeds", "50% reduction in latency", "99.99% network reliability"],
-    "technologies": ["Kubernetes", "OpenStack", "Ansible", "Prometheus", "Grafana"],
-    "image": "/placeholder.svg?height=400&width=600",
-    "video": "/placeholder.svg?height=400&width=600",
-    "duration": "24 months",
-    "featured": true
-  },
+  "id": "studyfox-ai",
+  "title": "StudyFox AI",
+  "client": "StudyFox",
+  "industry": "EdTech / AI Learning",
+  "description": "An AI-powered learning assistant that transforms how students study—providing real-time quiz solving, flashcards, mind mapping, and interactive document/video chat tools for enhanced academic performance.",
+  "challenge": "Students often struggle with fragmented study tools that lack personalization, context-aware feedback, and real-time support, making academic preparation inefficient and overwhelming.",
+  "solution": "Developed an integrated AI learning platform featuring real-time quiz solving, smart flashcard generation, interactive mind maps, document (PDF) chat, and video (YouTube) chat—all driven by adaptive AI to deliver personalized, engaging learning paths.",
+  "results": [
+    "Instant quiz answers with step-by-step explanations for deeper comprehension",
+    "Smart flashcard and spaced repetition approaches improving retention",
+    "Mind mapping and content chat tools enhancing contextual understanding",
+    "Available across platforms via Chrome extension and web app for seamless access"
+  ],
+  "technologies": [
+    "AI-powered natural language processing",
+    "Chrome extension integration",
+    "Document & video chat interfaces",
+    "Spaced repetition algorithms",
+    "Adaptive learning logic"
+  ],
+  "image": "/sc-studyfox.png",
+  "video": "/projects/studyfox-demo.mp4",
+  "duration": "Ongoing platform development since 2024",
+  "featured": true
+}
+,
   {
-    "id": "automotive-connected-car",
-    "title": "Connected Car Platform",
-    "client": "AutoTech Motors",
-    "industry": "Automotive",
-    "description": "IoT-enabled connected car platform with predictive maintenance and autonomous driving features.",
-    "challenge": "Integrating multiple vehicle systems with cloud-based analytics",
-    "solution": "Real-time data processing platform with machine learning for predictive insights",
-    "results": [
-      "30% reduction in maintenance costs",
-      "95% accuracy in predictive maintenance",
-      "Enhanced driver safety features"
-    ],
-    "technologies": ["AWS IoT", "Apache Kafka", "TensorFlow", "React", "Time Series DB"],
-    "image": "/placeholder.svg?height=400&width=600",
-    "video": "/placeholder.svg?height=400&width=600",
-    "duration": "20 months",
-    "featured": false
-  },
-  {
-    "id": "manufacturing-iot",
-    "title": "Smart Manufacturing Solution",
-    "client": "Industrial Dynamics",
-    "industry": "Automotive",
-    "description": "Industry 4.0 transformation with IoT sensors, predictive analytics, and automated quality control.",
-    "challenge": "Manual processes causing inefficiencies and quality issues",
-    "solution": "Comprehensive IoT platform with real-time monitoring and AI-driven optimization",
-    "results": [
-      "40% increase in production efficiency",
-      "60% reduction in defect rates",
-      "25% decrease in energy consumption"
-    ],
-    "technologies": ["Azure IoT", "Power BI", "Python", "Docker", "InfluxDB"],
-    "image": "/placeholder.svg?height=400&width=600",
-    "video": "/placeholder.svg?height=400&width=600",
-    "duration": "16 months",
-    "featured": false
-  },
-  {
-    "id": "fintech-payment-platform",
-    "title": "Digital Payment Platform",
-    "client": "PayTech Solutions",
-    "industry": "BFSI",
-    "description": "Secure, scalable payment processing platform supporting multiple currencies and payment methods.",
-    "challenge": "Building PCI-compliant platform with global payment support",
-    "solution": "Microservices architecture with advanced fraud detection and real-time processing",
-    "results": ["1M+ transactions per day", "99.99% uptime", "50% reduction in fraud incidents"],
-    "technologies": ["AWS", "Spring Boot", "Redis", "PostgreSQL", "Elasticsearch"],
-    "image": "/placeholder.svg?height=400&width=600",
-    "video": "/placeholder.svg?height=400&width=600",
-    "duration": "15 months",
-    "featured": false
-  },
-  {
-    "id": "healthcare-ai-diagnostics",
-    "title": "AI-Powered Medical Diagnostics",
-    "client": "MedTech Innovations",
-    "industry": "Healthcare",
-    "description": "Machine learning platform for medical image analysis and automated diagnostic assistance.",
-    "challenge": "Improving diagnostic accuracy and reducing analysis time",
-    "solution": "Deep learning models trained on medical imaging data with clinical workflow integration",
-    "results": ["95% diagnostic accuracy", "70% faster analysis time", "FDA approval obtained"],
-    "technologies": ["TensorFlow", "Python", "DICOM", "React", "PostgreSQL"],
-    "image": "/placeholder.svg?height=400&width=600",
-    "video": "/placeholder.svg?height=400&width=600",
-    "duration": "22 months",
-    "featured": true
-  }
+  "id": "360taxi-dispatch",
+  "title": "360Taxi Dispatch System",
+  "client": "Taxi-Time",
+  "industry": "Transportation Technology / Dispatch Systems",
+  "description": "A powerful cloud-based taxi dispatch solution offering real-time vehicle tracking, VoIP integration, automated routing and fare estimation, and advanced job assignment mechanisms—all accessible via browser with zero on-site installation.",
+  "challenge": "Taxi operators faced inefficiencies managing fragmented dispatch workflows, lacking centralized tools to monitor vehicles, assign jobs accurately, and maintain consistent performance across fleets.",
+  "solution": "Developed 360Taxi, a cloud-native dispatch platform integrating VoIP caller ID, live vehicle status updates, auto-address completion, dynamic job queues, smart assignment logic (zone, FIFO, nearest, best), fare estimation, route calculation, text notifications, and automatic reporting—all without any on-site installation.",
+  "results": [
+    "Eliminated manual dispatch processes with fully browser-based operations",
+    "Improved response times and fleet utilization via intelligent job assignment",
+    "Enhanced customer experience with automated fare estimates and real-time SMS alerts",
+    "Delivered rich reporting tools for shift tracking, driver performance, and exception handling"
+  ],
+  "technologies": [
+    "Cloud-native web architecture",
+    "VoIP integration with Caller ID",
+    "Real-time vehicle telemetry and geolocation",
+    "Automated routing and fare algorithms",
+    "SMS and VoIP notification systems",
+    "Advanced job queue workflows"
+  ],
+  "image": "/sc-taxitime.png",
+  "video": "/projects/360taxi-dispatch-demo.mp4",
+  "duration": "Implemented and supported since 2016",
+  "featured": true
+}
+
 ]

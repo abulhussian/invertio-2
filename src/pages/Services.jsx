@@ -6,6 +6,7 @@ import Section from "../components/Section"
 import ServiceCard from "../components/ServiceCard"
 import { MotionFadeIn, MotionSlideUp, MotionStagger } from "../components/MotionWrapper"
 import services from "../data/services.json"
+import { useEffect, useState } from "react"
 
 const iconMap = {
   Zap,
@@ -25,35 +26,70 @@ const Services = () => {
     "Scalable and future-ready solutions",
     "Compliance with industry standards",
   ]
+const [isVisible, setIsVisible] = useState(false);
 
+  useEffect(() => {
+    // Trigger animation after component mounts
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // ArrowRight icon component
+  const ArrowRight = ({ className }) => (
+    <svg 
+      className={className} 
+      fill="none" 
+      stroke="currentColor" 
+      viewBox="0 0 24 24" 
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+    </svg>
+  );
   return (
+    
     <div className="pt-16 lg:pt-20">
-      {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+       <section className="relative py-20 md:py-32 lg:py-40 overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url('/singapore-office.png')`
+        }}
+      />
+      <div className="absolute inset-0 z-1 bg-gradient-to-br from-black/70 via-black/50 to-black/70" />
+      
+      {/* Content */}
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
-          <MotionSlideUp>
-            <div className="inline-flex items-center px-4 py-2 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-full text-sm font-medium mb-6">
-              <span className="w-2 h-2 bg-primary-500 rounded-full mr-2 animate-pulse" />
+          <div className={`transition-all duration-700 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <div className="inline-flex items-center px-4 py-2 bg-primary-50 bg-opacity-20 text-primary-100 rounded-full text-sm font-medium mb-6">
+              <span className="w-2 h-2 bg-primary-400 rounded-full mr-2 animate-pulse" />
               Comprehensive Technology Solutions
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Services That Drive
-              <span className="gradient-text block">Digital Excellence</span>
+              <span className="gradient-text block bg-gradient-to-r from-primary-400 to-pink-500 bg-clip-text text-transparent">
+                Digital Excellence
+              </span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
               From strategy to implementation, we provide end-to-end technology solutions that transform your business
               operations and accelerate growth.
             </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-colors shadow-lg hover:shadow-xl group"
+            <a
+              href="#contact"
+              className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl group"
             >
               Get Started Today
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </MotionSlideUp>
+            </a>
+          </div>
         </div>
-      </Section>
+      </div>
+    </section>
 
       {/* Services Grid */}
       <Section className="bg-white dark:bg-gray-900">

@@ -10,11 +10,44 @@ import CaseStudyCard from "../components/CaseStudyCard"
 import { MotionFadeIn, MotionSlideUp, MotionStagger } from "../components/MotionWrapper"
 import services from "../data/services.json"
 import industries from "../data/industries.json"
-import caseStudies from "../data/casestudies.json"
+import caseStudies from "../data/caseStudies.json"
+
 
 const Home = () => {
   const featuredCaseStudies = caseStudies.filter(study => study.featured).slice(0, 3)
-  
+  const MotionSlideUp = ({ children, className }) => {
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+const MotionStagger = ({ children, className, staggerDelay = 0.1 }) => {
+  return (
+    <motion.div
+      className={className}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={{
+        visible: {
+          transition: {
+            staggerChildren: staggerDelay
+          }
+        }
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
   const stats = [
     { number: 500, suffix: "+", label: "Projects Delivered", icon: Award },
     { number: 150, suffix: "+", label: "Enterprise Clients", icon: Users },
@@ -84,9 +117,9 @@ const Home = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center px-4 py-2 bg-[#05164d]/10 dark:bg-[#05164d]/20 text-[#05164d] dark:text-[#05164d]/80 rounded-full text-sm font-medium"
+                className="inline-flex items-center px-4 py-2 bg-[#05164d]/10 dark:bg-[#05164d]/20 text-[#05164d] dark:text-white rounded-full text-sm font-medium"
               >
-                <span className="w-2 h-2 bg-[#05164d] rounded-full mr-2 animate-pulse" />
+                <span className="w-2 h-2 bg-[#05164d] dark:bg-white rounded-full mr-2 animate-pulse" />
                 Transforming Enterprise Technology
               </motion.div>
 
@@ -113,7 +146,7 @@ const Home = () => {
               </motion.div>
 
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <button className="inline-flex items-center px-8 py-4 border-2 border-gray-300 dark:border-gray-600 hover:border-[#05164d] dark:hover:border-[#05164d] text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#05164d] font-semibold rounded-xl transition-all duration-200 group">
+                <button className="inline-flex items-center px-8 py-4 border-2 border-gray-300 dark:border-gray-600 hover:border-[#05164d] dark:hover:border-white text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-white font-semibold rounded-xl transition-all duration-200 group">
                   <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
                   Watch Demo
                 </button>
@@ -208,31 +241,63 @@ const Home = () => {
         </MotionStagger>
       </Section>
 
-      {/* Value Propositions */}
-      <Section className="bg-gray-50 dark:bg-gray-800/50">
-        <MotionSlideUp className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Why Choose Invertio
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            We combine deep technical expertise with business acumen to deliver solutions that drive real impact.
-          </p>
-        </MotionSlideUp>
+ <section className="bg-gray-50 dark:bg-gray-900 py-16 px-4 flex flex-col">
+      {/* Header */}
+      <MotionSlideUp className="text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          About Invertio
+        </h2>
+        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          Our mission is to make customer communication more intelligent, scalable, and personalized with AI-driven solutions that put people first.
+        </p>
+      </MotionSlideUp>
+      
+      <div className="w-full flex flex-col md:flex-row gap-8 items-stretch">
+        {/* Left Content - Value Propositions */}
+        <div className="w-full md:w-1/2 flex flex-col justify-between gap-4">
+          <MotionStagger className="flex flex-col gap-4 h-full justify-between" staggerDelay={0.1}>
+            {valueProps.map((prop, index) => (
+              <motion.div
+                key={index}
+                className="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-lg group flex-1 flex flex-col relative overflow-hidden transition-all duration-300"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                }}
+                whileHover={{ y: -5 }}
+              >
+                {/* Gradient Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#ffad00] to-[#05164d] opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl"></div>
+                
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform relative z-10">{prop.icon}</div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 relative z-10 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#ffad00] group-hover:to-[#05164d] transition-all duration-300">
+                  {prop.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed flex-grow relative z-10 group-hover:text-gray-800 dark:group-hover:text-gray-200 transition-colors duration-300">
+                  {prop.description}
+                </p>
+              </motion.div>
+            ))}
+          </MotionStagger>
+        </div>
+        
+        {/* Right Image */}
+        <div className="w-full md:w-1/2 flex items-stretch">
+          <motion.div 
+            className="w-full h-full min-h-[400px] bg-white dark:bg-gradient-to-br dark:from-[#ffad00] dark:to-[#05164d] rounded-2xl shadow-lg flex items-center justify-center overflow-hidden"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="text-gray-800 dark:text-white text-center p-6">
+              <img src="/aboutus-image.jpg" alt="" />
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
 
-        <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" staggerDelay={0.1}>
-          {valueProps.map((prop, index) => (
-            <motion.div
-              key={prop.title}
-              className="p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group"
-              whileHover={{ y: -5 }}
-            >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{prop.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{prop.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{prop.description}</p>
-            </motion.div>
-          ))}
-        </MotionStagger>
-      </Section>
 
       {/* Services Section */}
       <Section className="bg-white dark:bg-gray-900">
@@ -245,7 +310,7 @@ const Home = () => {
           </p>
           <Link
             to="/services"
-            className="inline-flex items-center text-[#05164d] dark:text-[#05164d]/80 hover:text-[#0a2a8c] dark:hover:text-[#05164d] font-semibold group"
+            className="inline-flex items-center text-[#05164d] dark:text-white hover:text-[#0a2a8c] dark:hover:text-gray-200 font-semibold group"
           >
             View All Services
             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -273,30 +338,30 @@ const Home = () => {
         <IndustryCarousel industries={industries} />
       </Section>
 
-      {/* Featured Case Studies */}
-      <Section className="bg-white dark:bg-gray-900">
-        <MotionSlideUp className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Success Stories
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
-            Real results from real clients. See how we've helped organizations transform their operations and achieve their goals.
-          </p>
-          <Link
-            to="/work"
-            className="inline-flex items-center text-[#05164d] dark:text-[#05164d]/80 hover:text-[#0a2a8c] dark:hover:text-[#05164d] font-semibold group"
-          >
-            View All Case Studies
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </MotionSlideUp>
+      {/* Featured Case Studies - Full Screen Carousel */}
+<Section className="bg-white dark:bg-gray-900">
+  <MotionSlideUp className="text-center mb-16">
+    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+      Success Stories
+    </h2>
+    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
+      Real results from real clients. See how we've helped organizations transform their operations and achieve their goals.
+    </p>
+    <Link
+      to="/work"
+      className="inline-flex items-center text-[#05164d] dark:text-white hover:text-[#0a2a8c] dark:hover:text-gray-200 font-semibold group"
+    >
+      View All Case Studies
+      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+    </Link>
+  </MotionSlideUp>
 
-        <MotionStagger className="grid grid-cols-1 lg:grid-cols-3 gap-8" staggerDelay={0.2}>
-          {featuredCaseStudies.map((study) => (
-            <CaseStudyCard key={study.id} study={study} />
-          ))}
-        </MotionStagger>
-      </Section>
+  {/* Fullscreen Case Study Carousel */}
+  <div className="w-full h-screen">
+    <CaseStudyCard studies={featuredCaseStudies} />
+  </div>
+</Section>
+
 
       {/* CTA Section */}
       <Section className="bg-gradient-to-r from-[#05164d] via-[#0a2a8c] to-[#ffad00] text-white relative overflow-hidden">

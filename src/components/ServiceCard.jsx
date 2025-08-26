@@ -60,7 +60,7 @@ const ServiceCard = ({ service }) => {
         {ripples.map((ripple) => (
           <motion.div
             key={ripple.id}
-            className="absolute bg-[#05164d]/20 rounded-full pointer-events-none"
+            className="absolute bg-[#05164d]/20 dark:bg-white/20 rounded-full pointer-events-none"
             style={{
               left: ripple.x - 25,
               top: ripple.y - 25,
@@ -75,7 +75,7 @@ const ServiceCard = ({ service }) => {
 
         {/* Hover Gradient Overlay */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-[#05164d]/5 to-[#ffad00]/5 rounded-2xl"
+          className="absolute inset-0 bg-gradient-to-br from-[#05164d]/5 to-[#ffad00]/5 dark:from-white/10 dark:to-[#ffad00]/10 rounded-2xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.3 }}
@@ -91,23 +91,23 @@ const ServiceCard = ({ service }) => {
           </motion.div>
 
           {/* Content */}
-          <h3 className="text-xl font-semibold text-[#05164d] dark:text-[#05164d] mb-3 group-hover:text-[#05164d] dark:group-hover:text-[#05164d] transition-colors">
+          <h3 className="text-xl font-semibold text-[#05164d] dark:text-white mb-3 group-hover:text-[#05164d] dark:group-hover:text-white transition-colors">
             {service.title}
           </h3>
 
-          <p className="text-[#05164d] dark:text-[#05164d] mb-6 leading-relaxed">{service.description}</p>
+          <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{service.description}</p>
 
           {/* Features */}
           <ul className="space-y-2 mb-6">
             {service.features.slice(0, 3).map((feature, index) => (
               <motion.li
                 key={feature}
-                className="flex items-center text-sm text-[#05164d] dark:text-[#05164d]"
+                className="flex items-center text-sm text-gray-600 dark:text-gray-300"
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="w-1.5 h-1.5 bg-[#05164d] rounded-full mr-3" />
+                <div className="w-1.5 h-1.5 bg-[#05164d] dark:bg-white rounded-full mr-3" />
                 {feature}
               </motion.li>
             ))}
@@ -116,7 +116,7 @@ const ServiceCard = ({ service }) => {
           {/* CTA */}
           <Link
             to={`/services#${service.id}`}
-            className="inline-flex items-center text-[#05164d] dark:text-[#05164d] hover:text-[#05164d] dark:hover:text-[#05164d] font-medium group/link"
+            className="inline-flex items-center text-[#05164d] dark:text-white hover:text-[#05164d] dark:hover:text-gray-200 font-medium group/link"
           >
             Learn More
             <motion.div className="ml-2" animate={{ x: isHovered ? 5 : 0 }} transition={{ duration: 0.2 }}>

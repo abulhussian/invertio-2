@@ -140,11 +140,23 @@ const Header = () => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group z-50">
-            <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              <img src="/light_invertio_logo_220_70.png" alt="logo" className="w-28 h-12"/>
-            </span>
-          </Link>
+          <Link to="/" className="flex items-center space-x-2 z-50">
+  <div className="relative w-28 h-12">
+    {/* Light Theme Logo */}
+    <img
+      src="/light_invertio_logo_220_70.png"
+      alt="logo"
+      className="absolute inset-0 w-full h-full object-contain transition-opacity duration-300 dark:opacity-0"
+    />
+    {/* Dark Theme Logo */}
+    <img
+      src="/dark_invertio_logo.png"
+      alt="logo-dark"
+      className="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 dark:opacity-100"
+    />
+  </div>
+</Link>
+
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1 relative">
