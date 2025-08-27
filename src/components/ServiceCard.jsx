@@ -47,7 +47,7 @@ const ServiceCard = ({ service }) => {
       transition={{ duration: 0.3, ease: "easeOut" }}
     >
       <motion.div
-        className="relative p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 h-full"
+        className="relative p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#05164d]/20 h-full"
         whileHover={{
           rotateX: 5,
           rotateY: 5,
@@ -60,7 +60,7 @@ const ServiceCard = ({ service }) => {
         {ripples.map((ripple) => (
           <motion.div
             key={ripple.id}
-            className="absolute bg-[#05164d]/20 dark:bg-white/20 rounded-full pointer-events-none"
+            className="absolute bg-[#05164d]/20 rounded-full pointer-events-none"
             style={{
               left: ripple.x - 25,
               top: ripple.y - 25,
@@ -75,7 +75,7 @@ const ServiceCard = ({ service }) => {
 
         {/* Hover Gradient Overlay */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-[#05164d]/5 to-[#ffad00]/5 dark:from-white/10 dark:to-[#ffad00]/10 rounded-2xl"
+          className="absolute inset-0 bg-gradient-to-br from-[#05164d]/5 to-[#05164d]/10 rounded-2xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.3 }}
@@ -84,30 +84,30 @@ const ServiceCard = ({ service }) => {
         <div className="relative z-10">
           {/* Icon */}
           <motion.div
-            className="w-16 h-16 bg-gradient-to-br from-[#05164d] to-[#ffad00] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+            className="w-16 h-16 bg-[#05164d] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
             whileHover={{ rotate: 5 }}
           >
             <IconComponent className="w-8 h-8 text-white" />
           </motion.div>
 
           {/* Content */}
-          <h3 className="text-xl font-semibold text-[#05164d] dark:text-white mb-3 group-hover:text-[#05164d] dark:group-hover:text-white transition-colors">
+          <h3 className="text-xl font-semibold text-[#05164d] mb-3 group-hover:text-[#05164d] transition-colors">
             {service.title}
           </h3>
 
-          <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{service.description}</p>
+          <p className="text-gray-700 mb-6 leading-relaxed">{service.description}</p>
 
           {/* Features */}
           <ul className="space-y-2 mb-6">
             {service.features.slice(0, 3).map((feature, index) => (
               <motion.li
                 key={feature}
-                className="flex items-center text-sm text-gray-600 dark:text-gray-300"
+                className="flex items-center text-sm text-gray-700"
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="w-1.5 h-1.5 bg-[#05164d] dark:bg-white rounded-full mr-3" />
+                <div className="w-1.5 h-1.5 bg-[#05164d] rounded-full mr-3" />
                 {feature}
               </motion.li>
             ))}
@@ -116,7 +116,7 @@ const ServiceCard = ({ service }) => {
           {/* CTA */}
           <Link
             to={`/services#${service.id}`}
-            className="inline-flex items-center text-[#05164d] dark:text-white hover:text-[#05164d] dark:hover:text-gray-200 font-medium group/link"
+            className="inline-flex items-center text-[#05164d] hover:text-[#05164d]/80 font-medium group/link"
           >
             Learn More
             <motion.div className="ml-2" animate={{ x: isHovered ? 5 : 0 }} transition={{ duration: 0.2 }}>
@@ -127,7 +127,7 @@ const ServiceCard = ({ service }) => {
 
         {/* Shimmer Effect */}
         <motion.div
-          className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12"
+          className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
           animate={{ x: isHovered ? "200%" : "-100%" }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
         />

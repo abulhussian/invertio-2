@@ -2,10 +2,12 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { MapPin, Clock, DollarSign, Users, Search, Filter, Briefcase } from "lucide-react"
+import { motion } from "framer-motion"
 import Section from "../components/Section"
 import MotionWrapper from "../components/MotionWrapper"
 import jobs from "../data/jobs.json"
 
+// Job Card Component
 const JobCard = ({ job, index }) => {
   return (
     <MotionWrapper
@@ -16,9 +18,10 @@ const JobCard = ({ job, index }) => {
     >
       <Link to={`/careers/${job.id}`}>
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
+          {/* Header */}
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#05164d] transition-colors">
                 {job.title}
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-3">{job.department}</p>
@@ -29,8 +32,8 @@ const JobCard = ({ job, index }) => {
                   job.type === "Full-time"
                     ? "bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200"
                     : job.type === "Part-time"
-                      ? "bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200"
-                      : "bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200"
+                    ? "bg-[#05164d]/10 text-[#05164d] dark:bg-[#05164d]/30 dark:text-[#05164d]"
+                    : "bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200"
                 }`}
               >
                 {job.type}
@@ -38,8 +41,27 @@ const JobCard = ({ job, index }) => {
             </div>
           </div>
 
+          {/* Description */}
           <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">{job.description}</p>
 
+          {/* Skills */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {(job.skills?.slice(0, 3) || []).map((skill) => (
+              <span
+                key={skill}
+                className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs"
+              >
+                {skill}
+              </span>
+            ))}
+            {job.skills && job.skills.length > 3 && (
+              <span className="text-gray-500 dark:text-gray-400 text-xs">
+                +{job.skills.length - 3} more
+              </span>
+            )}
+          </div>
+
+          {/* Info Row */}
           <div className="flex flex-wrap gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
             <div className="flex items-center gap-1">
               <MapPin className="w-4 h-4" />
@@ -55,26 +77,15 @@ const JobCard = ({ job, index }) => {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2 mb-4">
-            {job.skills.slice(0, 3).map((skill) => (
-              <span
-                key={skill}
-                className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs"
-              >
-                {skill}
-              </span>
-            ))}
-            {job.skills.length > 3 && (
-              <span className="text-gray-500 dark:text-gray-400 text-xs">+{job.skills.length - 3} more</span>
-            )}
-          </div>
-
+          {/* Footer */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1 text-gray-500 dark:text-gray-400">
               <Users className="w-4 h-4" />
               <span className="text-sm">{job.applicants} applicants</span>
             </div>
-            <div className="text-blue-600 dark:text-blue-400 font-medium group-hover:underline">View Details →</div>
+            <div className="text-[#05164d] font-medium group-hover:underline">
+              View Details →
+            </div>
           </div>
         </div>
       </Link>
@@ -82,6 +93,7 @@ const JobCard = ({ job, index }) => {
   )
 }
 
+// Careers Page
 const Careers = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedDepartment, setSelectedDepartment] = useState("All")
@@ -94,7 +106,8 @@ const Careers = () => {
     const matchesSearch =
       job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       job.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.skills.some((skill) => skill.toLowerCase().includes(searchTerm.toLowerCase()))
+      (job.skills || []).some((skill) => skill.toLowerCase().includes(searchTerm.toLowerCase()))
+
     const matchesDepartment = selectedDepartment === "All" || job.department === selectedDepartment
     const matchesType = selectedType === "All" || job.type === selectedType
     return matchesSearch && matchesDepartment && matchesType
@@ -102,27 +115,45 @@ const Careers = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Hero Section */}
-      <Section className="pt-32 pb-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <MotionWrapper initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Join Our <span className="text-blue-600">Team</span>
+      {/* Hero Section with Motion Background */}
+      <Section className="relative pt-32 pb-16 overflow-hidden">
+        {/* Animated Background Image */}
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/gemini-1.png')", // <-- replace with your image
+          }}
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
+
+        {/* Hero Content */}
+        <div className="relative max-w-4xl mx-auto text-center text-white">
+          <MotionWrapper
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Join Our <span className="text-[#05164d] bg-white px-2 rounded">Team</span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
+            <p className="text-xl mb-8">
               Build the future of technology with passionate innovators and industry leaders
             </p>
-            <div className="flex items-center justify-center gap-8 text-gray-600 dark:text-gray-400">
+            <div className="flex items-center justify-center gap-8">
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">{jobs.length}+</div>
+                <div className="text-2xl font-bold text-[#05164d] bg-white px-2 py-1 rounded">{jobs.length}+</div>
                 <div className="text-sm">Open Positions</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">50+</div>
+                <div className="text-2xl font-bold text-[#05164d] bg-white px-2 py-1 rounded">50+</div>
                 <div className="text-sm">Team Members</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">15+</div>
+                <div className="text-2xl font-bold text-[#05164d] bg-white px-2 py-1 rounded">15+</div>
                 <div className="text-sm">Countries</div>
               </div>
             </div>
@@ -130,7 +161,7 @@ const Careers = () => {
         </div>
       </Section>
 
-      {/* Search and Filters */}
+      {/* Search + Filters */}
       <Section className="pb-8">
         <div className="max-w-6xl mx-auto">
           <MotionWrapper
@@ -148,7 +179,7 @@ const Careers = () => {
                     placeholder="Search jobs, skills, or keywords..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#05164d] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   />
                 </div>
 
@@ -158,7 +189,7 @@ const Careers = () => {
                   <select
                     value={selectedDepartment}
                     onChange={(e) => setSelectedDepartment(e.target.value)}
-                    className="pl-10 pr-8 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white appearance-none min-w-[180px]"
+                    className="pl-10 pr-8 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#05164d] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white appearance-none min-w-[180px]"
                   >
                     {departments.map((dept) => (
                       <option key={dept} value={dept}>
@@ -174,7 +205,7 @@ const Careers = () => {
                   <select
                     value={selectedType}
                     onChange={(e) => setSelectedType(e.target.value)}
-                    className="pl-10 pr-8 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white appearance-none min-w-[150px]"
+                    className="pl-10 pr-8 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#05164d] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white appearance-none min-w-[150px]"
                   >
                     {types.map((type) => (
                       <option key={type} value={type}>
@@ -225,12 +256,11 @@ const Careers = () => {
           >
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Don't see the right role?</h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
-              We're always looking for talented individuals to join our team. Send us your resume and we'll keep you in
-              mind for future opportunities.
+              We're always looking for talented individuals to join our team. Send us your resume and we'll keep you in mind for future opportunities.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
+              className="inline-flex items-center gap-2 bg-[#05164d] hover:bg-[#05164d]/90 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
             >
               Get in Touch
             </Link>

@@ -34,7 +34,7 @@ const Timeline = ({ events }) => {
                 whileHover={{ scale: 1.02 }}
               >
                 <div className="flex items-center mb-3">
-                  <span className="text-2xl font-bold text-primary-600 dark:text-primary-400 mr-3">{event.year}</span>
+                  <img src={event.image} alt={event.title} className=" mr-3" />
                   <CheckCircle className="w-5 h-5 text-green-500" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{event.title}</h3>

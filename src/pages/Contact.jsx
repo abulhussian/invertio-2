@@ -55,78 +55,67 @@ const Contact = () => {
 
   const validateForm = () => {
     const newErrors = {}
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required"
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required"
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid"
-    }
-
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone is required"
-    }
-
-    if (!formData.company.trim()) {
-      newErrors.company = "Company is required"
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required"
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters"
-    }
-
+    if (!formData.name.trim()) newErrors.name = "Name is required"
+    if (!formData.email.trim()) newErrors.email = "Email is required"
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Email is invalid"
+    if (!formData.phone.trim()) newErrors.phone = "Phone is required"
+    if (!formData.company.trim()) newErrors.company = "Company is required"
+    if (!formData.message.trim()) newErrors.message = "Message is required"
+    else if (formData.message.trim().length < 10) newErrors.message = "Message must be at least 10 characters"
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     if (!validateForm()) return
-
     setIsSubmitting(true)
-
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 2000))
-
     setIsSubmitting(false)
     setIsSubmitted(true)
     setFormData({ name: "", email: "", phone: "", company: "", message: "" })
-
-    // Reset success state after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000)
   }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
-
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }))
-    }
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }))
   }
 
   return (
     <div className="pt-16 lg:pt-20">
-      {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-        <div className="text-center max-w-4xl mx-auto">
+      {/* Hero Section with Motion Background */}
+      <Section className="relative overflow-hidden min-h-[60vh] flex items-center justify-center">
+        {/* Background Motion Image */}
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/contact-hero.jpg')" }} // change path
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 3, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/contactus-1.png')" }}
+          initial={{ scale: 1 }}
+          animate={{ scale: 1.1 }}
+          transition={{ duration: 12, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        {/* Hero Content */}
+        <div className="relative text-center max-w-4xl mx-auto text-white z-10">
           <MotionSlideUp>
-            <div className="inline-flex items-center px-4 py-2 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-full text-sm font-medium mb-6">
-              <span className="w-2 h-2 bg-primary-500 rounded-full mr-2 animate-pulse" />
+            <div className="inline-flex items-center px-4 py-2 bg-[#05164d]/10 text-[#05164d] rounded-full text-sm font-medium mb-6">
+              <span className="w-2 h-2 bg-[#05164d] rounded-full mr-2 animate-pulse" />
               Get In Touch
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Let's Start Your
-              <span className="gradient-text block">Digital Journey</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              Let's Start Your <span className="gradient-text block">Digital Journey</span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            <p className="text-xl mb-8 leading-relaxed max-w-2xl mx-auto">
               Ready to transform your business? Our experts are here to discuss your challenges and create tailored
               solutions that drive results.
             </p>
@@ -141,7 +130,6 @@ const Contact = () => {
           <MotionSlideUp>
             <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a message</h2>
-
               <AnimatePresence mode="wait">
                 {isSubmitted ? (
                   <motion.div
@@ -162,137 +150,63 @@ const Contact = () => {
                     </p>
                   </motion.div>
                 ) : (
-                  <motion.form key="form" initial={{ opacity: 1 }} onSubmit={handleSubmit} className="space-y-6">
+                  <motion.form key="form" onSubmit={handleSubmit} className="space-y-6">
+                    {/* Inputs */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label
-                          htmlFor="name"
-                          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                        >
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          className={`w-full px-4 py-3 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name *</label>
+                        <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange}
+                          className={`w-full px-4 py-3 border rounded-lg bg-white dark:bg-gray-700 ${
                             errors.name ? "border-red-500" : "border-gray-300 dark:border-gray-600"
-                          }`}
-                          placeholder="John Doe"
-                        />
-                        {errors.name && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name}</p>}
+                          }`} placeholder="John Doe" />
+                        {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
                       </div>
-
                       <div>
-                        <label
-                          htmlFor="email"
-                          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                        >
-                          Email Address *
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          className={`w-full px-4 py-3 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email *</label>
+                        <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange}
+                          className={`w-full px-4 py-3 border rounded-lg bg-white dark:bg-gray-700 ${
                             errors.email ? "border-red-500" : "border-gray-300 dark:border-gray-600"
-                          }`}
-                          placeholder="john@company.com"
-                        />
-                        {errors.email && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>}
+                          }`} placeholder="info@invertiosolutions.com" />
+                        {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
                       </div>
                     </div>
-
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label
-                          htmlFor="phone"
-                          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                        >
-                          Phone Number *
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          className={`w-full px-4 py-3 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone *</label>
+                        <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleInputChange}
+                          className={`w-full px-4 py-3 border rounded-lg bg-white dark:bg-gray-700 ${
                             errors.phone ? "border-red-500" : "border-gray-300 dark:border-gray-600"
-                          }`}
-                          placeholder="+1 (555) 123-4567"
-                        />
-                        {errors.phone && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.phone}</p>}
+                          }`} placeholder="+91 78930 67967" />
+                        {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
                       </div>
-
                       <div>
-                        <label
-                          htmlFor="company"
-                          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                        >
-                          Company *
-                        </label>
-                        <input
-                          type="text"
-                          id="company"
-                          name="company"
-                          value={formData.company}
-                          onChange={handleInputChange}
-                          className={`w-full px-4 py-3 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
+                        <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Company *</label>
+                        <input type="text" id="company" name="company" value={formData.company} onChange={handleInputChange}
+                          className={`w-full px-4 py-3 border rounded-lg bg-white dark:bg-gray-700 ${
                             errors.company ? "border-red-500" : "border-gray-300 dark:border-gray-600"
-                          }`}
-                          placeholder="Your Company"
-                        />
-                        {errors.company && (
-                          <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.company}</p>
-                        )}
+                          }`} placeholder="Your Company" />
+                        {errors.company && <p className="mt-1 text-sm text-red-600">{errors.company}</p>}
                       </div>
                     </div>
-
                     <div>
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                      >
-                        Message *
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={6}
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        className={`w-full px-4 py-3 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none ${
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message *</label>
+                      <textarea id="message" name="message" rows={6} value={formData.message} onChange={handleInputChange}
+                        className={`w-full px-4 py-3 border rounded-lg bg-white dark:bg-gray-700 ${
                           errors.message ? "border-red-500" : "border-gray-300 dark:border-gray-600"
-                        }`}
-                        placeholder="Tell us about your project and how we can help..."
-                      />
-                      {errors.message && (
-                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.message}</p>
-                      )}
+                        }`} placeholder="Tell us about your project..." />
+                      {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
                     </div>
-
-                    <motion.button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full px-8 py-4 bg-primary-600 hover:bg-primary-700 disabled:bg-primary-400 text-white font-semibold rounded-lg transition-colors flex items-center justify-center"
+                    <motion.button type="submit" disabled={isSubmitting}
+                      className="w-full px-8 py-4 bg-[#05164d] text-white rounded-lg flex items-center justify-center"
                       whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-                      whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                    >
+                      whileTap={{ scale: isSubmitting ? 1 : 0.98 }}>
                       {isSubmitting ? (
                         <div className="flex items-center">
                           <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
                           Sending...
                         </div>
                       ) : (
-                        <>
-                          Send Message
-                          <Send className="ml-2 w-5 h-5" />
-                        </>
+                        <>Send Message <Send className="ml-2 w-5 h-5" /></>
                       )}
                     </motion.button>
                   </motion.form>
@@ -301,149 +215,69 @@ const Contact = () => {
             </div>
           </MotionSlideUp>
 
-          {/* Contact Information */}
+          {/* Contact Info */}
           <MotionSlideUp delay={0.2}>
             <div className="space-y-8">
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Get in touch</h2>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                  Have questions about our services or want to discuss your project? We're here to help. Reach out to us
-                  through any of the channels below.
-                </p>
-              </div>
-
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Get in touch</h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-8">
+                Have questions about our services or want to discuss your project? We're here to help.
+              </p>
+              {/* Info cards */}
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-primary-600 dark:text-primary-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">Email Us</h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-2">
-                      Send us an email and we'll respond within 24 hours
-                    </p>
-                    <a
-                      href="mailto:hello@techcorp.com"
-                      className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium"
-                    >
-                      hello@techcorp.com
-                    </a>
-                  </div>
+                  <Mail className="w-6 h-6 text-[#05164d]" />
+                  <div><h3>Email Us</h3><a href="mailto:info@invertiosolutions.com" className="text-[#05164d]">info@invertiosolutions.com</a></div>
                 </div>
-
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-primary-600 dark:text-primary-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">Call Us</h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-2">Speak directly with our team</p>
-                    <a
-                      href="tel:+15551234567"
-                      className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium"
-                    >
-                      +1 (555) 123-4567
-                    </a>
-                  </div>
+                  <Phone className="w-6 h-6 text-[#05164d]" />
+                  <div><h3>Call Us</h3><a href="tel:+917893067967" className="text-[#05164d]">+91 78930 67967</a></div>
                 </div>
-
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-primary-600 dark:text-primary-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">Business Hours</h3>
-                    <p className="text-gray-600 dark:text-gray-400">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                    <p className="text-gray-600 dark:text-gray-400">Saturday - Sunday: Closed</p>
-                  </div>
+                  <Clock className="w-6 h-6 text-[#05164d]" />
+                  <div><h3>Business Hours</h3><p>Mon-Fri: 9:00 AM - 6:00 PM</p></div>
                 </div>
               </div>
-
-              {/* Map Placeholder */}
               <div className="mt-8">
-                <img
-                  src="/world-map-office-locations.png"
-                  alt="Office Locations Map"
-                  className="w-full h-64 object-cover rounded-lg"
-                  loading="lazy"
-                />
+                <img src="/world-map-office-locations.png" alt="Map" className="w-full h-64 object-cover rounded-lg" />
               </div>
             </div>
           </MotionSlideUp>
         </div>
       </Section>
 
-      {/* Office Locations */}
+      {/* Offices */}
       <Section className="bg-gray-50 dark:bg-gray-800/50">
         <MotionSlideUp className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Global Offices</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            With offices around the world, we're always close to our clients and ready to provide local support.
-          </p>
+          <p className="text-xl text-gray-600 dark:text-gray-300">With offices around the world, we’re always close to our clients.</p>
         </MotionSlideUp>
-
         <MotionStagger className="space-y-4" staggerDelay={0.1}>
           {offices.map((office, index) => (
-            <motion.div
-              key={office.city}
-              className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
-              whileHover={{ scale: 1.01 }}
-            >
-              <button
-                onClick={() => setActiveOffice(activeOffice === index ? null : index)}
-                className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-              >
+            <motion.div key={office.city} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+              <button onClick={() => setActiveOffice(activeOffice === index ? null : index)}
+                className="w-full p-6 flex justify-between items-center">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-primary-600 dark:text-primary-400" />
-                  </div>
+                  <MapPin className="w-6 h-6 text-[#05164d]" />
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{office.city}</h3>
-                    <p className="text-gray-600 dark:text-gray-400">{office.address}</p>
+                    <h3 className="text-xl font-semibold">{office.city}</h3>
+                    <p>{office.address}</p>
                   </div>
                 </div>
-                <motion.div animate={{ rotate: activeOffice === index ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                <motion.div animate={{ rotate: activeOffice === index ? 180 : 0 }}>
                   <ChevronDown className="w-5 h-5 text-gray-400" />
                 </motion.div>
               </button>
-
               <AnimatePresence>
                 {activeOffice === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-4">
-                        <div>
-                          <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Contact Information</h4>
-                          <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                            <p className="flex items-center">
-                              <Phone className="w-4 h-4 mr-2" />
-                              {office.phone}
-                            </p>
-                            <p className="flex items-center">
-                              <Mail className="w-4 h-4 mr-2" />
-                              {office.email}
-                            </p>
-                            <p className="flex items-center">
-                              <Clock className="w-4 h-4 mr-2" />
-                              {office.hours}
-                            </p>
-                          </div>
-                        </div>
+                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}
+                    className="border-t border-gray-200">
+                    <div className="p-6 grid md:grid-cols-2 gap-6">
+                      <div className="space-y-2 text-sm">
+                        <p><Phone className="inline w-4 h-4 mr-2" />{office.phone}</p>
+                        <p><Mail className="inline w-4 h-4 mr-2" />{office.email}</p>
+                        <p><Clock className="inline w-4 h-4 mr-2" />{office.hours}</p>
                       </div>
-                      <div>
-                        <img
-                          src={office.image || "/placeholder.svg"}
-                          alt={`${office.city} office`}
-                          className="w-full h-32 object-cover rounded-lg"
-                          loading="lazy"
-                        />
-                      </div>
+                      <img src={office.image} alt={office.city} className="w-full h-32 object-cover rounded-lg" />
                     </div>
                   </motion.div>
                 )}

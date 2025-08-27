@@ -12,7 +12,6 @@ const Header = () => {
   const [darkMode, setDarkMode] = useState(false)
   const location = useLocation()
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
@@ -21,13 +20,11 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false)
     setActiveDropdown(null)
   }, [location])
 
-  // Toggle dark mode
   const toggleDarkMode = () => {
     setDarkMode(!darkMode)
     document.documentElement.classList.toggle('dark')
@@ -113,7 +110,7 @@ const Header = () => {
   const handleDropdownLeave = () => {
     const timeout = setTimeout(() => {
       setActiveDropdown(null)
-    }, 5000) // 5 seconds delay before closing
+    }, 5000)
     setHoverTimeout(timeout)
   }
 
@@ -141,22 +138,19 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 z-50">
-  <div className="relative w-28 h-12">
-    {/* Light Theme Logo */}
-    <img
-      src="/light_invertio_logo_220_70.png"
-      alt="logo"
-      className="absolute inset-0 w-full h-full object-contain transition-opacity duration-300 dark:opacity-0"
-    />
-    {/* Dark Theme Logo */}
-    <img
-      src="/dark_invertio_logo.png"
-      alt="logo-dark"
-      className="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 dark:opacity-100"
-    />
-  </div>
-</Link>
-
+            <div className="relative w-28 h-12">
+              <img
+                src="/light_invertio_logo_220_70.png"
+                alt="logo"
+                className="absolute inset-0 w-full h-full object-contain transition-opacity duration-300 dark:opacity-0"
+              />
+              <img
+                src="/dark_invertio_logo.png"
+                alt="logo-dark"
+                className="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 dark:opacity-100"
+              />
+            </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1 relative">
@@ -171,7 +165,7 @@ const Header = () => {
                   <div className="h-full flex justify-between">
                     <Link
                       to={item.href}
-                      className="flex items-center space-x-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative group/nav-item text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#ffad00] h-full"
+                      className="flex items-center space-x-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative group/nav-item text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#05164d] h-full"
                     >
                       <span>{item.name}</span>
                       <motion.div
@@ -180,24 +174,22 @@ const Header = () => {
                       >
                         <ChevronDown className="w-4 h-4" />
                       </motion.div>
-                      {/* Underlined gradient effect */}
-                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-white via-[#05164d] to-[#ffad00] transition-all duration-300 transform origin-left scale-x-0 group-hover/nav-item:scale-x-100" />
+                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#05164d] transition-all duration-300 transform origin-left scale-x-0 group-hover/nav-item:scale-x-100" />
                     </Link>
                   </div>
                 ) : (
                   <Link
                     to={item.href}
-                    className="block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#ffad00] group/nav-item h-full flex items-center"
+                    className="block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#05164d] group/nav-item h-full flex items-center"
                   >
                     {item.name}
-                    {/* Underlined gradient effect */}
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-white via-[#05164d] to-[#ffad00] transition-all duration-300 transform origin-left scale-x-0 group-hover/nav-item:scale-x-100" />
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#05164d] transition-all duration-300 transform origin-left scale-x-0 group-hover/nav-item:scale-x-100" />
                   </Link>
                 )}
               </div>
             ))}
             
-            {/* Full-width dropdown container */}
+            {/* Dropdown container */}
             <div className="absolute top-full left-0 right-0">
               <AnimatePresence>
                 {activeDropdown && (
@@ -231,20 +223,16 @@ const Header = () => {
                                     initial={{ y: 10, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{ delay: index * 0.07 }}
-                                    whileHover={{ 
-                                      y: -3,
-                                      transition: { duration: 0.2 }
-                                    }}
+                                    whileHover={{ y: -3 }}
                                     className="relative flex justify-center"
                                   >
                                     <Link
                                       to={subItem.href}
-                                      className="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-[#05164d] dark:hover:text-[#ffad00] rounded-lg transition-colors group/subitem text-center"
+                                      className="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-[#05164d] dark:hover:text-[#05164d] rounded-lg transition-colors group/subitem text-center"
                                       onClick={handleItemClick}
                                     >
                                       {subItem.name}
-                                      {/* Underlined gradient effect for dropdown items */}
-                                      <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-white via-[#05164d] to-[#ffad00] transition-all duration-300 group-hover/subitem:w-4/5" />
+                                      <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#05164d] transition-all duration-300 group-hover/subitem:w-4/5" />
                                     </Link>
                                   </motion.li>
                                 ))}
@@ -261,17 +249,17 @@ const Header = () => {
 
           {/* Right side actions */}
           <div className="flex items-center space-x-4">
-            <button
+            {/* <button
               onClick={toggleDarkMode}
               className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Toggle dark mode"
             >
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
+            </button> */}
 
             <Link
               to="/contact"
-              className="hidden lg:inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-[#05164d] to-[#ffad00] hover:from-[#0a2a8c] hover:to-[#ffc34d] text-white text-sm font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              className="hidden lg:inline-flex items-center px-6 py-2.5 bg-[#05164d] hover:bg-[#0a2a8c] text-white text-sm font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               onClick={handleItemClick}
             >
               Get Started
@@ -305,7 +293,7 @@ const Header = () => {
                       <div>
                         <button
                           onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                          className="flex items-center justify-between w-full px-4 py-3 text-left text-base font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#ffad00] hover:bg-gray-50 dark:hover:bg-gray-800"
+                          className="flex items-center justify-between w-full px-4 py-3 text-left text-base font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#05164d] hover:bg-gray-50 dark:hover:bg-gray-800"
                         >
                           <span>{item.name}</span>
                           <motion.div
@@ -334,12 +322,11 @@ const Header = () => {
                                     <Link
                                       key={subItem.name}
                                       to={subItem.href}
-                                      className="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-[#05164d] dark:hover:text-[#ffad00] transition-colors relative group/mobile-subitem text-center"
+                                      className="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-[#05164d] dark:hover:text-[#05164d] transition-colors relative group/mobile-subitem text-center"
                                       onClick={handleItemClick}
                                     >
                                       {subItem.name}
-                                      {/* Underlined gradient effect for mobile dropdown items */}
-                                      <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-white via-[#05164d] to-[#ffad00] transition-all duration-300 group-hover/mobile-subitem:w-3/4" />
+                                      <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#05164d] transition-all duration-300 group-hover/mobile-subitem:w-3/4" />
                                     </Link>
                                   ))}
                                 </div>
@@ -351,12 +338,11 @@ const Header = () => {
                     ) : (
                       <Link
                         to={item.href}
-                        className="block px-4 py-3 text-base font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#ffad00] hover:bg-gray-50 dark:hover:bg-gray-800 relative group/mobile-item"
+                        className="block px-4 py-3 text-base font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#05164d] hover:bg-gray-50 dark:hover:bg-gray-800 relative group/mobile-item"
                         onClick={handleItemClick}
                       >
                         {item.name}
-                        {/* Underlined gradient effect for mobile items */}
-                        <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-white via-[#05164d] to-[#ffad00] transition-all duration-300 transform origin-left scale-x-0 group-hover/mobile-item:scale-x-100" />
+                        <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-[#05164d] transition-all duration-300 transform origin-left scale-x-0 group-hover/mobile-item:scale-x-100" />
                       </Link>
                     )}
                   </div>
@@ -365,7 +351,7 @@ const Header = () => {
                 <div className="px-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                   <Link
                     to="/contact"
-                    className="block w-full text-center px-6 py-3 bg-gradient-to-r from-[#05164d] to-[#ffad00] hover:from-[#0a2a8c] hover:to-[#ffc34d] text-white font-medium rounded-lg transition-colors"
+                    className="block w-full text-center px-6 py-3 bg-[#05164d] hover:bg-[#0a2a8c] text-white font-medium rounded-lg transition-colors"
                     onClick={handleItemClick}
                   >
                     Get Started

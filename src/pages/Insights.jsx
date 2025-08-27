@@ -17,7 +17,7 @@ const BlogCard = ({ post, index }) => {
     >
       <Link to={`/insights/${post.slug}`} className="block">
         <article className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
-          <div className="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+          <div className="aspect-video bg-gradient-to-br from-[#05164d] to-[#05164d] relative overflow-hidden">
             <img
               src={post.image || "/placeholder.svg"}
               alt={post.title}
@@ -42,7 +42,7 @@ const BlogCard = ({ post, index }) => {
               </div>
             </div>
 
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#05164d] dark:group-hover:text-[#05164d] transition-colors">
               {post.title}
             </h3>
 
@@ -60,7 +60,7 @@ const BlogCard = ({ post, index }) => {
                 ))}
               </div>
 
-              <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium group-hover:gap-2 transition-all">
+              <div className="flex items-center gap-1 text-[#05164d] dark:text-[#05164d] font-medium group-hover:gap-2 transition-all">
                 <span>Read More</span>
                 <ArrowRight className="w-4 h-4" />
               </div>
@@ -91,7 +91,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           onClick={() => onPageChange(page)}
           className={`px-4 py-2 rounded-lg transition-colors ${
             currentPage === page
-              ? "bg-blue-600 text-white"
+              ? "bg-[#05164d] text-white"
               : "border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
           }`}
         >
@@ -142,7 +142,7 @@ const Insights = () => {
         <div className="max-w-4xl mx-auto text-center">
           <MotionWrapper initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Insights & <span className="text-blue-600">Innovation</span>
+              Insights & <span className="text-[#05164d]">Innovation</span>
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
               Discover the latest trends, insights, and innovations shaping the future of technology
@@ -163,7 +163,7 @@ const Insights = () => {
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
                 <div className="md:flex">
                   <div className="md:w-1/2">
-                    <div className="aspect-video md:aspect-square bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+                    <div className="aspect-video md:aspect-square bg-gradient-to-br from-[#05164d] to-[#05164d] relative overflow-hidden">
                       <img
                         src={featuredPost.image || "/placeholder.svg"}
                         alt={featuredPost.title}
@@ -178,7 +178,7 @@ const Insights = () => {
                   </div>
                   <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
                     <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
-                      <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full font-medium">
+                      <span className="bg-[#05164d]/20 text-[#05164d] px-3 py-1 rounded-full font-medium">
                         {featuredPost.category}
                       </span>
                       <div className="flex items-center gap-1">
@@ -187,13 +187,13 @@ const Insights = () => {
                       </div>
                     </div>
 
-                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-[#05164d] dark:group-hover:text-[#05164d] transition-colors">
                       {featuredPost.title}
                     </h2>
 
                     <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg">{featuredPost.excerpt}</p>
 
-                    <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group-hover:gap-3 transition-all">
+                    <div className="flex items-center gap-2 text-[#05164d] font-semibold group-hover:gap-3 transition-all">
                       <span>Read Featured Article</span>
                       <ArrowRight className="w-5 h-5" />
                     </div>
@@ -226,7 +226,7 @@ const Insights = () => {
                       setSearchTerm(e.target.value)
                       setCurrentPage(1)
                     }}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#05164d] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   />
                 </div>
 
@@ -239,7 +239,7 @@ const Insights = () => {
                       setSelectedCategory(e.target.value)
                       setCurrentPage(1)
                     }}
-                    className="pl-10 pr-8 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white appearance-none min-w-[200px]"
+                    className="pl-10 pr-8 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#05164d] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white appearance-none min-w-[200px]"
                   >
                     {categories.map((category) => (
                       <option key={category} value={category}>

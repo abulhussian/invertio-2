@@ -77,36 +77,22 @@ const About = () => {
     },
   ]
 
+  // ✅ Sister Companies
   const timelineEvents = [
     {
-      year: "2009",
-      title: "Company Founded",
-      description: "Started as a small consulting firm with a vision to transform enterprise technology.",
+      image: "/aviaah.jpg",
+      title: "AVIAAH",
+      description: "A leading provider of cloud and infrastructure solutions, empowering businesses worldwide.",
     },
     {
-      year: "2012",
-      title: "First Major Client",
-      description: "Secured our first Fortune 500 client, establishing credibility in the enterprise market.",
+      image: "/invertio-taxiation.jpg",
+      title: "Invertio Taxiation",
+      description: "Focused on AI and machine learning products that drive automation and smart decision-making.",
     },
     {
-      year: "2015",
-      title: "Global Expansion",
-      description: "Opened offices in Europe and Asia, becoming a truly global technology partner.",
-    },
-    {
-      year: "2018",
-      title: "Cloud Specialization",
-      description: "Became certified partners with major cloud providers, leading digital transformation initiatives.",
-    },
-    {
-      year: "2021",
-      title: "AI Innovation Lab",
-      description: "Launched dedicated AI research division, pioneering machine learning solutions for enterprises.",
-    },
-    {
-      year: "2024",
-      title: "Industry Leadership",
-      description: "Recognized as a leader in digital transformation, serving 150+ enterprise clients globally.",
+      image: "/novanal.jpg",
+      title: "Novanal",
+      description: "Revolutionizing financial services with blockchain-powered platforms and digital banking tools.",
     },
   ]
 
@@ -116,13 +102,13 @@ const About = () => {
       <Section className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <MotionSlideUp>
-            <div className="inline-flex items-center px-4 py-2 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-full text-sm font-medium mb-6">
-              <span className="w-2 h-2 bg-primary-500 rounded-full mr-2 animate-pulse" />
+            <div className="inline-flex items-center px-4 py-2 bg-[#05164d]/10 text-[#05164d] dark:text-[#05164d] rounded-full text-sm font-medium mb-6">
+              <span className="w-2 h-2 bg-[#05164d] rounded-full mr-2 animate-pulse" />
               About TechCorp
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               Pioneering the Future of
-              <span className="gradient-text block">Enterprise Technology</span>
+              <span className="block text-[#05164d]">Enterprise Technology</span>
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
               For over 15 years, we've been at the forefront of digital transformation, helping organizations harness
@@ -130,7 +116,7 @@ const About = () => {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-colors shadow-lg hover:shadow-xl group"
+              className="inline-flex items-center px-8 py-4 bg-[#05164d] hover:bg-[#04113b] text-white font-semibold rounded-xl transition-colors shadow-lg hover:shadow-xl group"
             >
               Partner With Us
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -160,58 +146,16 @@ const About = () => {
               className="text-center p-6 rounded-2xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               whileHover={{ scale: 1.05 }}
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-violet rounded-xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-[#05164d] rounded-xl flex items-center justify-center mx-auto mb-4">
                 <stat.icon className="w-6 h-6 text-white" />
               </div>
-              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
+              <div className="text-3xl md:text-4xl font-bold text-[#05164d] mb-2">
                 <StatCounter end={stat.number} suffix={stat.suffix} />
               </div>
               <p className="text-gray-600 dark:text-gray-400 font-medium">{stat.label}</p>
             </motion.div>
           ))}
         </MotionStagger>
-      </Section>
-
-      {/* Mission & Vision */}
-      <Section className="bg-gray-50 dark:bg-gray-800/50">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <MotionSlideUp>
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-violet rounded-xl flex items-center justify-center mr-4">
-                <Target className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Our Mission</h2>
-            </div>
-            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-              To empower organizations worldwide with innovative technology solutions that drive digital transformation,
-              enhance operational efficiency, and create sustainable competitive advantages in an ever-evolving digital
-              landscape.
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              We believe that technology should be an enabler of human potential, not a barrier. Our mission is to
-              bridge the gap between complex technology and business objectives, making digital transformation
-              accessible and impactful for organizations of all sizes.
-            </p>
-          </MotionSlideUp>
-
-          <MotionSlideUp delay={0.2}>
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-accent-violet to-accent-rose rounded-xl flex items-center justify-center mr-4">
-                <Eye className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Our Vision</h2>
-            </div>
-            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-              To be the world's most trusted partner in enterprise digital transformation, recognized for our
-              innovation, expertise, and unwavering commitment to client success across all industries and geographies.
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              We envision a future where every organization can harness the full potential of technology to create
-              meaningful impact, drive sustainable growth, and contribute to a better world through innovation and
-              responsible business practices.
-            </p>
-          </MotionSlideUp>
-        </div>
       </Section>
 
       {/* Values */}
@@ -224,13 +168,13 @@ const About = () => {
         </MotionSlideUp>
 
         <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" staggerDelay={0.1}>
-          {values.map((value, index) => (
+          {values.map((value) => (
             <motion.div
               key={value.title}
               className="text-center p-6 rounded-2xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 group"
               whileHover={{ y: -5 }}
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-violet rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+              <div className="w-16 h-16 bg-[#05164d] rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <value.icon className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{value.title}</h3>
@@ -240,36 +184,20 @@ const About = () => {
         </MotionStagger>
       </Section>
 
-      {/* Timeline */}
+      {/* Sister Companies Timeline */}
       <Section className="bg-gray-50 dark:bg-gray-800/50">
         <MotionSlideUp className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Journey</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Sister Companies</h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            From a small consulting firm to a global technology leader, discover the milestones that shaped our story.
+            Together with our sister companies, we are building a strong ecosystem of innovation and excellence.
           </p>
         </MotionSlideUp>
 
         <Timeline events={timelineEvents} />
       </Section>
 
-      {/* Leadership Team */}
-      <Section id="leadership" className="bg-white dark:bg-gray-900">
-        <MotionSlideUp className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Leadership Team</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Meet the visionary leaders driving our mission and shaping the future of enterprise technology.
-          </p>
-        </MotionSlideUp>
-
-        <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" staggerDelay={0.1}>
-          {leadership.map((member) => (
-            <TeamCard key={member.name} member={member} />
-          ))}
-        </MotionStagger>
-      </Section>
-
       {/* CTA Section */}
-      <Section className="bg-gradient-to-r from-primary-600 via-accent-violet to-accent-rose text-white">
+      <Section className="bg-gradient-to-r from-[#05164d] to-[#04113b] text-white">
         <div className="text-center">
           <MotionSlideUp>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Join Our Journey</h2>
@@ -279,7 +207,7 @@ const About = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
+                className="inline-flex items-center px-8 py-4 bg-white text-[#05164d] font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
               >
                 Partner With Us
                 <ArrowRight className="ml-2 w-5 h-5" />

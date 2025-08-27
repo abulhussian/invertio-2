@@ -59,7 +59,7 @@ const Services = () => {
             backgroundImage: `url('/singapore-office.png')`,
           }}
         />
-        <div className="absolute inset-0 z-1 bg-gradient-to-br from-black/70 via-black/50 to-black/70" />
+        <div className="absolute inset-0 z-1 bg-[#05164d]/80" />
 
         {/* Content */}
         <div className="container mx-auto px-4 relative z-10">
@@ -69,7 +69,7 @@ const Services = () => {
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
               }`}
             >
-              <div className="inline-flex items-center px-4 py-2 bg-[#05164d]/20 text-white rounded-full text-sm font-medium mb-6">
+              <div className="inline-flex items-center px-4 py-2 bg-white/20 text-white rounded-full text-sm font-medium mb-6">
                 <span className="w-2 h-2 bg-[#ffad00] rounded-full mr-2 animate-pulse" />
                 Comprehensive Technology Solutions
               </div>
@@ -79,14 +79,14 @@ const Services = () => {
                   Digital Excellence
                 </span>
               </h1>
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl text-gray-100 mb-8 leading-relaxed">
                 From strategy to implementation, we provide end-to-end technology solutions that transform your business
                 operations and accelerate growth.
               </p>
               <a
                 href="#contact"
                 className="inline-flex items-center px-8 py-4 
-                           bg-gradient-to-r from-[#05164d] to-[#ffad00] 
+                           bg-[#05164d]  
                            hover:opacity-90 text-white font-semibold rounded-xl 
                            transition-all duration-300 shadow-lg hover:shadow-xl group"
               >
@@ -99,10 +99,10 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <Section className="bg-white dark:bg-gray-900">
+      <Section className="bg-white">
         <MotionSlideUp className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Core Services</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#05164d] mb-4">Our Core Services</h2>
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Comprehensive solutions designed to meet your unique business challenges and drive sustainable growth.
           </p>
         </MotionSlideUp>
@@ -123,7 +123,7 @@ const Services = () => {
           <Section
             key={service.id}
             id={service.id}
-            className={isEven ? "bg-gray-50 dark:bg-gray-800/50" : "bg-white dark:bg-gray-900"}
+            className={isEven ? "bg-gray-50" : "bg-white"}
           >
             <div
               className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
@@ -131,11 +131,11 @@ const Services = () => {
               }`}
             >
               <MotionSlideUp className={isEven ? "" : "lg:col-start-2"}>
-                <div className="w-16 h-16 bg-gradient-to-br from-[#05164d] to-[#ffad00] rounded-xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-[#05164d] rounded-xl flex items-center justify-center mb-6">
                   <IconComponent className="w-8 h-8 text-white" />
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">{service.title}</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">{service.description}</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-[#05164d] mb-6">{service.title}</h2>
+                <p className="text-lg text-gray-700 mb-8 leading-relaxed">{service.description}</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                   {service.features.map((feature, featureIndex) => (
@@ -147,15 +147,15 @@ const Services = () => {
                       viewport={{ once: true }}
                       transition={{ delay: featureIndex * 0.1 }}
                     >
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                      <span className="text-gray-800">{feature}</span>
                     </motion.div>
                   ))}
                 </div>
 
                 <Link
                   to="/contact"
-                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#05164d] to-[#ffad00] text-white font-medium rounded-lg transition-all group hover:opacity-90"
+                  className="inline-flex items-center px-6 py-3 bg-[#05164d] text-white font-medium rounded-lg transition-all group hover:opacity-90"
                 >
                   Learn More
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -170,7 +170,7 @@ const Services = () => {
                     className="w-full h-auto rounded-2xl shadow-2xl"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#05164d]/10 to-transparent rounded-2xl" />
                 </div>
               </MotionFadeIn>
             </div>
@@ -179,7 +179,7 @@ const Services = () => {
       })}
 
       {/* Why Choose Us */}
-      <Section className="bg-gradient-to-r from-[#05164d] to-[#ffad00] text-white">
+      <Section className="bg-[#05164d]  text-white">
         <div className="text-center mb-16">
           <MotionSlideUp>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Our Services</h2>
@@ -196,7 +196,7 @@ const Services = () => {
               className="flex items-center space-x-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg"
               whileHover={{ scale: 1.02 }}
             >
-              <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0" />
+              <CheckCircle className="w-6 h-6 text-white flex-shrink-0" />
               <span className="font-medium">{benefit}</span>
             </motion.div>
           ))}

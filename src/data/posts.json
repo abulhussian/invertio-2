@@ -12,7 +12,7 @@
     "readTime": "8 min read",
     "category": "Artificial Intelligence",
     "tags": ["AI", "Enterprise", "Automation", "Machine Learning"],
-    "image": "/placeholder.svg?height=400&width=800",
+    "image": "/insights-1.jpg",
     "featured": true
   },
   {
@@ -28,7 +28,7 @@
     "readTime": "6 min read",
     "category": "Cybersecurity",
     "tags": ["Cloud Security", "Best Practices", "Compliance", "Risk Management"],
-    "image": "/placeholder.svg?height=400&width=800",
+    "image": "/cloud-robotics.jpg",
     "featured": false
   },
   {
@@ -44,7 +44,7 @@
     "readTime": "10 min read",
     "category": "Digital Transformation",
     "tags": ["Strategy", "Digital Transformation", "Change Management", "Innovation"],
-    "image": "/placeholder.svg?height=400&width=800",
+    "image": "/ai-tranformation.jpg",
     "featured": true
   },
   {
@@ -60,7 +60,7 @@
     "readTime": "12 min read",
     "category": "Software Architecture",
     "tags": ["Microservices", "Architecture", "Scalability", "DevOps"],
-    "image": "/placeholder.svg?height=400&width=800",
+    "image": "/insights-2.png",
     "featured": false
   },
   {
@@ -76,7 +76,7 @@
     "readTime": "7 min read",
     "category": "Data Analytics",
     "tags": ["Analytics", "Big Data", "Business Intelligence", "Trends"],
-    "image": "/placeholder.svg?height=400&width=800",
+    "image": "/data-analytics.png",
     "featured": false
   },
   {
@@ -92,7 +92,7 @@
     "readTime": "9 min read",
     "category": "DevOps",
     "tags": ["Kubernetes", "DevOps", "Container Orchestration", "Production"],
-    "image": "/placeholder.svg?height=400&width=800",
+    "image": "/deveops.png",
     "featured": true
   },
   {
