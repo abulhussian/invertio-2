@@ -1,4 +1,5 @@
 import React from 'react' // Add this
+
 import { motion } from "framer-motion"
 import { ArrowRight, Play, CheckCircle, Users, Award, Globe, TrendingUp } from "lucide-react"
 import { Link } from "react-router-dom"

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Search, Filter, ArrowRight } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
@@ -10,7 +10,9 @@ import {
   MotionStagger,
 } from "../components/MotionWrapper";
 import caseStudies from "../data/caseStudies.json";
-import CaseStudyCards from "../components/CaseStudyCards";
+
+// Dynamic import for CaseStudyCards
+const CaseStudyCards = React.lazy(() => import("../components/CaseStudyCards"));
 
 const Work = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -131,16 +133,18 @@ const Work = () => {
           </p>
         </MotionSlideUp>
 
-        <AnimatePresence mode="wait">
-          <MotionStagger
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            staggerDelay={0.1}
-          >
-            {filteredStudies.map((study, index) => (
-              <CaseStudyCards key={study.id} study={study} index={index} />
-            ))}
-          </MotionStagger>
-        </AnimatePresence>
+        <Suspense fallback={<div className="text-center py-8">Loading Case Studies...</div>}>
+          <AnimatePresence mode="wait">
+            <MotionStagger
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              staggerDelay={0.1}
+            >
+              {filteredStudies.map((study, index) => (
+                <CaseStudyCards key={study.id} study={study} index={index} />
+              ))}
+            </MotionStagger>
+          </AnimatePresence>
+        </Suspense>
 
         {/* No Results */}
         {filteredStudies.length === 0 && (
