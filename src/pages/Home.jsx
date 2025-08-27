@@ -1,3 +1,4 @@
+import React from 'react' // Add this
 import { motion } from "framer-motion"
 import { ArrowRight, Play, CheckCircle, Users, Award, Globe, TrendingUp } from "lucide-react"
 import { Link } from "react-router-dom"
@@ -6,13 +7,15 @@ import LogoMarquee from "../components/LogoMarquee"
 import StatCounter from "../components/StatCounter"
 import ServiceCard from "../components/ServiceCard"
 import IndustryCarousel from "../components/IndustryCarousel"
-import CaseStudyCard from "../components/CaseStudyCard"
+// import CaseStudyCard from "../components/CaseStudyCard"
 import { MotionFadeIn } from "../components/MotionWrapper"
 import services from "../data/services.json"
 import industries from "../data/industries.json"
 import caseStudies from "../data/caseStudies.json"
 
 const Home = () => {
+  const CaseStudyCard = React.lazy(() => import("../components/CaseStudyCard"))
+
   const featuredCaseStudies = caseStudies.filter(study => study.featured).slice(0, 3)
 
   const MotionSlideUp = ({ children, className }) => (

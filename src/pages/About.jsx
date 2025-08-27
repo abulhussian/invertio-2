@@ -80,7 +80,7 @@ const About = () => {
   // ✅ Sister Companies
   const timelineEvents = [
     {
-      image: "/aviaah.jpg",
+      image: "/aviaah-logo.png",
       title: "AVIAAH",
       description: "A leading provider of cloud and infrastructure solutions, empowering businesses worldwide.",
     },
@@ -90,7 +90,7 @@ const About = () => {
       description: "Focused on AI and machine learning products that drive automation and smart decision-making.",
     },
     {
-      image: "/novanal.jpg",
+      image: "/novanal-logo.png",
       title: "Novanal",
       description: "Revolutionizing financial services with blockchain-powered platforms and digital banking tools.",
     },
