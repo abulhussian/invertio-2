@@ -122,8 +122,7 @@
   "video": "/projects/smsa-express-overview.mp4",
   "duration": "Over 20+ years of industry leadership",
   "featured": true
-}
-,
+},
  {
   "id": "kpmg-digital-transform",
   "title": "KPMG Digital Transformation",
@@ -148,8 +147,7 @@
   "video": "/projects/kpmg-digital-transform-overview.mp4",
   "duration": "Enterprise-wide engagements",
   "featured": true
-}
-,
+},
   {
   "id": "studyfox-ai",
   "title": "StudyFox AI",
@@ -175,8 +173,7 @@
   "video": "/projects/studyfox-demo.mp4",
   "duration": "Ongoing platform development since 2024",
   "featured": true
-}
-,
+},
   {
   "id": "360taxi-dispatch",
   "title": "360Taxi Dispatch System",
