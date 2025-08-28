@@ -44,7 +44,7 @@ const TeamCard = ({ member }) => {
               </a>
             )}
             <a
-              href={`mailto:${member.name.toLowerCase().replace(" ", ".")}@techcorp.com`}
+              href={`mailto:${member.name.toLowerCase().replace(" ", ".")}@Invertio.com`}
               className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
             >
               <Mail className="w-5 h-5 text-white" />

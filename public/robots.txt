@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://techcorp.com/sitemap.xml
+Sitemap: https://Invertio.com/sitemap.xml

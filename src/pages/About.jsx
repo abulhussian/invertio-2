@@ -80,7 +80,7 @@ const About = () => {
   // ✅ Sister Companies
   const timelineEvents = [
     {
-      image: "/aviaah-logo.png",
+      image: "/aivaah-logo.png",
       title: "AVIAAH",
       description: "A leading provider of cloud and infrastructure solutions, empowering businesses worldwide.",
     },
@@ -104,7 +104,7 @@ const About = () => {
           <MotionSlideUp>
             <div className="inline-flex items-center px-4 py-2 bg-[#05164d]/10 text-[#05164d] dark:text-[#05164d] rounded-full text-sm font-medium mb-6">
               <span className="w-2 h-2 bg-[#05164d] rounded-full mr-2 animate-pulse" />
-              About TechCorp
+              About Invertio
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               Pioneering the Future of
@@ -127,7 +127,7 @@ const About = () => {
             <div className="relative">
               <img
                 src="/modern-office-collaboration.png"
-                alt="TechCorp Team"
+                alt="Invertio Team"
                 className="w-full h-auto rounded-2xl shadow-2xl"
                 loading="eager"
               />
