@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import { Search, Filter, ArrowRight } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
 import Section from "../components/Section";
+import CaseStudyCards from "../components/CaseStudyCards";
 import {
   MotionFadeIn,
   MotionSlideUp,
@@ -12,7 +13,7 @@ import {
 import caseStudies from "../data/casestudies.json";
 
 // Dynamic import for CaseStudyCards
-const CaseStudyCards = React.lazy(() => import("../components/CaseStudyCards"));
+// const CaseStudyCards = React.lazy(() => import("../components/CaseStudyCards"));
 
 const Work = () => {
   const [searchParams, setSearchParams] = useSearchParams();
