@@ -3,7 +3,7 @@ import React from "react";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
 import { Code, Server, Cloud, Database } from "lucide-react";
-import caseStudies from "../data/caseStudies.json";
+import caseStudies from "../data/casestudies.json";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
