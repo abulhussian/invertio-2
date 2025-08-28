@@ -12,7 +12,7 @@ import IndustryCarousel from "../components/IndustryCarousel"
 import { MotionFadeIn } from "../components/MotionWrapper"
 import services from "../data/services.json"
 import industries from "../data/industries.json"
-import caseStudies from "../data/caseStudies.json"
+import caseStudies from "../data/casestudies.json"
 
 const Home = () => {
   const CaseStudyCard = React.lazy(() => import("../components/CaseStudyCard"))

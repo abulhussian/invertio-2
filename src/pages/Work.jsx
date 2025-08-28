@@ -9,7 +9,7 @@ import {
   MotionSlideUp,
   MotionStagger,
 } from "../components/MotionWrapper";
-import caseStudies from "../data/caseStudies.json";
+import caseStudies from "../data/casestudies.json";
 
 // Dynamic import for CaseStudyCards
 const CaseStudyCards = React.lazy(() => import("../components/CaseStudyCards"));
