@@ -1,16 +1,17 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, ChevronDown, Sun, Moon } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
-  const [hoverTimeout, setHoverTimeout] = useState(null)
-  const [darkMode, setDarkMode] = useState(false)
+  const [mobileDropdown, setMobileDropdown] = useState(null)
   const location = useLocation()
+  const dropdownRef = useRef(null)
+  const navRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,12 +24,8 @@ const Header = () => {
   useEffect(() => {
     setIsMobileMenuOpen(false)
     setActiveDropdown(null)
+    setMobileDropdown(null)
   }, [location])
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
-    document.documentElement.classList.toggle('dark')
-  }
 
   const navigationItems = [
     {
@@ -100,30 +97,32 @@ const Header = () => {
   }
 
   const handleDropdownEnter = (itemName) => {
-    if (hoverTimeout) {
-      clearTimeout(hoverTimeout)
-      setHoverTimeout(null)
-    }
     setActiveDropdown(itemName)
   }
 
-  const handleDropdownLeave = () => {
-    const timeout = setTimeout(() => {
-      setActiveDropdown(null)
-    }, 5000)
-    setHoverTimeout(timeout)
+  const handleDropdownLeave = (event) => {
+    const relatedTarget = event.relatedTarget
+    if (relatedTarget && dropdownRef.current && dropdownRef.current.contains(relatedTarget)) {
+      return
+    }
+    setActiveDropdown(null)
   }
 
-  const handleDropdownEnterWithDelay = (itemName) => {
-    if (hoverTimeout) {
-      clearTimeout(hoverTimeout)
-      setHoverTimeout(null)
+  const handleDropdownContentLeave = (event) => {
+    const relatedTarget = event.relatedTarget
+    if (relatedTarget && navRef.current && navRef.current.contains(relatedTarget)) {
+      return
     }
-    setActiveDropdown(itemName)
+    setActiveDropdown(null)
+  }
+
+  const handleMobileDropdownToggle = (itemName) => {
+    setMobileDropdown(mobileDropdown === itemName ? null : itemName)
   }
 
   const handleItemClick = () => {
     setActiveDropdown(null)
+    setMobileDropdown(null)
     setIsMobileMenuOpen(false)
   }
 
@@ -132,7 +131,7 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-200/50 dark:border-gray-700/50"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200/50"
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -142,30 +141,29 @@ const Header = () => {
               <img
                 src="/light_invertio_logo_220_70.png"
                 alt="logo"
-                className="absolute inset-0 w-full h-full object-contain transition-opacity duration-300 dark:opacity-0"
-              />
-              <img
-                src="/dark_invertio_logo.png"
-                alt="logo-dark"
-                className="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 dark:opacity-100"
+                className="w-full h-full object-contain"
               />
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1 relative">
+          <div className="hidden lg:flex items-center space-x-1 relative" ref={navRef}>
             {navigationItems.map((item) => (
               <div 
                 key={item.name} 
                 className="relative h-full"
-                onMouseEnter={() => item.hasDropdown && handleDropdownEnterWithDelay(item.name)}
+                onMouseEnter={() => item.hasDropdown && handleDropdownEnter(item.name)}
                 onMouseLeave={item.hasDropdown ? handleDropdownLeave : undefined}
               >
                 {item.hasDropdown ? (
                   <div className="h-full flex justify-between">
                     <Link
                       to={item.href}
-                      className="flex items-center space-x-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative group/nav-item text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#05164d] h-full"
+                      className={`flex items-center space-x-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative group/nav-item h-full ${
+                        isActiveRoute(item.href) 
+                          ? "text-[#05164d] font-semibold" 
+                          : "text-gray-700 hover:text-[#05164d]"
+                      }`}
                     >
                       <span>{item.name}</span>
                       <motion.div
@@ -174,23 +172,39 @@ const Header = () => {
                       >
                         <ChevronDown className="w-4 h-4" />
                       </motion.div>
-                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#05164d] transition-all duration-300 transform origin-left scale-x-0 group-hover/nav-item:scale-x-100" />
+                      <div 
+                        className={`absolute bottom-0 left-0 right-0 h-0.5 transition-all duration-300 transform origin-left ${
+                          isActiveRoute(item.href) 
+                            ? "bg-[#05164d] scale-x-100" 
+                            : "bg-[#05164d] scale-x-0 group-hover/nav-item:scale-x-100"
+                        }`} 
+                      />
                     </Link>
                   </div>
                 ) : (
                   <Link
                     to={item.href}
-                    className="block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#05164d] group/nav-item h-full flex items-center"
+                    className={`block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative h-full flex items-center group/nav-item ${
+                      isActiveRoute(item.href) 
+                        ? "text-[#05164d] font-semibold" 
+                        : "text-gray-700 hover:text-[#05164d]"
+                    }`}
                   >
                     {item.name}
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#05164d] transition-all duration-300 transform origin-left scale-x-0 group-hover/nav-item:scale-x-100" />
+                    <div 
+                      className={`absolute bottom-0 left-0 right-0 h-0.5 transition-all duration-300 transform origin-left ${
+                        isActiveRoute(item.href) 
+                          ? "bg-[#05164d] scale-x-100" 
+                          : "bg-[#05164d] scale-x-0 group-hover/nav-item:scale-x-100"
+                      }`} 
+                    />
                   </Link>
                 )}
               </div>
             ))}
             
             {/* Dropdown container */}
-            <div className="absolute top-full left-0 right-0">
+            <div className="absolute top-full left-0 right-0" ref={dropdownRef}>
               <AnimatePresence>
                 {activeDropdown && (
                   <motion.div
@@ -198,14 +212,8 @@ const Header = () => {
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="absolute left-0 right-0 bg-white dark:bg-gray-800 shadow-xl border-b border-gray-200 dark:border-gray-700"
-                    onMouseEnter={() => {
-                      if (hoverTimeout) {
-                        clearTimeout(hoverTimeout)
-                        setHoverTimeout(null)
-                      }
-                    }}
-                    onMouseLeave={handleDropdownLeave}
+                    className="absolute left-0 right-0 bg-white shadow-xl border-b border-gray-200"
+                    onMouseLeave={handleDropdownContentLeave}
                   >
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                       <div className="flex justify-between items-center gap-8">
@@ -213,7 +221,7 @@ const Header = () => {
                           .find(item => item.name === activeDropdown)
                           ?.columns.map((column, columnIndex) => (
                             <div key={columnIndex} className="flex-1">
-                              <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wide border-b border-gray-200 dark:border-gray-700 pb-2 text-center">
+                              <h3 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide border-b border-gray-200 pb-2 text-center">
                                 {column.title}
                               </h3>
                               <ul className="space-y-3">
@@ -228,11 +236,21 @@ const Header = () => {
                                   >
                                     <Link
                                       to={subItem.href}
-                                      className="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-[#05164d] dark:hover:text-[#05164d] rounded-lg transition-colors group/subitem text-center"
+                                      className={`block px-3 py-2 text-sm rounded-lg transition-colors group/subitem text-center ${
+                                        isActiveRoute(subItem.href.replace('#', ''))
+                                          ? "text-[#05164d] font-medium"
+                                          : "text-gray-600 hover:text-[#05164d]"
+                                      }`}
                                       onClick={handleItemClick}
                                     >
                                       {subItem.name}
-                                      <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#05164d] transition-all duration-300 group-hover/subitem:w-4/5" />
+                                      <span 
+                                        className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 transition-all duration-300 ${
+                                          isActiveRoute(subItem.href.replace('#', ''))
+                                            ? "bg-[#05164d] w-4/5"
+                                            : "bg-[#05164d] w-0 group-hover/subitem:w-4/5"
+                                        }`} 
+                                      />
                                     </Link>
                                   </motion.li>
                                 ))}
@@ -249,14 +267,6 @@ const Header = () => {
 
           {/* Right side actions */}
           <div className="flex items-center space-x-4">
-            {/* <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button> */}
-
             <Link
               to="/contact"
               className="hidden lg:inline-flex items-center px-6 py-2.5 bg-[#05164d] hover:bg-[#0a2a8c] text-white text-sm font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
@@ -267,7 +277,7 @@ const Header = () => {
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
               aria-label="Toggle mobile menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -284,20 +294,24 @@ const Header = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="lg:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900"
+              className="lg:hidden border-t border-gray-200 bg-white"
             >
-              <div className="py-4 space-y-2">
+              <div className="py-4 space-y-1">
                 {navigationItems.map((item) => (
-                  <div key={item.name}>
+                  <div key={item.name} className="border-b border-gray-100 last:border-b-0">
                     {item.hasDropdown ? (
                       <div>
                         <button
-                          onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                          className="flex items-center justify-between w-full px-4 py-3 text-left text-base font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#05164d] hover:bg-gray-50 dark:hover:bg-gray-800"
+                          onClick={() => handleMobileDropdownToggle(item.name)}
+                          className={`flex items-center justify-between w-full px-4 py-4 text-left text-base font-medium transition-colors hover:bg-gray-50 ${
+                            isActiveRoute(item.href)
+                              ? "text-[#05164d] font-semibold"
+                              : "text-gray-700 hover:text-[#05164d]"
+                          }`}
                         >
                           <span>{item.name}</span>
                           <motion.div
-                            animate={{ rotate: activeDropdown === item.name ? 180 : 0 }}
+                            animate={{ rotate: mobileDropdown === item.name ? 180 : 0 }}
                             transition={{ duration: 0.3 }}
                           >
                             <ChevronDown className="w-5 h-5" />
@@ -305,32 +319,46 @@ const Header = () => {
                         </button>
 
                         <AnimatePresence>
-                          {activeDropdown === item.name && (
+                          {mobileDropdown === item.name && (
                             <motion.div
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: "auto" }}
                               exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.3 }}
-                              className="bg-gray-50 dark:bg-gray-800"
+                              transition={{ duration: 0.2 }}
+                              className="bg-gray-50 border-t border-gray-100"
                             >
-                              {item.columns.map((column, columnIndex) => (
-                                <div key={columnIndex} className="px-4 py-2">
-                                  <h4 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 text-center">
-                                    {column.title}
-                                  </h4>
-                                  {column.items.map((subItem) => (
-                                    <Link
-                                      key={subItem.name}
-                                      to={subItem.href}
-                                      className="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-[#05164d] dark:hover:text-[#05164d] transition-colors relative group/mobile-subitem text-center"
-                                      onClick={handleItemClick}
-                                    >
-                                      {subItem.name}
-                                      <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#05164d] transition-all duration-300 group-hover/mobile-subitem:w-3/4" />
-                                    </Link>
-                                  ))}
-                                </div>
-                              ))}
+                              <div className="py-3">
+                                {item.columns.map((column, columnIndex) => (
+                                  <div key={columnIndex} className="mb-6 last:mb-0">
+                                    <h4 className="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-3 px-4 text-center border-b border-gray-300 pb-2">
+                                      {column.title}
+                                    </h4>
+                                    <div className="space-y-2">
+                                      {column.items.map((subItem) => (
+                                        <Link
+                                          key={subItem.name}
+                                          to={subItem.href}
+                                          className={`block px-6 py-2 text-sm transition-colors relative group/mobile-subitem text-center ${
+                                            isActiveRoute(subItem.href.replace('#', ''))
+                                              ? "text-[#05164d] font-medium"
+                                              : "text-gray-600 hover:text-[#05164d]"
+                                          }`}
+                                          onClick={handleItemClick}
+                                        >
+                                          {subItem.name}
+                                          <span 
+                                            className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 transition-all duration-300 ${
+                                              isActiveRoute(subItem.href.replace('#', ''))
+                                                ? "bg-[#05164d] w-3/4"
+                                                : "bg-[#05164d] w-0 group-hover/mobile-subitem:w-3/4"
+                                            }`} 
+                                          />
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
                             </motion.div>
                           )}
                         </AnimatePresence>
@@ -338,17 +366,27 @@ const Header = () => {
                     ) : (
                       <Link
                         to={item.href}
-                        className="block px-4 py-3 text-base font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-[#05164d] dark:hover:text-[#05164d] hover:bg-gray-50 dark:hover:bg-gray-800 relative group/mobile-item"
+                        className={`block px-4 py-4 text-base font-medium transition-colors hover:bg-gray-50 relative group/mobile-item ${
+                          isActiveRoute(item.href)
+                            ? "text-[#05164d] font-semibold"
+                            : "text-gray-700 hover:text-[#05164d]"
+                        }`}
                         onClick={handleItemClick}
                       >
                         {item.name}
-                        <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-[#05164d] transition-all duration-300 transform origin-left scale-x-0 group-hover/mobile-item:scale-x-100" />
+                        <span 
+                          className={`absolute bottom-0 left-4 right-4 h-0.5 transition-all duration-300 transform origin-left ${
+                            isActiveRoute(item.href)
+                              ? "bg-[#05164d] scale-x-100"
+                              : "bg-[#05164d] scale-x-0 group-hover/mobile-item:scale-x-100"
+                          }`} 
+                        />
                       </Link>
                     )}
                   </div>
                 ))}
 
-                <div className="px-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <div className="px-4 pt-4 border-t border-gray-200">
                   <Link
                     to="/contact"
                     className="block w-full text-center px-6 py-3 bg-[#05164d] hover:bg-[#0a2a8c] text-white font-medium rounded-lg transition-colors"
