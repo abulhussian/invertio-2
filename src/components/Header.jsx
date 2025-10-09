@@ -36,9 +36,9 @@ const Header = () => {
         {
           title: "Core Services",
           items: [
-            { name: "Digital Transformation", href: "/irisVideoAnalytics" },
-            { name: "Cloud Services", href: "/services#cloud-services" },
-            { name: "Software Development", href: "/services#software-development" },
+            { name: "Digital Transformation", href: "/digitalTransformation" },
+            { name: "Cloud Services", href: "/cloudServices" },
+            { name: "Software Development", href: "/softwareDevelopment" },
           ],
         },
         {

@@ -12,9 +12,11 @@ import About from "./pages/About"
 import Careers from "./pages/Careers"
 import Job from "./pages/Job"
 import Contact from "./pages/Contact"
-import IrisVideoAnalytics from "./pages/IrisVideoAnalytics"
 import NotFound from "./pages/NotFound"
 import { ThemeProvider } from "./context/ThemeContext"
+import DigitalInformation from "./pages/DigitalTransformation"
+import CloudServices from "./pages/CloudServices"
+import SoftwareDevelopment from "./pages/SoftwareDevelopment"
 
 function App() {
   return (
@@ -39,7 +41,9 @@ function App() {
               <Route path="/careers" element={<Careers />} />
               <Route path="/careers/:id" element={<Job />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/irisVideoAnalytics" element={<IrisVideoAnalytics />} />
+              <Route path="/digitalTransformation" element={<DigitalInformation />} />
+              <Route path="/cloudServices" element={<CloudServices />} />
+              <Route path="/softwaredevelopment" element={<SoftwareDevelopment />} />
               <Route path="*" element={<NotFound />} />
               
             </Routes>
