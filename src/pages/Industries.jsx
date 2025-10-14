@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import Section from "../components/Section"
 import { MotionFadeIn, MotionSlideUp, MotionStagger } from "../components/MotionWrapper"
 import industries from "../data/industries.json"
+import { useEffect } from "react"
 
 const iconMap = {
   Building2,
@@ -16,6 +17,10 @@ const iconMap = {
 }
 
 const Industries = () => {
+   useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   return (
     <div className="pt-16 lg:pt-20">
       {/* Hero Section with Background Image and Overlay */}
@@ -23,7 +28,7 @@ const Industries = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/Industries-hero.png"
+            src="/Industries-hero.jpeg"
             alt="Background"
             className="w-full h-full object-cover"
           />
@@ -90,29 +95,29 @@ const Industries = () => {
                     <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">{industry.description}</p>
 
                     {/* Stats */}
-                    <div className="flex justify-between items-center mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
+                    {/* <div className="flex justify-between items-center mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
                       <div className="text-center">
                         <div className="text-2xl font-bold text-[#05164d]">
                           {industry.stats.projects}
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">Projects Delivered</div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400"></div>
                       </div>
                       <div className="text-center">
                         <div className="text-2xl font-bold text-[#05164d]">
                           {industry.stats.clients}
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">Happy Clients</div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400"></div>
                       </div>
-                    </div>
+                    </div> */}
 
                     {/* CTA */}
-                    <Link
+                    {/* <Link
                       to={`/work?industry=${industry.id}`}
                       className="inline-flex items-center text-[#05164d] hover:text-[#05164d]/80 font-semibold group/link"
                     >
                       View Case Studies
                       <ArrowRight className="ml-2 w-5 h-5 group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
               </motion.div>
@@ -142,7 +147,7 @@ const Industries = () => {
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">{industry.title}</h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">{industry.description}</p>
 
-                <div className="grid grid-cols-2 gap-6 mb-8">
+                {/* <div className="grid grid-cols-2 gap-6 mb-8">
                   <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
                     <div className="text-3xl font-bold text-[#05164d] mb-2">
                       {industry.stats.projects}
@@ -155,7 +160,7 @@ const Industries = () => {
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-400">Satisfied Clients</div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link

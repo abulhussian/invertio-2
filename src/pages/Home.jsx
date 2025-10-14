@@ -1,4 +1,4 @@
-import React from 'react' // Add this
+import React, { useEffect } from 'react' // Add this
 
 import { motion } from "framer-motion"
 import { ArrowRight, Play, CheckCircle, Users, Award, Globe, TrendingUp } from "lucide-react"
@@ -15,6 +15,10 @@ import industries from "../data/industries.json"
 import caseStudies from "../data/casestudies.json"
 
 const Home = () => {
+   useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   // const CaseStudyCard = React.lazy(() => import("../components/CaseStudyCard"))
 
   const featuredCaseStudies = caseStudies.filter(study => study.featured).slice(0, 3)
@@ -46,9 +50,9 @@ const Home = () => {
   )
 
   const stats = [
-    { number: 500, suffix: "+", label: "Projects Delivered", icon: Award },
-    { number: 150, suffix: "+", label: "Enterprise Clients", icon: Users },
-    { number: 25, suffix: "+", label: "Countries Served", icon: Globe },
+    { number: 25, suffix: "+", label: "Projects Delivered", icon: Award },
+    { number: 25, suffix: "+", label: "Enterprise Clients", icon: Users },
+    { number: 4, suffix: "+", label: "Countries Served", icon: Globe },
     { number: 98, suffix: "%", label: "Client Satisfaction", icon: TrendingUp },
   ]
 
@@ -60,7 +64,7 @@ const Home = () => {
     },
     {
       title: "Proven Track Record",
-      description: "500+ successful projects across diverse industries and geographies",
+      description: "25+ successful projects across diverse industries and geographies",
       icon: "🏆",
     },
     {
@@ -80,99 +84,118 @@ const Home = () => {
 
       {/* Hero Section */}
       <Section className="relative min-h-screen flex items-center overflow-hidden bg-[#05164d]">
-        {/* Background Blur Shapes */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            className="absolute -top-40 -right-40 w-80 h-80 bg-[#05164d]/40 rounded-full blur-3xl"
-            animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
-            transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          />
-          <motion.div
-            className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#05164d]/40 rounded-full blur-3xl"
-            animate={{ scale: [1.2, 1, 1.2], rotate: [360, 180, 0] }}
-            transition={{ duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-          />
+  {/* Video with Overlay */}
+  <div className="absolute inset-0">
+    <video
+      src="/home-video.mp4"
+      autoPlay
+      loop
+      muted
+      className="absolute inset-0 object-cover w-full h-full"
+    />
+    {/* Video Overlay */}
+    <div className="absolute inset-0 bg-black/40"></div>
+  </div>
+  
+  {/* Background Blur Shapes */}
+  <div className="absolute inset-0 overflow-hidden">
+    <motion.div
+      className="absolute -top-40 -right-40 w-80 h-80 bg-[#05164d]/40 rounded-full blur-3xl"
+      animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
+      transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+    />
+    <motion.div
+      className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#05164d]/40 rounded-full blur-3xl"
+      animate={{ scale: [1.2, 1, 1.2], rotate: [360, 180, 0] }}
+      transition={{ duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+    />
+  </div>
+
+  {/* Content Container with Slide Down Animation */}
+  <motion.div 
+    className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full"
+    initial={{ opacity: 0, y: -100 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+  >
+    {/* Left Content */}
+    <MotionSlideUp className="space-y-8">
+      <div className="space-y-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="inline-flex items-center px-4 py-2 bg-white/10 text-white rounded-full text-sm font-medium"
+        >
+          <span className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse" />
+          Transforming Enterprise Technology
+        </motion.div>
+
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+          <span className="block">Accelerate Your</span>
+          <span className="block">Digital Future</span>
+        </h1>
+
+        <p className="text-xl text-gray-200 leading-relaxed max-w-2xl">
+          Partner with industry leaders to transform your business through innovative technology solutions, 
+          cloud services, and digital transformation strategies that drive measurable results.
+        </p>
+      </div>
+
+      {/* Buttons */}
+      <MotionStagger className="flex flex-col sm:flex-row gap-4" staggerDelay={0.1}>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Link
+            to="/contact"
+            className="inline-flex items-center px-8 py-4 bg-white text-[#05164d] font-semibold rounded-xl shadow-lg hover:bg-gray-100"
+          >
+            Get Started Today
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Link>
+        </motion.div>
+
+        {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <button className="inline-flex items-center px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10">
+            <Play className="mr-2 w-5 h-5" />
+            Watch Demo
+          </button>
+        </motion.div> */}
+      </MotionStagger>
+
+      {/* Trust Indicators */}
+      <MotionFadeIn delay={0.8} className="flex items-center space-x-6 pt-4">
+        {/* <div className="flex items-center space-x-2">
+          <CheckCircle className="w-5 h-5 text-green-400" />
+          <span className="text-sm text-gray-200">ISO 27001 Certified</span>
         </div>
-
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <MotionSlideUp className="space-y-8">
-            <div className="space-y-6">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center px-4 py-2 bg-white/10 text-white rounded-full text-sm font-medium"
-              >
-                <span className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse" />
-                Transforming Enterprise Technology
-              </motion.div>
-
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                <span className="block">Accelerate Your</span>
-                <span className="block">Digital Future</span>
-              </h1>
-
-              <p className="text-xl text-gray-200 leading-relaxed max-w-2xl">
-                Partner with industry leaders to transform your business through innovative technology solutions, 
-                cloud services, and digital transformation strategies that drive measurable results.
-              </p>
-            </div>
-
-            {/* Buttons */}
-            <MotionStagger className="flex flex-col sm:flex-row gap-4" staggerDelay={0.1}>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center px-8 py-4 bg-white text-[#05164d] font-semibold rounded-xl shadow-lg hover:bg-gray-100"
-                >
-                  Get Started Today
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </motion.div>
-
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <button className="inline-flex items-center px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10">
-                  <Play className="mr-2 w-5 h-5" />
-                  Watch Demo
-                </button>
-              </motion.div>
-            </MotionStagger>
-
-            {/* Trust Indicators */}
-            <MotionFadeIn delay={0.8} className="flex items-center space-x-6 pt-4">
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span className="text-sm text-gray-200">ISO 27001 Certified</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span className="text-sm text-gray-200">SOC 2 Type II</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span className="text-sm text-gray-200">GDPR Compliant</span>
-              </div>
-            </MotionFadeIn>
-          </MotionSlideUp>
-
-          {/* Hero Image */}
-          <MotionFadeIn delay={0.4} className="relative">
-            <motion.div
-              className="relative z-10"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-            >
-              <img
-                src="/modern-tech-dashboard.png"
-                alt="Enterprise Technology Dashboard"
-                className="w-full h-auto rounded-2xl shadow-2xl"
-                loading="eager"
-              />
-            </motion.div>
-          </MotionFadeIn>
+        <div className="flex items-center space-x-2">
+          <CheckCircle className="w-5 h-5 text-green-400" />
+          <span className="text-sm text-gray-200">SOC 2 Type II</span>
         </div>
-      </Section>
+        <div className="flex items-center space-x-2">
+          <CheckCircle className="w-5 h-5 text-green-400" />
+          <span className="text-sm text-gray-200">GDPR Compliant</span>
+        </div> */}
+      </MotionFadeIn>
+    </MotionSlideUp>
+
+    {/* Hero Image */}
+    {/* <MotionFadeIn delay={0.4} className="relative">
+      <motion.div
+        className="relative z-10"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+      >
+        <img
+          src="/sc-KPMG.png"
+          alt="Enterprise Technology Dashboard"
+          className="w-full h-auto rounded-2xl shadow-2xl"
+          loading="eager"
+        />
+      </motion.div>
+    </MotionFadeIn> */}
+  </motion.div>
+</Section>
 
       {/* Logo Marquee */}
       <LogoMarquee />

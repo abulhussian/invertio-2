@@ -7,6 +7,10 @@ import MotionWrapper from "../components/MotionWrapper"
 import jobs from "../data/jobs.json"
 
 const Job = () => {
+   useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   const { id } = useParams()
   const job = jobs.find((j) => j.id === Number.parseInt(id))
   const [isApplying, setIsApplying] = useState(false)

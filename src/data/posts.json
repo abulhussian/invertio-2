@@ -108,7 +108,7 @@
     "readTime": "11 min read",
     "category": "Fintech",
     "tags": ["Fintech", "Compliance", "Regulation", "Financial Services"],
-    "image": "/placeholder.svg?height=400&width=800",
+    "image": "/fintech.jpg",
     "featured": false
   },
   {
@@ -124,7 +124,7 @@
     "readTime": "8 min read",
     "category": "IoT",
     "tags": ["IoT", "Manufacturing", "Industry 4.0", "Automation"],
-    "image": "/placeholder.svg?height=400&width=800",
+    "image": "/iot.webp",
     "featured": false
   },
   {
@@ -140,7 +140,7 @@
     "readTime": "10 min read",
     "category": "Blockchain",
     "tags": ["Blockchain", "Enterprise", "Cryptocurrency", "Distributed Systems"],
-    "image": "/placeholder.svg?height=400&width=800",
+    "image": "/blockchain.jpg",
     "featured": false
   }
 ]

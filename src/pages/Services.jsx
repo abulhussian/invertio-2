@@ -18,6 +18,10 @@ const iconMap = {
 }
 
 const Services = () => {
+   useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   const benefits = [
     "Proven methodologies and best practices",
     "Experienced team of certified professionals",
@@ -84,7 +88,7 @@ const Services = () => {
                 operations and accelerate growth.
               </p>
               <a
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center px-8 py-4 
                            bg-[#05164d]  
                            hover:opacity-90 text-white font-semibold rounded-xl 

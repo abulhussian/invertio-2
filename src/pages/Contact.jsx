@@ -1,11 +1,15 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Mail, Phone, MapPin, Clock, ChevronDown, Send, CheckCircle } from "lucide-react"
 import Section from "../components/Section"
 import { MotionSlideUp, MotionStagger } from "../components/MotionWrapper"
 
 const Contact = () => {
+  useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+    
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,12 +24,12 @@ const Contact = () => {
 
   const offices = [
     {
-      city: "San Francisco",
-      address: "123 Tech Street, San Francisco, CA 94105",
-      phone: "+1 (555) 123-4567",
-      email: "sf@Invertio.com",
-      hours: "Mon-Fri: 9:00 AM - 6:00 PM PST",
-      image: "/san-francisco-office.png",
+      city: "Hyderabad",
+      address: "8-1-332-3/B/L,7 Tombs Rd, JPB Colony,Aravind Nagar Colony,Shaikpet",
+      phone: "+91 8121910307",
+      email: "info@invertiosolutions.com",
+      hours: "Mon-Fri: 9:00 AM - 5:00 PM IST",
+      image: "/san-francisco.jpeg",
     },
     {
       city: "New York",
@@ -33,7 +37,7 @@ const Contact = () => {
       phone: "+1 (555) 234-5678",
       email: "ny@Invertio.com",
       hours: "Mon-Fri: 9:00 AM - 6:00 PM EST",
-      image: "/new-york-office.png",
+      image: "/new-york-office.jpeg",
     },
     {
       city: "London",
@@ -41,7 +45,7 @@ const Contact = () => {
       phone: "+44 20 1234 5678",
       email: "london@Invertio.com",
       hours: "Mon-Fri: 9:00 AM - 5:00 PM GMT",
-      image: "/placeholder-7d1lu.png",
+      image: "/london-office.jpg",
     },
     {
       city: "Singapore",
@@ -67,15 +71,43 @@ const Contact = () => {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (!validateForm()) return
-    setIsSubmitting(true)
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+  e.preventDefault()
+  if (!validateForm()) return
+
+  setIsSubmitting(true)
+
+  try {
+    // prepare form data for PHP POST
+    const formDataToSend = new FormData()
+    formDataToSend.append("name", formData.name)
+    formDataToSend.append("email", formData.email)
+    formDataToSend.append("phone", formData.phone)
+    formDataToSend.append("service", formData.company) // using company as "service"
+    formDataToSend.append("message", formData.message)
+
+    // 🔹 replace with your Hostinger PHP API URL
+    const response = await fetch("https://invertio.in/contact.php", {
+      method: "POST",
+      body: formDataToSend, 
+    })
+
+    const result = await response.json()
+
+    if (result.status === "success") {
+      setIsSubmitted(true)
+      setFormData({ name: "", email: "", phone: "", company: "", message: "" })
+      setTimeout(() => setIsSubmitted(false), 5000)
+    } else {
+      setErrors({ general: "Failed to send message. Please try again." })
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error)
+    setErrors({ general: "Something went wrong. Please try again later." })
+  } finally {
     setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormData({ name: "", email: "", phone: "", company: "", message: "" })
-    setTimeout(() => setIsSubmitted(false), 5000)
   }
+}
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -97,7 +129,7 @@ const Contact = () => {
         />
         <motion.div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/contactus-1.png')" }}
+          style={{ backgroundImage: "url('/contactus-1.jpeg')" }}
           initial={{ scale: 1 }}
           animate={{ scale: 1.1 }}
           transition={{ duration: 12, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
@@ -176,7 +208,7 @@ const Contact = () => {
                         <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleInputChange}
                           className={`w-full px-4 py-3 border rounded-lg bg-white dark:bg-gray-700 ${
                             errors.phone ? "border-red-500" : "border-gray-300 dark:border-gray-600"
-                          }`} placeholder="+91 78930 67967" />
+                          }`} placeholder="+91 8121910307" />
                         {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
                       </div>
                       <div>
@@ -230,7 +262,7 @@ const Contact = () => {
                 </div>
                 <div className="flex items-start space-x-4">
                   <Phone className="w-6 h-6 text-[#05164d]" />
-                  <div><h3>Call Us</h3><a href="tel:+917893067967" className="text-[#05164d]">+91 78930 67967</a></div>
+                  <div><h3>Call Us</h3><a href="tel:+918121910307" className="text-[#05164d]">+91 81219 10307</a></div>
                 </div>
                 <div className="flex items-start space-x-4">
                   <Clock className="w-6 h-6 text-[#05164d]" />

@@ -11,7 +11,7 @@ const Timeline = ({ events }) => {
       <div className="space-y-12">
         {events.map((event, index) => (
           <motion.div
-            key={event.year}
+            key={event.year || index}
             className={`relative flex items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -29,17 +29,28 @@ const Timeline = ({ events }) => {
 
             {/* Content */}
             <div className={`flex-1 ml-12 md:ml-0 ${index % 2 === 0 ? "md:pr-8" : "md:pl-8"}`}>
-              <motion.div
-                className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-                whileHover={{ scale: 1.02 }}
+              <a
+                href={event.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
               >
-                <div className="flex items-center mb-3">
-                  <img src={event.image} alt={event.title} className=" mr-3" />
-                  <CheckCircle className="w-5 h-5 text-green-500" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{event.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{event.description}</p>
-              </motion.div>
+                <motion.div
+                  className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="flex items-center mb-3">
+                    <img src={event.image} alt={event.title} className="mr-3" />
+                    <CheckCircle className="w-5 h-5 text-green-500" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                    {event.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {event.description}
+                  </p>
+                </motion.div>
+              </a>
             </div>
 
             {/* Spacer for alternating layout */}

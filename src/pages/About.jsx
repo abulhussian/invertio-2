@@ -7,13 +7,18 @@ import Timeline from "../components/Timeline"
 import TeamCard from "../components/TeamCard"
 import StatCounter from "../components/StatCounter"
 import { MotionFadeIn, MotionSlideUp, MotionStagger } from "../components/MotionWrapper"
+import { useEffect } from "react"
 
 const About = () => {
+   useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   const stats = [
-    { number: 15, suffix: "+", label: "Years of Excellence", icon: Award },
-    { number: 500, suffix: "+", label: "Projects Delivered", icon: TrendingUp },
-    { number: 150, suffix: "+", label: "Enterprise Clients", icon: Users },
-    { number: 25, suffix: "+", label: "Countries Served", icon: Globe },
+    { number: 5, suffix: "+", label: "Years of Excellence", icon: Award },
+    { number: 25, suffix: "+", label: "Projects Delivered", icon: TrendingUp },
+    { number: 25, suffix: "+", label: "Enterprise Clients", icon: Users },
+    { number: 4, suffix: "+", label: "Countries Served", icon: Globe },
   ]
 
   const values = [
@@ -83,17 +88,19 @@ const About = () => {
       image: "/aivaah-logo.png",
       title: "AVIAAH",
       description: "A leading provider of cloud and infrastructure solutions, empowering businesses worldwide.",
+     link: "https://aivaah.com/",
     },
     {
       image: "/invertio-taxiation.jpg",
       title: "Invertio Taxiation",
       description: "Focused on AI and machine learning products that drive automation and smart decision-making.",
+      link: "https://invertio.us/",
     },
     {
       image: "/novanal-logo.png",
       title: "Novanal",
       description: "Revolutionizing financial services with blockchain-powered platforms and digital banking tools.",
-    },
+      link: "https://novanal.com/",},
   ]
 
   return (

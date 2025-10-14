@@ -44,9 +44,9 @@ const Header = () => {
         {
           title: "Specialized Solutions",
           items: [
-            { name: "Data & Analytics", href: "/services#data-analytics" },
-            { name: "Cybersecurity", href: "/services#cybersecurity" },
-            { name: "IT Consulting", href: "/services#consulting" },
+            { name: "Data & Analytics", href: "/dataanalytics" },
+            { name: "Cybersecurity", href: "/cybersecurity" },
+            { name: "IT Consulting", href: "/itconsulting" },
           ],
         },
       ],
@@ -59,32 +59,32 @@ const Header = () => {
         {
           title: "Industries",
           items: [
-            { name: "Aerospace", href: "/industries#aerospace" },
-            { name: "Energy", href: "/industries#energy" },
-            { name: "Rail", href: "/industries#rail" },
+            { name: "Education", href: "/education" },
+            { name: "Logistics", href: "/logistics" },
+            { name: "Retail", href: "/retail" },
+            
           ],
         },
         {
-          title: "Platforms",
           items: [
-            { name: "Appliances & Consumer Goods", href: "/industries#appliances" },
-            { name: "Healthcare And Life Sciences", href: "/industries#healthcare" },
-            { name: "Semiconductor", href: "/industries#semiconductor" },
+            { name: "Finance", href: "/finance" },
+            { name: "Healthcare", href: "/healthcare" },
+            { name: "Information services", href: "/informationservices" },
           ],
         },
-        {
-          title: "Capabilities",
-          items: [
-            { name: "Automotive", href: "/industries#automotive" },
-            { name: "Media And Entertainment", href: "/industries#media" },
-            { name: "Off-Highway Vehicles", href: "/industries#off-highway" },
-            { name: "Communications", href: "/industries#communications" },
-          ],
-        },
+        // {
+        //   title: "Capabilities",
+        //   items: [
+        //     { name: "Automotive", href: "/industries#automotive" },
+        //     { name: "Media And Entertainment", href: "/industries#media" },
+        //     { name: "Off-Highway Vehicles", href: "/industries#off-highway" },
+        //     { name: "Communications", href: "/industries#communications" },
+        //   ],
+        // },
       ],
     },
     { name: "Work", href: "/work", hasDropdown: false },
-    { name: "Insights", href: "/insights", hasDropdown: false },
+    { name: "Blogs", href: "/blogs", hasDropdown: false },
     { name: "About", href: "/about", hasDropdown: false },
     { name: "Careers", href: "/careers", hasDropdown: false },
     { name: "Contact", href: "/contact", hasDropdown: false },
@@ -131,7 +131,7 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200/50"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white backdrop-blur-md shadow-lg border-b border-gray-200/50"
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">

@@ -132,7 +132,7 @@ useEffect(() => {
 
       <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300">
         <img
-          src="./insights-2.png"
+          src="./insights-2.jpeg"
           alt="Digital Strategy"
           className="w-full h-40 object-cover rounded-lg mb-4"
         />

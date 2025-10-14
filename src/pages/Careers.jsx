@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { MapPin, Clock, DollarSign, Users, Search, Filter, Briefcase } from "lucide-react"
 import { motion } from "framer-motion"
@@ -9,6 +9,10 @@ import jobs from "../data/jobs.json"
 
 // Job Card Component
 const JobCard = ({ job, index }) => {
+   useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   return (
     <MotionWrapper
       initial={{ opacity: 0, y: 20 }}
@@ -117,17 +121,13 @@ const Careers = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section with Motion Background */}
       <Section className="relative pt-32 pb-16 overflow-hidden">
-        {/* Animated Background Image */}
         <motion.div
           className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/gemini-1.png')", // <-- replace with your image
-          }}
+          style={{ backgroundImage: "url('/gemini-1.jpeg')" }}
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
         />
-        {/* Overlay */}
         <div className="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
 
         {/* Hero Content */}
@@ -143,87 +143,93 @@ const Careers = () => {
             <p className="text-xl mb-8">
               Build the future of technology with passionate innovators and industry leaders
             </p>
-            <div className="flex items-center justify-center gap-8">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-[#05164d] bg-white px-2 py-1 rounded">{jobs.length}+</div>
-                <div className="text-sm">Open Positions</div>
+
+            {/* Stats: Hide if no jobs */}
+            {jobs.length > 0 && (
+              <div className="flex items-center justify-center gap-8">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-[#05164d] bg-white px-2 py-1 rounded">{jobs.length}+</div>
+                  <div className="text-sm">Open Positions</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-[#05164d] bg-white px-2 py-1 rounded">50+</div>
+                  <div className="text-sm">Team Members</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-[#05164d] bg-white px-2 py-1 rounded">15+</div>
+                  <div className="text-sm">Countries</div>
+                </div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-[#05164d] bg-white px-2 py-1 rounded">50+</div>
-                <div className="text-sm">Team Members</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-[#05164d] bg-white px-2 py-1 rounded">15+</div>
-                <div className="text-sm">Countries</div>
-              </div>
-            </div>
+            )}
           </MotionWrapper>
         </div>
       </Section>
 
       {/* Search + Filters */}
-      <Section className="pb-8">
-        <div className="max-w-6xl mx-auto">
-          <MotionWrapper
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
-              <div className="flex flex-col lg:flex-row gap-4">
-                {/* Search */}
-                <div className="flex-1 relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  <input
-                    type="text"
-                    placeholder="Search jobs, skills, or keywords..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#05164d] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  />
+      {jobs.length > 0 && (
+        <Section className="pb-8">
+          <div className="max-w-6xl mx-auto">
+            <MotionWrapper
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+                <div className="flex flex-col lg:flex-row gap-4">
+                  {/* Search */}
+                  <div className="flex-1 relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <input
+                      type="text"
+                      placeholder="Search jobs, skills, or keywords..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#05164d] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    />
+                  </div>
+
+                  {/* Department Filter */}
+                  <div className="relative">
+                    <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <select
+                      value={selectedDepartment}
+                      onChange={(e) => setSelectedDepartment(e.target.value)}
+                      className="pl-10 pr-8 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#05164d] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white appearance-none min-w-[180px]"
+                    >
+                      {departments.map((dept) => (
+                        <option key={dept} value={dept}>
+                          {dept}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Type Filter */}
+                  <div className="relative">
+                    <Briefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <select
+                      value={selectedType}
+                      onChange={(e) => setSelectedType(e.target.value)}
+                      className="pl-10 pr-8 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#05164d] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white appearance-none min-w-[150px]"
+                    >
+                      {types.map((type) => (
+                        <option key={type} value={type}>
+                          {type}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
-                {/* Department Filter */}
-                <div className="relative">
-                  <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  <select
-                    value={selectedDepartment}
-                    onChange={(e) => setSelectedDepartment(e.target.value)}
-                    className="pl-10 pr-8 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#05164d] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white appearance-none min-w-[180px]"
-                  >
-                    {departments.map((dept) => (
-                      <option key={dept} value={dept}>
-                        {dept}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Type Filter */}
-                <div className="relative">
-                  <Briefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  <select
-                    value={selectedType}
-                    onChange={(e) => setSelectedType(e.target.value)}
-                    className="pl-10 pr-8 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#05164d] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white appearance-none min-w-[150px]"
-                  >
-                    {types.map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
+                <div className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                  Showing {filteredJobs.length} position{filteredJobs.length !== 1 ? "s" : ""}
+                  {searchTerm && ` for "${searchTerm}"`}
                 </div>
               </div>
-
-              <div className="mt-4 text-sm text-gray-600 dark:text-gray-400">
-                Showing {filteredJobs.length} position{filteredJobs.length !== 1 ? "s" : ""}
-                {searchTerm && ` for "${searchTerm}"`}
-              </div>
-            </div>
-          </MotionWrapper>
-        </div>
-      </Section>
+            </MotionWrapper>
+          </div>
+        </Section>
+      )}
 
       {/* Job Listings */}
       <Section className="pb-16">
@@ -235,11 +241,22 @@ const Careers = () => {
               ))}
             </div>
           ) : (
-            <MotionWrapper initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
-              <div className="text-gray-500 dark:text-gray-400">
-                <Briefcase className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                <h3 className="text-xl font-semibold mb-2">No positions found</h3>
-                <p>Try adjusting your search terms or filters</p>
+            <MotionWrapper initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-24">
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-12 flex flex-col items-center">
+                <Briefcase className="w-20 h-20 text-[#05164d] mb-6" />
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  We're Not Hiring Right Now
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md">
+                  Thank you for your interest in joining our team. Currently, we don't have any open positions. 
+                  Please check back later or reach out to us directly with your resume.
+                </p>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 bg-[#05164d] hover:bg-[#05164d]/90 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                >
+                  Contact Us
+                </Link>
               </div>
             </MotionWrapper>
           )}
@@ -247,26 +264,30 @@ const Careers = () => {
       </Section>
 
       {/* CTA Section */}
-      <Section className="pb-16 bg-white dark:bg-gray-800">
-        <div className="max-w-4xl mx-auto text-center">
-          <MotionWrapper
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Don't see the right role?</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
-              We're always looking for talented individuals to join our team. Send us your resume and we'll keep you in mind for future opportunities.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-[#05164d] hover:bg-[#05164d]/90 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
+      {jobs.length > 0 && (
+        <Section className="pb-16 bg-white dark:bg-gray-800">
+          <div className="max-w-4xl mx-auto text-center">
+            <MotionWrapper
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Get in Touch
-            </Link>
-          </MotionWrapper>
-        </div>
-      </Section>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+                Don't see the right role?
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
+                We're always looking for talented individuals to join our team. Send us your resume and we'll keep you in mind for future opportunities.
+              </p>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 bg-[#05164d] hover:bg-[#05164d]/90 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
+              >
+                Get in Touch
+              </Link>
+            </MotionWrapper>
+          </div>
+        </Section>
+      )}
     </div>
   )
 }

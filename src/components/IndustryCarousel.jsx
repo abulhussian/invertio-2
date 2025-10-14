@@ -167,7 +167,7 @@ const IndustryCarousel = ({ industries }) => {
                       <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">{industry.description}</p>
 
                       {/* Stats */}
-                      <div className="flex justify-between items-center mb-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                      {/* <div className="flex justify-between items-center mb-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
                         <div className="text-center">
                           <div className="text-lg font-bold text-[#05164d] dark:text-[#ffad00]">
                             {industry.stats.projects}
@@ -180,7 +180,7 @@ const IndustryCarousel = ({ industries }) => {
                           </div>
                           <div className="text-xs text-gray-500 dark:text-gray-400">Clients</div>
                         </div>
-                      </div>
+                      </div> */}
 
                       {/* CTA */}
                       <Link

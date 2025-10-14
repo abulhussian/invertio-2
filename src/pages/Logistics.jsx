@@ -1,0 +1,173 @@
+"use client";
+import React, { useEffect } from "react";
+import { motion } from "framer-motion";
+
+const Logistics = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative text-white py-20">
+        <div className="shadow-md overflow-hidden relative">
+          <motion.img
+            src="./logistics-bg.webp"
+            alt="bg-logistics"
+            className="w-full h-[400px] object-cover"
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+          <motion.div
+            className="absolute inset-0 flex flex-col justify-center px-10"
+            initial={{ y: -30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <div className="flex flex-col space-y-5 items-start w-full">
+              <h1 className="text-4xl lg:text-5xl font-bold">
+                Logistics Solutions
+              </h1>
+              <p className="text-lg lg:text-sm max-w-sm">
+                Streamline your supply chain operations with smart logistics solutions designed for speed, accuracy, and real-time visibility.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Introduction Section */}
+      <section className="bg-[#0b0b12] text-white py-20 flex items-center justify-center">
+        <div className="max-w-6xl px-6 lg:px-10 text-left">
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold mb-10 text-white"
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            Driving Efficiency Across the Supply Chain
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg leading-relaxed text-gray-300">
+            <motion.p
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              At Invertio, we help businesses optimize their logistics operations through automation, data-driven insights, and seamless integration of transport and warehouse systems.
+            </motion.p>
+
+            <motion.p
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.3 }}
+            >
+              From real-time tracking to predictive analytics, our logistics solutions ensure faster deliveries, reduced operational costs, and improved customer satisfaction.
+            </motion.p>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              Our Logistics Services
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+              Comprehensive logistics and supply chain management services tailored for efficiency and scalability.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300">
+              <img
+                src="./supply-chain.jpeg"
+                alt="Supply Chain Optimization"
+                className="w-full h-40 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Supply Chain Optimization
+              </h3>
+              <p className="text-gray-600">
+                Enhance operational efficiency through intelligent supply chain planning, demand forecasting, and inventory management.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300">
+              <img
+                src="./fleet-management.jpg"
+                alt="Fleet Management"
+                className="w-full h-40 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Fleet Management
+              </h3>
+              <p className="text-gray-600">
+                Monitor and manage your vehicle fleet in real time with GPS tracking, route optimization, and automated maintenance alerts.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300">
+              <img
+                src="./warehouse-automation.webp"
+                alt="Warehouse Automation"
+                className="w-full h-40 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Warehouse Automation
+              </h3>
+              <p className="text-gray-600">
+                Automate warehouse operations using smart systems for inventory tracking, order fulfillment, and real-time analytics.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Study Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              Case Study: Transforming Global Logistics
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+              Invertio partnered with a multinational logistics firm to digitize their supply chain and optimize end-to-end operations using smart automation and analytics.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <img
+              src="./sc-samsa.jpeg"
+              alt="Logistics Case Study"
+              className="w-full h-80 object-cover rounded-lg shadow-lg"
+            />
+            <div className="flex flex-col justify-center">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Business Challenge
+              </h3>
+              <p className="text-gray-600 mb-4">
+                The client struggled with manual logistics tracking, delivery delays, and fragmented communication across global operations.
+              </p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Solution & Impact
+              </h3>
+              <p className="text-gray-600">
+                Invertio implemented a centralized logistics management platform with IoT-based fleet tracking and AI-driven demand forecasting. The company achieved a 45% improvement in delivery time and a 30% reduction in operational costs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Logistics;

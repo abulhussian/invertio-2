@@ -1,7 +1,7 @@
 "use client"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Linkedin, Twitter, Github, Youtube, ArrowRight, Send } from "lucide-react"
+import { Mail, Phone, MapPin, Linkedin, Twitter, Github, Youtube, ArrowRight, Send, Facebook } from "lucide-react"
 import { useState } from "react"
 
 const Footer = () => {
@@ -21,43 +21,41 @@ const Footer = () => {
       { name: "About Us", href: "/about" },
       { name: "Careers", href: "/careers" },
       { name: "Leadership", href: "/about#leadership" },
-      { name: "News & Press", href: "/insights" },
+      { name: "News & Press", href: "/blogs" },
       { name: "Contact", href: "/contact" },
     ],
     services: [
-      { name: "Digital Transformation", href: "/services#digital-transformation" },
-      { name: "Cloud Services", href: "/services#cloud-services" },
-      { name: "Software Development", href: "/services#software-development" },
-      { name: "Data & Analytics", href: "/services#data-analytics" },
-      { name: "Cybersecurity", href: "/services#cybersecurity" },
+      { name: "Digital Transformation", href: "/digitaltransformation" },
+      { name: "Cloud Services", href: "/cloudservices" },
+      { name: "Software Development", href: "/softwaredevelopment" },
+      { name: "Data & Analytics", href: "/dataanalytics" },
+      { name: "Cybersecurity", href: "/cybersecurity" },
     ],
     industries: [
-      { name: "Banking & Financial", href: "/industries#banking-financial" },
-      { name: "Healthcare", href: "/industries#healthcare" },
-      { name: "Retail & E-commerce", href: "/industries#retail-ecommerce" },
-      { name: "Telecommunications", href: "/industries#telecommunications" },
-      { name: "Automotive", href: "/industries#automotive" },
+      { name: "Banking & Financial", href: "/finance" },
+      { name: "Healthcare", href: "/healthcare" },
+      { name: "Retail & E-commerce", href: "/retail" },
+      { name: "Information Services", href: "/informationservices" },
+      { name: "Education", href: "/education" },
     ],
     resources: [
       { name: "Case Studies", href: "/work" },
-      { name: "Insights", href: "/insights" },
-      { name: "White Papers", href: "/insights?category=whitepapers" },
-      { name: "Documentation", href: "/resources/docs" },
-      { name: "Support", href: "/support" },
+      { name: "Blogs", href: "/blogs" },
+      { name: "White Papers", href: "/blogs?category=whitepapers" },
     ],
   }
 
   const socialLinks = [
-    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/Invertio" },
-    { name: "Twitter", icon: Twitter, href: "https://twitter.com/Invertio" },
-    { name: "GitHub", icon: Github, href: "https://github.com/Invertio" },
-    { name: "YouTube", icon: Youtube, href: "https://youtube.com/Invertio" },
+    { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/company/invertio-solutions/" },
+    { name: "Twitter", icon: Twitter, href: "https://x.com/Invertio_s" },
+    { name: "GitHub", icon: Facebook, href: "https://www.facebook.com/share/1AjNJoSyWi/" },
+    { name: "YouTube", icon: Youtube, href: "https://www.youtube.com/@InvertioSolutions" },
   ]
 
   const contactInfo = [
-    { icon: Phone, text: "+1 (555) 123-4567", href: "tel:+15551234567" },
-    { icon: Mail, text: "hello@Invertio.com", href: "mailto:hello@Invertio.com" },
-    { icon: MapPin, text: "123 Tech Street, San Francisco, CA 94105", href: "#" },
+    { icon: Phone, text: "+91 8121910307", href: "tel:+918121910307" },
+    { icon: Mail, text: "info@invertiosolutions.com", href: "mailto:info@invertiosolutions.com" },
+    { icon: MapPin, text: "8-1-332-3/B/L, 7 Tombs Rd,Aravind Nagar Colony, Shaikpet, Hyderabad", href: "https://maps.app.goo.gl/sK3EXX84Lxvp3vru7" },
   ]
 
   return (
@@ -209,17 +207,14 @@ const Footer = () => {
       <div className="border-t border-gray-800">
         <div className="container-custom py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
-              <p className="text-gray-400 text-sm">© 2024 Invertio. All rights reserved.</p>
+          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+  <p className="text-gray-400 text-sm">© {new Date().getFullYear()} Invertio. All rights reserved.</p>
               <div className="flex space-x-6">
                 <Link to="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
                   Privacy Policy
                 </Link>
                 <Link to="/terms" className="text-gray-400 hover:text-white text-sm transition-colors">
                   Terms of Service
-                </Link>
-                <Link to="/cookies" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  Cookie Policy
                 </Link>
               </div>
             </div>

@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const textVariants = {
   hidden: { opacity: 0, y: -20 },
@@ -21,7 +22,14 @@ const buttonVariants = {
   },
 };
 
+
 const CaseStudyCards = ({ study, index }) => {
+  const navigate = useNavigate();
+
+
+   const handleReadMore = () => {
+    navigate(`/${study.id}`); // 👈 goes to /qatar-moehe, /ai-pilot, etc.
+  };
   return (
     <motion.div
       key={study.id}
@@ -71,6 +79,7 @@ const CaseStudyCards = ({ study, index }) => {
 
         {/* Read More Button at the Bottom */}
         <motion.div
+        onClick={handleReadMore}
           variants={buttonVariants}
           initial="hidden"
           animate="visible"
