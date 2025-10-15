@@ -1,7 +1,10 @@
 // TermsConditions.jsx
-import React from "react";
+import React, { useEffect } from "react";
 
 const TermsConditions = () => {
+    useEffect(() => {
+          window.scrollTo(0, 0);
+        }, []);
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold text-gray-800 mb-6">Terms & Conditions</h1>
