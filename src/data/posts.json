@@ -60,7 +60,7 @@
     "readTime": "12 min read",
     "category": "Software Architecture",
     "tags": ["Microservices", "Architecture", "Scalability", "DevOps"],
-    "image": "/insights-2.png",
+    "image": "/insights-2.jpeg",
     "featured": false
   },
   {
@@ -92,7 +92,7 @@
     "readTime": "9 min read",
     "category": "DevOps",
     "tags": ["Kubernetes", "DevOps", "Container Orchestration", "Production"],
-    "image": "/deveops.png",
+    "image": "/deveops.jpeg",
     "featured": true
   },
   {
