@@ -278,7 +278,7 @@ const Contact = () => {
       </Section>
 
       {/* Offices */}
-      <Section className="bg-gray-50 dark:bg-gray-800/50">
+      {/* <Section className="bg-gray-50 dark:bg-gray-800/50">
         <MotionSlideUp className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Global Offices</h2>
           <p className="text-xl text-gray-600 dark:text-gray-300">With offices around the world, we’re always close to our clients.</p>
@@ -317,7 +317,7 @@ const Contact = () => {
             </motion.div>
           ))}
         </MotionStagger>
-      </Section>
+      </Section> */}
     </div>
   )
 }
